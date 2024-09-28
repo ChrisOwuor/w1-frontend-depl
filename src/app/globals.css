@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+body {
+  /* color: rgb(var(--foreground-rgb)); */
+  /* background-color: #000000; */
+  background-color: #0d112f;
+  /* font-size: small; */
+}
+
+/* GRENLYFE V1.1.1 TYPESCALE */
+
+/*stakebuttons*/
+html {
+  font-size: 14px; /* Base font size for 1rem */
+}
+.sButton{
+  width: 7rem;
+}
+.submit{
+  margin-top: 1rem;
+  width: 5rem;
+  padding: 5px;
+}
+
+.bg_1 {
+  background: #031123;
+}
+
+.h_1 {
+  font-size: 2.986rem;
+}
+.h_2 {
+  font-size: 2.488rem;
+}
+.h_3 {
+  font-size: 2.074rem;
+}
+.h_4 {
+  font-size: 1.728rem;
+}
+.h_5 {
+  font-size: 1.44rem;
+}
+.h_6 {
+  font-size: 1.2rem;
+}
+.p_1 {
+  font-size: 1rem;
+}
+.p_1_sm {
+  font-size: 0.962rem;
+}
+.p_2 {
+  font-size: 0.833rem;
+}
+.p_2_sm {
+  font-size: 0.803rem;
+}
+.p_3 {
+  font-size: 0.694rem;
+}
+.p_3_sm {
+  font-size: 0.667rem;
+}
+.t_c_1 {
+  color: #031123;
+}
+
+.accent_1 {
+  color: rgb(255, 165, 0);
+}
+
+/*  */
+.gradient-01 {
+  background-image: linear-gradient(
+    270deg,
+    hsl(295deg 76% 51%) 0%,
+    hsl(284deg 70% 73%) 26%,
+    hsl(257deg 70% 86%) 39%,
+    hsl(202deg 92% 90%) 50%,
+    hsl(215deg 77% 81%) 61%,
+    hsl(221deg 73% 70%) 74%,
+    hsl(220deg 76% 51%) 100%
+  );
+  filter: blur(125px);
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    97.86deg,
+    #a509ff 0%,
+    #34acc7 53.65%,
+    #a134c7 100%
+  );
+}
+
+.gradient-02 {
+  position: absolute;
+  width: 200px;
+  height: 438px;
+  top: 0px;
+  right: 0px;
+
+  background: #7aebfb;
+  filter: blur(190px);
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.gradient-03 {
+  position: absolute;
+  width: 404px;
+  height: 800px;
+  left: 20%;
+  top: 5%;
+
+  background: rgba(149, 66, 232, 0.35);
+  filter: blur(175px);
+  transform: rotate(-114.2deg);
+}
+
+.gradient-04 {
+  position: absolute;
+  width: 304px;
+  height: 100vh;
+  left: 30%;
+  top: 10%;
+
+  background: rgba(45, 72, 152, 0.75);
+  filter: blur(200px);
+  transform: rotate(-53.13deg);
+}
+
+.gradient-05 {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.feedback-gradient {
+  position: absolute;
+  width: 200px;
+  height: 316px;
+  left: 0px;
+  top: 0px;
+
+  background: #8d39a3;
+  filter: blur(175px);
+}
+
+.footer-gradient {
+  position: absolute;
+  width: 500px;
+  height: 100px;
+  left: 37%;
+  bottom: 0;
+
+  background: #65c4fa;
+  filter: blur(150px);
+}
+
+.sliding--screen {
+  background-image: url("/dev/client1/public/sliding_screen_bg.png");
+}
+
+@keyframes slideRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.slideInLeft {
+  animation: slideInLeftAnimation 0.5s forwards;
+}
+
+.slideOutLeft {
+  animation: slideOutLeftAnimation 0.5s forwards;
+}
+
+@keyframes slideInLeftAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeftAnimation {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.slide-text {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: slideRightToLeft 30s linear infinite;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slideRight {
+  animation: slideRight 15s infinite;
+}
+
+.animate-slidindAds {
+  animation: slideRight 40s infinite;
+}
+
+/* exposure text styling */
+.exp-txt {
+  color: rgb(255, 60, 0);
+}
+
