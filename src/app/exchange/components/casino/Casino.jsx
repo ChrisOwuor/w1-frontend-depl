@@ -1,6 +1,7 @@
-import React from 'react';
 
-const Casino = () => {
+import React, { useState } from 'react';
+
+const Casino = ({globalSettings}) => {
     const casinoGames = [
         { name: "Baccarat 2", dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=baccarat2", videoUrl: "https://winx777.com/casino/?id=3033" },
         { name: "Race 20", dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=race20", videoUrl: "https://winx777.com/casino/?id=3036" },
@@ -31,21 +32,86 @@ const Casino = () => {
         { name: "Queen", dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=queen", videoUrl: "https://winx777.com/casino/?id=3037" },
         { name: "instant Worli", dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=worli2", videoUrl: "https://winx777.com/casino/?id=3040" }
     ];
+    const [activeGame, setActiveGame] = useState(null);
+    const [showVideo, setShowVideo] = useState(false);
+    const videoUrl = activeGame ? activeGame.videoUrl : '';
 
+
+    const handleClick = (game) => {
+        setActiveGame(game);
+        setShowVideo(prev=>!prev)
+    };
     return (
-        <>
-            <div className="flex flex-col w-full ">
-                <h2 className='text-md text-black font-bold'>Casino</h2>
-                <ul>
+        
+        <div 
+        className="flex flex-col w-full border-b border-black/[0.2] p-4"
+        style={{
+            backgroundImage: "url(/bgcasino.png)",
+            backgroundSize: "contain",
+            backgroundAttachment: "fixed",
+        }}
+    >
+        {!showVideo ? (
+            <>
+            {/* nav */}
+                <div className='flex items-center bg-black'>
                     {casinoGames.map((game, index) => (
-                        <li key={index} className="mb-4">
-                            <h3 className="text-lg text-black font-semibold">{game.name}</h3>
-                            <a href={game.videoUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500"></a>
-                        </li>
+                        <p 
+                            key={index} 
+                            className={`font-bold uppercase px-4 py-2 rounded-[40px] whitespace-nowrap  ${activeGame?.name === game.name ? 'bg-warning text-black' : 'border-r border-gray-100 text-white'}`}
+                            onClick={() => handleClick(game)}
+                        >
+                            {game.name}
+                        </p>
                     ))}
-                </ul>
+                </div>
+                {/* body */}
+                
+                <div className='grid md:grid-cols-4 grid-cols-2 gap-6'>
+  {casinoGames.map((game, index) => (
+   <div 
+   key={index} 
+   className={`p-6 font-bold uppercase text-md flex flex-col justify-center items-center text-black`}
+   onClick={() => handleClick(game)}
+ >
+   <div className="relative kasino-container">
+     <div 
+       className="fancy-shape shape-one"  
+       style={{ backgroundColor: globalSettings.topMenuBgColor || "#0A5BAB" }} 
+     />
+     <div 
+       className="fancy-shape shape-two" 
+       style={{ backgroundColor: globalSettings.topMenuBgColor || "#F6A21E" }}
+     />
+     
+     {/* Separate div for the image to prevent rotation */}
+     <div className="image-wrapper">
+       <img src="b11.png" alt="game image" className="top-image kasino-img" 
+        style={{height: "110px"}}
+        />
+     </div>
+   </div>
+   
+   <p className="text-black text-lg p-2">{game.name}</p>
+ </div>
+ 
+  ))}
+</div>
+
+            </>
+        ) : (
+            <div className="flex justify-center items-center">
+                <iframe 
+                    src={videoUrl} 
+                    title="Casino Game Video" 
+                    width="800" 
+                    height="450" 
+                    className="rounded-lg"
+                    allowFullScreen
+                />
             </div>
-        </>
+        )}
+    </div>
     );
 };
 

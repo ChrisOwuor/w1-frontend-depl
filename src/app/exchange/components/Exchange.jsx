@@ -137,7 +137,7 @@ const Exchange = () => {
                           </div>
                         </div>
 
-                        <div className="sm:border sm:border-black/[0.2] bg-white min-h-[80vh]">
+                        <div className="  min-h-[80vh]">
                           {
                             view != "" && currentCenter &&
                             (() => {
@@ -149,7 +149,7 @@ const Exchange = () => {
                                     <div className="w-full">
                                       <HorizontalSlides globalSettings={globalSettings} />
                                       <Populars />
-                                      <Casino />
+                                      <Casino globalSettings={globalSettings} />
                                     </div>
                                   );
                                 case "event_markets":

@@ -98,8 +98,8 @@ const Populars = () => {
 
 
     return (
-        <>
-            <div className="flex flex-col w-full sm:hidden">
+        <div className='mb-4'>
+            <div className="flex flex-col w-full sm:hidden ">
 
                 <div className="grid grid-cols-12 w-full">
 
@@ -196,7 +196,7 @@ const Populars = () => {
                 }
 
             </div>
-        </>
+        </div>
     );
 };
 
