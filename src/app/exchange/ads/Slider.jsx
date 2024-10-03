@@ -20,10 +20,10 @@ const HorizontalSlides = ({ globalSettings }) => {
 
   return (
     <>
-      {/* Container for banners with a placeholder background */}
+      
       <div
         id="center_main_top_flag"
-        className={`relative w-full sm:h-[250px] ${banners.length === 0 ? 'bg-gray-800' : ''}`}
+        className={`relative w-full sm:h-[250px] h-[15vh] ${banners.length === 0 ? 'bg-gray-800' : ''}`}
         style={{ backgroundColor: banners.length === 0 ? '#333' : '' }}
       >
         {banners.length === 0 ? (

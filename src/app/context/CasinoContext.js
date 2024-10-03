@@ -4,7 +4,6 @@ export const NAVContext = createContext();
 
 export const NAVProvider = ({ children }) => {
     const [currentCenter, setCurrentCenter] = useState("home")
-    const [activeCasino, setActiveCasino] = useState({})
     const [goToLogin, setGoToLogin] = useState(false)
     const [view, setView] = useState({
         currentView: "",
@@ -22,7 +21,7 @@ export const NAVProvider = ({ children }) => {
 
     return (
         <NAVContext.Provider
-            value={{ currentCenter, setCurrentCenter, view, setView, goToLogin, setGoToLogin, activeCasino, setActiveCasino }}
+            value={{ currentCenter, setCurrentCenter, view, setView, goToLogin, setGoToLogin }}
         >
             {children}
         </NAVContext.Provider>

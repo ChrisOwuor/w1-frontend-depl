@@ -131,7 +131,7 @@ const Populars = () => {
                     </div>
 
                 </div>
-                <div className="bg-white">
+                <div className="bg-white overflow-y-scroll h-[40vh]">
                     <CompetionCollapse
                         onClick={onClick}
                         matches={activeSportMatches}

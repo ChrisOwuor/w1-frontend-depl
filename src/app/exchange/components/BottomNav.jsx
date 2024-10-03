@@ -331,11 +331,24 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
 
   return (
     <div className="w-full flex flex-col ">
-      <div style={{ backgroundColor: globalSettings.topBarBgColor || "#002C5C" }} className={` flex w-full justify-between items-center text-center px-2`}>
-        <div onClick={() => window.location.reload()} className="cursor-pointer">
-          <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${globalSettings.businessLogo || "betlogo.png"}`} alt="profile" className="w-22 h-full object-contain" />
+    <div
+  style={{
+    backgroundColor: globalSettings && globalSettings.topBarBgColor || "#002C5C",
+  }}
+  className="flex w-full justify-between items-center text-center p-2"
+>
+  <div onClick={() => window.location.reload()} className="cursor-pointer">
+    <img
+      src={
+        globalSettings?.businessLogo
+          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${globalSettings.businessLogo}`
+          : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/uploads/betlogo.png`
+      }
+      alt="profile"
+      className="w-22 h-full object-contain"
+    />
+  </div>
 
-        </div>
 
 
 

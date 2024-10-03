@@ -29,6 +29,7 @@ import AccountHome from "./Account";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import UserConsentWizard from "@/app/components/Modal/UserConsentWizard";
 import LoginPage from "@/app/components/auth/LoginPage";
+import CasinoWindow from "./casino/CasinWindow";
 
 const Exchange = () => {
   const { currentCenter, setCurrentCenter, view, goToLogin, setGoToLogin } = useContext(NAVContext)
@@ -37,7 +38,7 @@ const Exchange = () => {
   const [display, setDisplay] = useState(false)
   const [refresh, setRefresh] = useState(false)
   const [hideMarketSideBar, setHideMarketSideBar] = useState(false)
-  
+
 
 
   useEffect(() => {
@@ -155,9 +156,11 @@ const Exchange = () => {
                                 case "event_markets":
                                   return (
                                     <div className='relative z-1 cols-span-12  h-full'>
-                                   <Markets toggleMarketSideBar={toggleMarketSideBar} refresh={refresh} setRefresh={setRefresh} globalSettings={globalSettings} />
+                                      <Markets toggleMarketSideBar={toggleMarketSideBar} refresh={refresh} setRefresh={setRefresh} globalSettings={globalSettings} />
                                     </div>
                                   )
+                                case "khasino":
+                                  return <CasinoWindow />
                                 case "p&l":
                                   return <ProfitLoss />
                                 case "account":

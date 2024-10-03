@@ -8,7 +8,7 @@ const roboto = Roboto({
 })
 
 export const metadata = {
-  title: 'AuraBet',
+  title: 'Bet',
   description: 'Developed by GrenLyfe',
 }
 
