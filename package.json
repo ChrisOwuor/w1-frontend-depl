@@ -4,9 +4,9 @@
   "private": true,
   "author": "grenlyfe",
   "scripts": {
-    "dev": "next dev -p 3031",
+    "dev": "next dev -p 3093",
     "build": "next build",
-    "start": "next start -p 3031",
+    "start": "next start -p 3093",
     "lint": "next lint"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.5",
     "axios": "^1.4.0",
+    "bufferutil": "^4.0.8",
     "chart.js": "^4.4.4",
     "dotenv": "^16.4.5",
     "eslint": "8.46.0",
@@ -31,7 +32,9 @@
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
-    "sharp": "^0.33.1"
+    "sharp": "^0.33.1",
+    "socket.io-client": "^4.8.0",
+    "utf-8-validate": "^6.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

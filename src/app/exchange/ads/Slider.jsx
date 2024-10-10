@@ -34,7 +34,7 @@ const HorizontalSlides = ({ globalSettings }) => {
           banners.map((ad, i) => (
             <img
               key={i} 
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${ad}`}
+              src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${ad}`}
               alt={`Banner ${i + 1}`}
               style={{ display: i === current ? 'block' : 'none' }}
               className="w-full sm:h-[250px] h-full object-cover"

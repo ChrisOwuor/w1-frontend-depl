@@ -30,9 +30,14 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import UserConsentWizard from "@/app/components/Modal/UserConsentWizard";
 import LoginPage from "@/app/components/auth/LoginPage";
 import CasinoWindow from "./casino/CasinWindow";
+import PlaceBetCasino from "./betslip/PlaceBetCasino";
+import { CasinoContext } from "@/app/context/CasinoContext";
+import { getUserBets } from "./casino/casino";
+import CasinoBets from "./betslip/CasinoBets";
 
 const Exchange = () => {
-  const { currentCenter, setCurrentCenter, view, goToLogin, setGoToLogin } = useContext(NAVContext)
+  const { currentCenter, setCurrentCenter, view, goToLogin, activeCasino, setGoToLogin } = useContext(NAVContext)
+  const { openBetForm } = useContext(CasinoContext);
   const [globalSettings, setGlobalSettings] = useState({})
   const [selectedLink, setSelectedLink] = useState("cricket");
   const [display, setDisplay] = useState(false)
@@ -66,6 +71,7 @@ const Exchange = () => {
   const runner = async () => {
     try {
       const globalSettings_ = await getGlobalSetings()
+
       setGlobalSettings(globalSettings_)
     } catch (error) {
       console.error(error)
@@ -79,7 +85,18 @@ const Exchange = () => {
   const toggleMarketSideBar = () => {
     setHideMarketSideBar(prev => !prev)
   }
+  useEffect(() => {
+    if (openBetForm) {
+      document.body.style.overflow = 'hidden';  // Disable scrolling
+    } else {
+      document.body.style.overflow = '';  // Re-enable scrolling
+    }
 
+    // Cleanup when the component unmounts
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [openBetForm]);
 
   return (
 
@@ -100,25 +117,31 @@ const Exchange = () => {
             {
               display ?
 
-                <div className="relative w-full h-full bg-gray">
-                  <div className=" text-white grid grid-cols-12 bg-gray gap-x-2">
+                <div className="relative w-full h-full bg-white">
+                  {openBetForm && (
+                    <div className="md:hidden fixed top-0 bottom-0 left-0 right-0 z-9999 bg-black/[0.9] flex overflow-hidden">
+                      <div className="flex items-start w-full">
+                        <PlaceBetCasino />
+                      </div>
+                    </div>
+                  )}
+                  <div className=" text-white grid grid-cols-12 bg-white gap-x-2">
                     {/* <Navbar /> */}
-                    <div className="col-span-12 max-mk:hidden absolute sticky top-0 z-9999">
+                    <div className="col-span-12 max-mk:hidden sticky top-0 z-9999">
                       <Bottom toggleSideBar={toggleSideBar} setCurrentCenter={setCurrentCenter} globalSettings={globalSettings} />
                     </div>
 
 
 
-                    <div className="col-span-12 md:mx-4 md:my-2 grid grid-cols-12 relative" >
-                      <div className='col-span-2 bg-white sticky top-26 z-99'>
-                        <div className="max-md:hidden">
-                          {
-                            currentCenter === "event_markets" ?
-                              <MarketsSidebar />
-                              :
-                              <Sidebar setSelectedLink={setSelectedLink} activeLink={selectedLink} />
-                          }
-                        </div>
+                    <div className="col-span-12 grid grid-cols-12 sm:mx-2 relative" >
+                      <div className='col-span-2 bg-white max-md:hidden'>
+                        
+                        {
+                          currentCenter === "event_markets" ?
+                            <MarketsSidebar />
+                            :
+                            <Sidebar setSelectedLink={setSelectedLink} activeLink={selectedLink} />
+                        }
                         <div className={`${hideSideBar ? "slideInLeft" : "slideOutLeft"
                           } fixed top-14 left-0 bottom-0 right-0 w-full md:col-span-2 flex flex-col`}>
                           <MobileSideBar setSelectedLink={setSelectedLink} activeLink={selectedLink} toggleSideBar={toggleSideBar} />
@@ -128,7 +151,7 @@ const Exchange = () => {
                           <MobileMarketsSideBar setSelectedLink={setSelectedLink} activeLink={selectedLink} toggleMarketSideBar={toggleMarketSideBar} />
                         </div>
                       </div>
-                      <div className="col-span-12 md:col-span-7 bg-gray sm:p-2 ">
+                      <div className="col-span-12 md:col-span-7 bg-gray sm:p-2 overflow-y-scroll">
                         <div className="mk:hidden sticky right-0 left-0 top-0 z-999">
                           <MobileBottom toggleSideBar={toggleSideBar} globalSettings={globalSettings} />
                         </div>
@@ -197,7 +220,15 @@ const Exchange = () => {
                         </div>
                       </div>
                       <div className="col-span-3 bg-white max-md:hidden">
-                        <ExBetslip />
+                        {
+                          activeCasino && currentCenter == "khasino" ?
+                            <>
+                              <PlaceBetCasino />
+                              <CasinoBets />
+                            </>
+                            :
+                            <ExBetslip />
+                        }
                       </div>
                     </div>
                   </div>

@@ -9,6 +9,7 @@ import { UserExchangeBetslipProvider } from "./context/exchange/UserExchangeBets
 import Exchange from "./exchange/components/Exchange";
 import { MarketsProvider } from "./context/exchange/MarketsContext";
 import { MyBetsProvider } from "./context/MybetsContext";
+import { CasinoProvider } from "./context/CasinoContext";
 
 export default function page() {
 
@@ -24,7 +25,9 @@ export default function page() {
                 <MyBetsProvider>
                   <MantineProvider>
                     <NAVProvider>
-                      <Exchange />
+                      <CasinoProvider>
+                        <Exchange />
+                      </CasinoProvider>
 
                     </NAVProvider>
                   </MantineProvider>

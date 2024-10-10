@@ -3,9 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import Bets from "./Bets";
 import { MyBetsContext } from "@/app/context/MybetsContext";
 import Loading from "../Loading";
+import PlaceBetCasino from "./PlaceBetCasino";
+import { CasinoContext } from "@/app/context/CasinoContext";
+import CasinoBets from "./CasinoBets";
 
 const ExBetslip = () => {
   const { myBets } = useContext(MyBetsContext)
+  const { openBetForm, setOpenBetForm } = useContext(CasinoContext);
   const [matchedBets, setMatchedBets] = useState([])
   const [notMatchedBets, setNotMatchedBets] = useState([])
   const [loading, setLoading] = useState(true)
@@ -34,15 +38,16 @@ const ExBetslip = () => {
 
 
   return (
-    <div className="bg-white rounded sticky top-36">
-      <div className="flex items-center p-2 rounded-t bg-primary justify-between">
-        <p className="text-sm font-semibold text-white"></p>
-        <p className="text-sm font-semibold text-white">Open Bets</p>
-      </div>
+    <div className="bg-white rounded sticky top-35">
 
       {
         !loading && (
           <div>
+
+            <div className="flex items-center p-2 bg-primary justify-between">
+              <p className="text-sm font-semibold text-white"></p>
+              <p className="text-sm font-semibold text-white">Open Bets</p>
+            </div>
             <p className="text-[0.9rem] font-bold text-black p-1 bg-red-500/[0.5]">Unmatched Bets</p>
             <Bets bets={notMatchedBets} type="unmatched" />
 

@@ -52,7 +52,7 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=card32",
             videoUrl: "https://winx777.com/casino/?id=3055"
         },
-        
+
         {
             name: "32 Cards b",
             image: "/casino_assets/32CARDB.jpg",
@@ -65,7 +65,7 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=cmeter",
             videoUrl: "https://winx777.com/casino/?id=3046"
         },
-       
+
         {
             name: "Teenpatti onday",
             image: "/casino_assets/1teenpatti.jpg",
@@ -108,7 +108,7 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=teen9",
             videoUrl: "https://winx777.com/casino/?id=3048"
         },
-      
+
         {
             name: "One Day Poker",
             image: "/casino_assets/poker1day.jpg",
@@ -127,7 +127,7 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt6",
             videoUrl: "https://winx777.com/casino/?id=3057"
         },
-        
+
         {
             name: "Super Over",
             image: "/casino_assets/superover.jpg",
@@ -152,8 +152,8 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=cmatch20",
             videoUrl: "https://winx777.com/casino/?id=3045"
         },
-      
-     
+
+
         {
             name: "Queen",
             image: "/casino_assets/queen.jpg",
@@ -165,7 +165,7 @@ const Casino = ({ globalSettings }) => {
             image: "/casino_assets/worli2.jpg",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=worli2",
             videoUrl: "https://winx777.com/casino/?id=3040"
-        },  {
+        }, {
             name: "Amar Akbar Anthony",
             image: "/casino_assets/amarakbaranthony.jpg",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=aaa",
@@ -210,14 +210,14 @@ const Casino = ({ globalSettings }) => {
                     </div>
                     {/* body */}
 
-                    <div className='grid md:grid-cols-4 grid-cols-2 gap-6'>
+                    <div className='grid md:grid-cols-4 grid-cols-3 gap-6'>
                         {casinoGames.map((game, index) => (
                             <div
                                 key={index}
-                                className={`p-6 font-bold uppercase text-md flex flex-col justify-center items-center text-black`}
+                                className={`sm:p-6 smp-2 font-bold uppercase text-md flex flex-col justify-start items-center text-black`}
                                 onClick={() => handleClick(game)}
                             >
-                                <div className="relative kasino-container">
+                                <div className="relative kasino-container sm:h-[130px] h-[70px] sm:w-[130px] w-[80px]">
                                     <div
                                         className="fancy-shape shape-one"
                                         style={{ backgroundColor: globalSettings.topMenuBgColor || "#0A5BAB" }}
@@ -225,18 +225,20 @@ const Casino = ({ globalSettings }) => {
 
 
                                     <div
-                                        className="fancy-shape shape-two"
+                                        className="fancy-shape shape-two overflow-hidden"
                                         style={{ backgroundColor: globalSettings.topMenuBgColor || "#F6A21E" }}
                                     >
-                                        <div className="image-wrapper">
-                                            <img src={game.image || "b11.png"} alt="game image" className="top-image kasino-img"
-                                                style={{ height: "100%", width: "100%" }}
-                                            />
-                                        </div>
+                                        <img
+                                            src={game.image || "b11.png"}
+                                            alt="game image"
+                                            className="w-full h-full object-cover  top-image kasino-img"
+                                        />
+
+
                                     </div>
                                 </div>
 
-                                <p className="text-black text-lg p-2">{game.name}</p>
+                                <p className="text-black text-center sm:text-lg text-ms p-2">{game.name}</p>
                             </div>
 
                         ))}

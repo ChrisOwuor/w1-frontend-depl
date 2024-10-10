@@ -159,7 +159,7 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
       <div className="w-full flex justify-start items-center">
         <Link href="/#" passHref >
           <div onClick={() => window.location.reload()} className="cursor-pointer">
-            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${globalSettings.businessLogo || "betlogo.png"}`} alt="profile"
+            <img src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo || "betlogo.png"}`} alt="profile"
               className="w-18 h sm:h-full" />
           </div>
         </Link>

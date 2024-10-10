@@ -77,8 +77,8 @@ export default function Sidebar({ setSelectedLink, activeLink }) {
   }, [competitions])
 
   return (
-    <div className="w-full text-black rounded z-999">
-      <div className="flex items-center p-2 rounded-t bg-primary justify-between">
+    <div className="w-full text-black z-999 sticky top-35">
+      <div className="flex items-center p-2 bg-primary justify-between">
         <p className="text-sm font-semibold text-white"></p>
         <p className="text-sm font-semibold text-white">Sports</p>
       </div>

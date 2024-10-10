@@ -600,7 +600,7 @@ export const getGlobalSetings = async () => {
     
     const token = localStorage.getItem("tk")
     const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/getGlobalSettings`,
+      `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/v1/getGlobalSettings`,
       {
         key: `${process.env.NEXT_PUBLIC_KEY}`
       },

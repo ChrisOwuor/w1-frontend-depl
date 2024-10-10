@@ -99,6 +99,7 @@ const Populars = () => {
 
     return (
         <div className='mb-4'>
+            {/* mobile */}
             <div className="flex flex-col w-full sm:hidden ">
 
                 <div className="grid grid-cols-12 w-full">
@@ -131,7 +132,7 @@ const Populars = () => {
                     </div>
 
                 </div>
-                <div className="bg-white overflow-y-scroll h-[40vh]">
+                <div className="bg-white px-2 overflow-y-scroll h-[40vh]">
                     <CompetionCollapse
                         onClick={onClick}
                         matches={activeSportMatches}
@@ -176,7 +177,7 @@ const Populars = () => {
 
                 </div>
                 <div className="bg-gray pt-4">
-                    <div className="bg-white">
+                    <div className="bg-white px-2">
                         <CompetionCollapse
                             onClick={onClick}
                             matches={activeSportMatches}
