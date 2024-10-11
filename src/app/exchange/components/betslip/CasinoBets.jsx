@@ -1,23 +1,40 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { getUserBets } from '../casino/casino';
 import { NAVContext } from '@/app/context/NavContext';
+import { CasinoContext } from '@/app/context/CasinoContext';
 
 const CasinoBets = () => {
-  const [bets, setBets] = useState([])
-  const { activeCasino } = useContext(NAVContext)
+  const [bets, setBets] = useState([]);
+  const { openBetForm } = useContext(CasinoContext);
+  const { activeCasino } = useContext(NAVContext);
 
   useEffect(() => {
-    (async () => {
+    let intervalId;
+
+    const fetchBets = async () => {
       try {
         if (activeCasino) {
-          const bets_ = await getUserBets(activeCasino.name)
-          setBets(bets_)
+          const bets_ = await getUserBets(activeCasino.name);
+          setBets(bets_);
         }
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    })()
-  }, [activeCasino])
+    };
+
+    // Fetch the bets every 5 seconds
+    if (activeCasino) {
+      fetchBets(); // Fetch immediately
+      intervalId = setInterval(fetchBets, 5000);
+    }
+
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [activeCasino, openBetForm]);
   const styles_01 = `px-3 py-1  text-md text-black font-bold tracking-wide`
   return (
     <div className="flex flex-col">
