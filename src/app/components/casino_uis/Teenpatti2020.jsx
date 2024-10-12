@@ -15,6 +15,7 @@ const FlipClockDigit = ({ digit, flip }) => {
   );
 };
 
+
 const Teenpatti2020 = () => {
   const { activeCasino } = useContext(NAVContext);
   const { openBetForm, setOpenBetForm, setBet } = useContext(CasinoContext);
@@ -28,7 +29,6 @@ const Teenpatti2020 = () => {
     const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL + 'api')
 
     socket.on('connect', () => {
-      console.log('Socket connected:', socket.id);
 
       // Emit casino_id after connecting
       const casinoId = "20-20 Teenpatti";
@@ -116,7 +116,7 @@ const Teenpatti2020 = () => {
                         <FlipClockDigit
                           key={index}
                           digit={digit}
-                          flip={false} // you can update this based on your flip logic
+                          flip={false}
                         />
                       ))
                       : (

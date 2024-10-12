@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import CircleIcon from '@mui/icons-material/Circle';
-import { Pie } from 'react-chartjs-2';
+import { io } from 'socket.io-client';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { NAVContext } from '@/app/context/NavContext';
+import { CasinoContext } from '@/app/context/CasinoContext';
 ChartJS.register(ArcElement, Tooltip, Legend);
 const FlipClockDigit = ({ digit, flip }) => {
   return (
@@ -15,79 +15,108 @@ const FlipClockDigit = ({ digit, flip }) => {
 
 const Lucky7Interface = () => {
   const { activeCasino } = useContext(NAVContext);
-  const data = {
-    // labels: ['Player', 'Banker', 'Tie'],
-    datasets: [
-      {
-        label: 'Game Statistics',
-        data: [45, 50, 5],
-        backgroundColor: ['#3b82f6', '#ef4444', '#22c55e'],
-        borderColor: ['#ffffff', '#ffffff', '#ffffff'],
-        borderWidth: 1,
-      },
-    ],
-  };
-  const [timeLeft, setTimeLeft] = useState(30);
-  const [flip, setFlip] = useState(false);
+  const { openBetForm, setOpenBetForm, setBet } = useContext(CasinoContext);
+  const [gameData, setGameData] = useState();
+  const [gameResults, setGameResults] = useState([]);
+  const [gStatus, setGstatus] = useState(0)
 
+
+  // Socket.IO connection
   useEffect(() => {
-    if (timeLeft > 0) {
-      const timer = setInterval(() => {
-        setFlip(true);
-        setTimeout(() => {
-          setFlip(false);
-          setTimeLeft((prevTime) => prevTime - 1);
-        }, 500);
-      }, 1000);
-      return () => clearInterval(timer);
-    }
-  }, [timeLeft]);
+    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL + 'api', {
+      // transports: ['websocket'],
+      //    upgrade: false,
+    })
 
-  const formatTime = (time) => String(time).padStart(2, '0');
-  const firstDigit = formatTime(timeLeft)[0];
-  const secondDigit = formatTime(timeLeft)[1];
+    socket.on('connect', () => {
+      // console.log('Socket connected:', socket.id);
 
+      // Emit casino_id after connecting
+      const casinoId = "Lucky7 B";
+      socket.emit('casino_request', casinoId);
+    });
+
+    // Listen for casino response event
+    socket.on('casino_response', (data) => {
+      setGameData(data.data.data);
+
+      setGameResults(data.data.result)
+      const gData = data.data.data
+      setGstatus(gData && gData.t2 && gData.t2.find(item => item.nation === 'Player A')?.gstatus)
+    });
+
+    // Cleanup on unmount
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+
+  const handleUserSelection = ({ data, selection }) => {
+
+    setBet(prev => ({
+      ...prev,
+      selection: selection,
+      round_id: data.mid,
+      casino_id: "20-20 Teenpatti",
+      rate: data.rate,
+    }))
+    if (!openBetForm) setOpenBetForm(true)
+  }
   return (
     <>
-      <div className="relative flex flex-col gap-x-2 bg-black h-[27vh] md:h-[47vh]">
-
-        <div className="flex items-center justify-between bg-[#2C3E50] p-2">
-          <div className="flex gap-x-2 items-center">
-            <p className="text-md font-medium">{activeCasino && activeCasino.name}</p>
+      <div className="grid grid-cols-12 h-full relative">
+        <div className="col-span-2 md:col-span-3 max-md:absolute top-0 left-0 z-999 p-2">
+          <div className="flex flex-col ">
+            <p className='sm:text-md text-sm font-bold'>PLAYER A</p>
+            <div className="flex items-center gap-1 mb-1">
+              <img src={`https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/${gameData && gameData.t1[0].C1 || "1"}.jpg`} className="w-4.5 sm:w-9" />
+              <img src={`https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/${gameData && gameData.t1[0].C2 || "1"}.jpg`} className="w-4.5 sm:w-9" />
+              <img src={`https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/${gameData && gameData.t1[0].C3 || "1"}.jpg`} className="w-4.5 sm:w-9" />
+            </div>
           </div>
-          <div className="flex gap-x-2 items-center">
-            <p className="text-xs font-medium">Round ID: 101010120203302</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-12 h-full">
-          <div className="col-span-3 max-md:hidden p-2">
+          <div className="flex flex-col">
+            <p className='sm:text-md text-sm font-bold'>PLAYER B</p>
             <div className="flex items-center gap-x-1">
-              <img src="https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/1.jpg" className="w-9" />
-              <img src="https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/1.jpg" className="w-9" />
+              <img src={`https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/${gameData && gameData.t1[0].C4 || "1"}.jpg`} className="w-4.5 sm:w-9" />
+              <img src={`https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/${gameData && gameData.t1[0].C5 || "1"}.jpg`} className="w-4.5 sm:w-9" />
+              <img src={`https://versionobj.ecoassetsservice.com/v19/static/front/img/cards/${gameData && gameData.t1[0].C6 || "1"}.jpg`} className="w-4.5 sm:w-9" />
             </div>
           </div>
-          <div className="md:col-span-9 col-span-12 h-full relative">
-            <div className="flex justify-center items-center h-full">
-              <iframe
-                src={`https://testtttt.goldvpsproxy.in/video_feed`}
-                title="Casino Game Video"
-                width="100%"
-                height="100%"
-                className="rounded"
-                allowFullScreen
-              />
-            </div>
 
-            {/* Countdown Timer */}
-            <div className="absolute bottom-4 right-4 flex gap-x-1 text-white text-3xl font-bold p-2 rounded">
-              {/* First digit (tens) */}
-              <FlipClockDigit digit={firstDigit} flip={flip} />
-
-              {/* Second digit (units) */}
-              <FlipClockDigit digit={secondDigit} flip={flip} />
-
-            </div>
+        </div>
+        <div className="md:col-span-9 col-span-12 h-full relative">
+          <div className="flex justify-center items-center h-full">
+            <iframe
+              src={activeCasino && activeCasino.videoUrl}
+              title="Casino Game Video"
+              width="100%"
+              height="100%"
+              className="rounded"
+              allowFullScreen
+            />
           </div>
+          {/* Countdown Timer */}
+
+          <div className="absolute sm:bottom-4 bottom-2 sm:right-4 right-2 justify-end flex gap-x-1 text-white text-3xl font-bold p-2 rounded">
+            {
+              gameData && gameData.t1[0].autotime
+                ? String(gameData.t1[0].autotime).padStart(2, '0').split('').map((digit, index) => (
+                  <FlipClockDigit
+                    key={index}
+                    digit={digit}
+                    flip={false}
+                  />
+                ))
+                : (
+                  <>
+                    <FlipClockDigit digit="0" flip={false} />
+                    <FlipClockDigit digit="0" flip={false} />
+                  </>
+                )
+            }
+          </div>
+
         </div>
       </div>
       {/*  */}
