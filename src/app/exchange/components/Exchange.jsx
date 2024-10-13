@@ -86,15 +86,17 @@ const Exchange = () => {
     setHideMarketSideBar(prev => !prev)
   }
   useEffect(() => {
-    if (openBetForm) {
-      document.body.style.overflow = 'hidden';  // Disable scrolling
+    const isSmallScreen = window.matchMedia("(max-width: 320px)").matches; 
+  
+    if (openBetForm && isSmallScreen) {
+      document.body.classList.add('overflow-hidden');  
     } else {
-      document.body.style.overflow = '';  // Re-enable scrolling
+      document.body.classList.remove('overflow-hidden');  
     }
-
+  
     // Cleanup when the component unmounts
     return () => {
-      document.body.style.overflow = '';
+      document.body.classList.remove('overflow-hidden');
     };
   }, [openBetForm]);
 
@@ -119,7 +121,7 @@ const Exchange = () => {
 
                 <div className="relative w-full h-full bg-white">
                   {openBetForm && (
-                    <div className="md:hidden fixed top-0 bottom-0 left-0 right-0 z-9999 bg-black/[0.9] flex overflow-hidden">
+                    <div className="sm:hidden fixed top-0 bottom-0 left-0 right-0 z-9999 bg-black/[0.9] flex overflow-hidden">
                       <div className="flex items-start w-full">
                         <PlaceBetCasino />
                       </div>
@@ -219,7 +221,7 @@ const Exchange = () => {
                           <MobileBottomNav toggleSideBar={toggleSideBar} setHideSideBar={setHideSideBar} globalSettings={globalSettings} />
                         </div>
                       </div>
-                      <div className="col-span-3 bg-white max-md:hidden">
+                      <div className="col-span-3 bg-white max-sm:hidden">
                         {
                           activeCasino && currentCenter == "khasino" ?
                             <>

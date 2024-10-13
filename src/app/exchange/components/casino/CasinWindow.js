@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 import { NAVContext } from "@/app/context/NavContext";
-import CircleIcon from '@mui/icons-material/Circle';
-import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import Baccarat2Interface from "@/app/components/casino_uis/Baccarat2";
 import Teenpatti2020 from "@/app/components/casino_uis/Teenpatti2020";
-import DragonTiger2020 from "@/app/components/casino_uis/DragonTiger2020";
-import DragonTiger20202 from "@/app/components/casino_uis/DragonTiger20202";
+import DragonTiger2020 from "@/app/components/casino_uis/dt2020/DragonTiger2020";
+import DragonTiger20202 from "@/app/components/casino_uis/dt20202/DragonTiger20202";
 import BaccaratInterface from "@/app/components/casino_uis/Baccarat";
-import Lucky7Interface from "@/app/components/casino_uis/Lucky7B";
+import Lucky7Interface from "@/app/components/casino_uis/lucky7b/Lucky7B";
 import Race20Interface from "@/app/components/casino_uis/Race20";
 import Card3Interface from "@/app/components/casino_uis/3card";
 

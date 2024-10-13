@@ -44,7 +44,6 @@ export const getUserBets = async (casino_id) => {
         );
 
         if (res) {
-            console.log(res.data);
             return res.data.data; 
         }
     } catch (error) {

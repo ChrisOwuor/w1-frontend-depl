@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import CircleIcon from '@mui/icons-material/Circle'; 
-import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { NAVContext } from '@/app/context/NavContext';
 ChartJS.register(ArcElement, Tooltip, Legend);
