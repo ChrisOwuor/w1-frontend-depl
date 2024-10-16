@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
 import { NAVContext } from '@/app/context/NavContext';
 import { CasinoContext } from '@/app/context/CasinoContext';
 import CardGrid from './components/CardGrid';

@@ -6,14 +6,14 @@ const SocketContext = createContext();
 export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
-  useEffect(() => {
-    const newSocket = io(`${process.env.NEXT_PUBLIC_SOCKET_URL}`);
-    setSocket(newSocket);
+  // useEffect(() => {
+  //   const newSocket = io(`${process.env.NEXT_PUBLIC_SOCKET_URL}`);
+  //   setSocket(newSocket);
 
-    return () => {
-      newSocket.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     newSocket.disconnect();
+  //   };
+  // }, []);
 
   return (
     <SocketContext.Provider value={socket}>

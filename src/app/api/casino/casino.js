@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchGameData = async (casino_id) => {
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/casino/getCasinoData`,
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/casino/getCasinoData`,
             {
                 casino_id,
             }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NAVContext } from "@/app/context/NavContext";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import Baccarat2Interface from "@/app/components/casino_uis/Baccarat2";
@@ -9,6 +9,7 @@ import BaccaratInterface from "@/app/components/casino_uis/Baccarat";
 import Lucky7Interface from "@/app/components/casino_uis/lucky7b/Lucky7B";
 import Race20Interface from "@/app/components/casino_uis/Race20";
 import Card3Interface from "@/app/components/casino_uis/3card";
+import { isAuthenticated } from "@/app/components/funcStore/authenticate";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -21,7 +22,15 @@ const FlipClockDigit = ({ digit, flip }) => {
 };
 
 const CasinoWindow = () => {
-  const { activeCasino } = useContext(NAVContext);
+  const { activeCasino, setCurrentCenter } = useContext(NAVContext);
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+
+      setCurrentCenter("userconsent")
+      return
+    }
+  }, [])
 
   const renderCasinoInterface = () => {
     switch (activeCasino.name) {

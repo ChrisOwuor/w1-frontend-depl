@@ -1,4 +1,6 @@
 
+import { isAuthenticated } from '@/app/components/funcStore/authenticate';
+import { AuthContext } from '@/app/context/AuthContext';
 import { NAVContext } from '@/app/context/NavContext';
 import React, { useContext, useState } from 'react';
 
@@ -173,12 +175,19 @@ const Casino = ({ globalSettings }) => {
         },
     ];
     const { setCurrentCenter, activeCasino, setActiveCasino } = useContext(NAVContext)
+    const { setOpenLogin, userData, getfreshUserData } = useContext(AuthContext)
     const [activeGame, setActiveGame] = useState(null);
     const [showVideo, setShowVideo] = useState(false);
     const videoUrl = activeGame ? activeGame.videoUrl : '';
 
 
     const handleClick = (game) => {
+        const loggedIN = isAuthenticated();
+        if (!loggedIN) {
+            setCurrentCenter("userconsent")
+            return
+        }
+
         setCurrentCenter("khasino")
         setActiveGame(game);
         setActiveCasino(game)
@@ -226,7 +235,7 @@ const Casino = ({ globalSettings }) => {
 
                                     <div
                                         className="fancy-shape shape-two overflow-hidden"
-                                        style={{ backgroundColor:globalSettings && globalSettings.topMenuBgColor || "#F6A21E" }}
+                                        style={{ backgroundColor: globalSettings && globalSettings.topMenuBgColor || "#F6A21E" }}
                                     >
                                         <img
                                             src={game.image || "b11.png"}

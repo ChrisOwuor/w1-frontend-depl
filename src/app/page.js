@@ -27,9 +27,9 @@ export default function page() {
                   <MantineProvider>
                     <NAVProvider>
                       <CasinoProvider>
-                        <SocketProvider>
+                        {/* <SocketProvider> */}
                           <Exchange />
-                        </SocketProvider>
+                        {/* </SocketProvider> */}
                       </CasinoProvider>
 
                     </NAVProvider>
