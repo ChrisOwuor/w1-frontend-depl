@@ -220,13 +220,13 @@ const Casino = ({ globalSettings }) => {
                                 <div className="relative kasino-container sm:h-[130px] h-[70px] sm:w-[130px] w-[80px]">
                                     <div
                                         className="fancy-shape shape-one"
-                                        style={{ backgroundColor: globalSettings.topMenuBgColor || "#0A5BAB" }}
+                                        style={{ backgroundColor: globalSettings && globalSettings.topMenuBgColor || "#0A5BAB" }}
                                     />
 
 
                                     <div
                                         className="fancy-shape shape-two overflow-hidden"
-                                        style={{ backgroundColor: globalSettings.topMenuBgColor || "#F6A21E" }}
+                                        style={{ backgroundColor:globalSettings && globalSettings.topMenuBgColor || "#F6A21E" }}
                                     >
                                         <img
                                             src={game.image || "b11.png"}

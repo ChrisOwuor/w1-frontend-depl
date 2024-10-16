@@ -453,7 +453,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
         </div>
 
       </div>
-      <div style={{ backgroundColor: globalSettings.topMenuBgColor || "#0A5BAB" }} className={`bg-[${globalSettings && globalSettings.topMenuBgColor || "#0A5BAB"}]  px-1 w-full  flex justify-between gap-x-1 items-center`}>
+      <div style={{ backgroundColor: globalSettings && globalSettings.topMenuBgColor || "#0A5BAB" }} className={`bg-[${globalSettings && globalSettings.topMenuBgColor || "#0A5BAB"}]  px-1 w-full  flex justify-between gap-x-1 items-center`}>
 
 
         <div onClick={toggleSideBar} className={`min-w-[40px] md:hidden flex items-center justify-center gap-1  rounded  px-2 hover:text-white cursor-pointer`} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>

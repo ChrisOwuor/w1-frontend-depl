@@ -1,9 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { NAVContext } from '@/app/context/NavContext';
 import LockIcon from '@mui/icons-material/Lock';
 import { io } from 'socket.io-client';
 import { CasinoContext } from '@/app/context/CasinoContext';
+import axios from 'axios';
+import { fetchGameData } from '@/app/api/casino/casino';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,53 +17,48 @@ const FlipClockDigit = ({ digit, flip }) => {
   );
 };
 
-
 const Teenpatti2020 = () => {
   const { activeCasino } = useContext(NAVContext);
   const { openBetForm, setOpenBetForm, setBet } = useContext(CasinoContext);
   const [gameData, setGameData] = useState();
   const [gameResults, setGameResults] = useState([]);
-  const [gStatus, setGstatus] = useState(0)
+  const [gStatus, setGstatus] = useState(0);
 
-
-  // Socket.IO connection
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL + 'api')
-
-    socket.on('connect', () => {
-
-      // Emit casino_id after connecting
-      const casinoId = "20-20 Teenpatti";
-      socket.emit('casino_request', casinoId);
-    });
-
-    // Listen for casino response event
-    socket.on('casino_response', (data) => {
-      setGameData(data.data.data);
-
-      setGameResults(data.data.result)
-      const gData = data.data.data
-      setGstatus(gData && gData.t2 && gData.t2.find(item => item.nation === 'Player A')?.gstatus)
-    });
-
-    // Cleanup on unmount
-    return () => {
-      socket.disconnect();
+    const casinoId = "20-20 Teenpatti"; 
+  
+    const updateGameData = async () => {
+      const data = await fetchGameData(casinoId); 
+  
+      if (data) {
+        setGameData(data.data);
+        setGameResults(data.result);
+        const gData = data.data;
+        setGstatus(gData && gData.t2 && gData.t2.find(item => item.nation === 'Player A')?.gstatus);
+      }
     };
+  
+    updateGameData(); // Fetch data initially
+    const intervalId = setInterval(updateGameData, 1000); 
+  
+    // Cleanup on unmount
+    return () => clearInterval(intervalId);
   }, []);
-
+  
 
   const handleUserSelection = ({ data, selection }) => {
-    
     setBet(prev => ({
       ...prev,
       selection: selection,
       round_id: data.mid,
       casino_id: "20-20 Teenpatti",
       rate: data.rate,
-    }))
-    if (!openBetForm) setOpenBetForm(true)
-  }
+    }));
+
+    if (!openBetForm) setOpenBetForm(true);
+  };
+
+
   return (
     <>
       {

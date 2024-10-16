@@ -6,7 +6,7 @@ const HorizontalSlides = ({ globalSettings }) => {
 
   useEffect(() => {
     // Update banners when globalSettings change
-    setBanners(globalSettings.banners || []);
+    setBanners(globalSettings?.banners || []);
   }, [globalSettings]);
 
   useEffect(() => {

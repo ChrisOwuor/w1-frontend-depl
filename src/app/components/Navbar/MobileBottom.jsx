@@ -155,11 +155,11 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
   }, []);
 
   return (
-    <div className="w-full sticky top-0 flex justify-between gap-x-1 px-2 items-center" style={{ backgroundColor: globalSettings.topBarBgColor || "#002C5C" }}>
+    <div className="w-full sticky top-0 flex justify-between gap-x-1 px-2 items-center" style={{ backgroundColor: globalSettings && globalSettings.topBarBgColor || "#002C5C" }}>
       <div className="w-full flex justify-start items-center">
         <Link href="/#" passHref >
           <div onClick={() => window.location.reload()} className="cursor-pointer">
-            <img src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo || "betlogo.png"}`} alt="profile"
+            <img src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings && globalSettings.businessLogo || "betlogo.png"}`} alt="profile"
               className="w-18 h sm:h-full" />
           </div>
         </Link>

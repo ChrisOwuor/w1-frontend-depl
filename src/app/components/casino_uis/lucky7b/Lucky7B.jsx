@@ -7,6 +7,7 @@ import CardGrid from './components/CardGrid';
 import LRCards from './components/LRCards';
 import SecondRow from './components/SecondRow';
 import FirstRow from './components/FirstRow';
+import { fetchGameData } from '@/app/api/casino/casino';
 const FlipClockDigit = ({ digit, flip }) => {
   return (
     <div className={`flip-digit ${flip ? 'flip-digit-flip' : ''}  border-white p-2 bg-[#2A3B4B] rounded`}>
@@ -25,35 +26,26 @@ const Lucky7Interface = () => {
   const [gStatus, setGstatus] = useState(0)
 
 
-  // Socket.IO connection
+
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL + 'api', {
-      transports: ['websocket'],
-      upgrade: false,
-      withCredentials: true
-    })
-
-    socket.on('connect', () => {
-      // console.log('Socket connected:', socket.id);
-
-      // Emit casino_id after connecting
-      const casinoId = "Lucky7 B";
-      socket.emit('casino_request', casinoId);
-    });
-
-    // Listen for casino response event
-    socket.on('casino_response', (data) => {
-      setGameData(data.data.data);
-
-      setGameResults(data.data.result)
-      const gData = data.data.data
-      setGstatus(gData && gData.t2 && gData.t2.find(item => item.nation === 'Player A')?.gstatus)
-    });
-
-    // Cleanup on unmount
-    return () => {
-      socket.disconnect();
+    const casinoId = "Lucky7 B"; 
+  
+    const updateGameData = async () => {
+      const data = await fetchGameData(casinoId); 
+  
+      if (data) {
+        setGameData(data.data);
+        setGameResults(data.result);
+        const gData = data.data;
+        setGstatus(gData && gData.t2 && gData.t2.find(item => item.nation === 'Player A')?.gstatus);
+      }
     };
+  
+    updateGameData(); // Fetch data initially
+    const intervalId = setInterval(updateGameData, 1000); 
+  
+    // Cleanup on unmount
+    return () => clearInterval(intervalId);
   }, []);
 
 

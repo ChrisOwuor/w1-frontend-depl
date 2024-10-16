@@ -24,12 +24,12 @@ export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalS
             <div className="col-span-5 grid grid-cols-5">
                 <div className=""></div>
                 <div className=""></div>
-                <div className="text-transparent rounded-t-full pt-4 -mb-5" style={{ backgroundColor: globalSettings.mobileBottomBg || "#1F3340" }}>o</div>
+                <div className="text-transparent rounded-t-full pt-4 -mb-5" style={{ backgroundColor: globalSettings?.mobileBottomBg || "#1F3340" }}>o</div>
                 <div className=""></div>
                 <div className=""></div>
             </div>
 
-            <div className="grid grid-cols-5 col-span-5 relative px-4 w-full gap-x-1 items-center" style={{ backgroundColor: globalSettings.mobileBottomBg || "#1F3340" }}>
+            <div className="grid grid-cols-5 col-span-5 relative px-4 w-full gap-x-1 items-center" style={{ backgroundColor: globalSettings?.mobileBottomBg || "#1F3340" }}>
                 <div className={`${toggle ? "" : "hidden"} absolute left-0 bottom-0 right-0 h-[100vh] w-[100vw] bg-gray-900/[0.8] flex flex-col `}>
                     <div className="rounded-r-[0px] bg-gray relative h px-1">
                         <div className="flex justify items-center my-6">

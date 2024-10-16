@@ -10,6 +10,7 @@ import Exchange from "./exchange/components/Exchange";
 import { MarketsProvider } from "./context/exchange/MarketsContext";
 import { MyBetsProvider } from "./context/MybetsContext";
 import { CasinoProvider } from "./context/CasinoContext";
+import { SocketProvider } from "./context/socket/SockectContext";
 
 export default function page() {
 
@@ -26,7 +27,9 @@ export default function page() {
                   <MantineProvider>
                     <NAVProvider>
                       <CasinoProvider>
-                        <Exchange />
+                        <SocketProvider>
+                          <Exchange />
+                        </SocketProvider>
                       </CasinoProvider>
 
                     </NAVProvider>
