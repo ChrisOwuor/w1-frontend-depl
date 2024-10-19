@@ -47,7 +47,10 @@ const DragonTiger20202 = () => {
   }, []);
 
   const handleUserSelection = ({ data, selection }) => {
-
+    if(data.gstatus == "0"){
+      return
+    }
+    
     if (data) {
       setBet(prev => ({
         ...prev,

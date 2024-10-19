@@ -1,15 +1,18 @@
 import React, { useContext, useEffect } from "react";
 import { NAVContext } from "@/app/context/NavContext";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import Baccarat2Interface from "@/app/components/casino_uis/Baccarat2";
+import Baccarat2Interface from "@/app/components/casino_uis/baccarat/Baccarat2";
 import Teenpatti2020 from "@/app/components/casino_uis/Teenpatti2020";
 import DragonTiger2020 from "@/app/components/casino_uis/dt2020/DragonTiger2020";
 import DragonTiger20202 from "@/app/components/casino_uis/dt20202/DragonTiger20202";
-import BaccaratInterface from "@/app/components/casino_uis/Baccarat";
+import BaccaratInterface from "@/app/components/casino_uis/baccarat/Baccarat";
 import Lucky7Interface from "@/app/components/casino_uis/lucky7b/Lucky7B";
 import Race20Interface from "@/app/components/casino_uis/Race20";
 import Card3Interface from "@/app/components/casino_uis/3card";
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
+import TeenpattiTest from "@/app/components/casino_uis/teenpattitest/TeenpattiTest";
+import TeenpattiOpen from "@/app/components/casino_uis/teenpattiopen/TeenpattiOpen";
+import OneDragonTiger from "@/app/components/casino_uis/onedragontiger/OneDragonTiger";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -43,14 +46,20 @@ const CasinoWindow = () => {
         return <DragonTiger20202 />;
       case "Lucky7 B":
         return <Lucky7Interface />;
-      case "Baccarat 2":
-        return <Baccarat2Interface />;
       case "Race 20":
         return <Race20Interface />;
       case "3 Card":
         return <Card3Interface />
       case "Baccarat":
         return <BaccaratInterface />;
+      case "Baccarat 2":
+        return <Baccarat2Interface />;
+      case "Teenpatti Test":
+        return <TeenpattiTest />;
+      case "Teenpatti open":
+        return <TeenpattiOpen />;
+      case "1 Day Dragon Tiger":
+        return <OneDragonTiger />;
 
       default:
         return (

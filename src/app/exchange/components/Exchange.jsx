@@ -34,16 +34,27 @@ import PlaceBetCasino from "./betslip/PlaceBetCasino";
 import { CasinoContext } from "@/app/context/CasinoContext";
 import { getUserBets } from "./casino/casino";
 import CasinoBets from "./betslip/CasinoBets";
+import CasinoNotifications from "@/app/components/casino_uis/modals/CasinoNotifications";
 
 const Exchange = () => {
   const { currentCenter, setCurrentCenter, view, goToLogin, activeCasino, setGoToLogin } = useContext(NAVContext)
-  const { openBetForm } = useContext(CasinoContext);
+  const { openBetForm, message } = useContext(CasinoContext);
   const [globalSettings, setGlobalSettings] = useState({})
   const [selectedLink, setSelectedLink] = useState("cricket");
   const [display, setDisplay] = useState(false)
   const [refresh, setRefresh] = useState(false)
   const [hideMarketSideBar, setHideMarketSideBar] = useState(false)
+  const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    if (message) {
+      setVisible(true); 
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
 
   useEffect(() => {
@@ -86,14 +97,14 @@ const Exchange = () => {
     setHideMarketSideBar(prev => !prev)
   }
   useEffect(() => {
-    const isSmallScreen = window.matchMedia("(max-width: 320px)").matches; 
-  
+    const isSmallScreen = window.matchMedia("(max-width: 320px)").matches;
+
     if (openBetForm && isSmallScreen) {
-      document.body.classList.add('overflow-hidden');  
+      document.body.classList.add('overflow-hidden');
     } else {
-      document.body.classList.remove('overflow-hidden');  
+      document.body.classList.remove('overflow-hidden');
     }
-  
+
     // Cleanup when the component unmounts
     return () => {
       document.body.classList.remove('overflow-hidden');
@@ -127,6 +138,17 @@ const Exchange = () => {
                       </div>
                     </div>
                   )}
+
+                  {message !== "" && (
+                    <div className="fixed top-0 left-0 right-0 z-99999 overflow-hidden">
+                      <div
+                        className={`w-full flex items-start justify-center transition-transform duration-500 ${visible ? 'slide-in' : 'slide-out'
+                          }`}
+                      >
+                        <CasinoNotifications />
+                      </div>
+                    </div>
+                  )}
                   <div className=" text-white grid grid-cols-12 bg-white gap-x-2">
                     {/* <Navbar /> */}
                     <div className="col-span-12 max-mk:hidden sticky top-0 z-9999">
@@ -137,7 +159,7 @@ const Exchange = () => {
 
                     <div className="col-span-12 grid grid-cols-12 sm:mx-2 relative" >
                       <div className='col-span-2 bg-white max-md:hidden'>
-                        
+
                         {
                           currentCenter === "event_markets" ?
                             <MarketsSidebar />
@@ -153,7 +175,7 @@ const Exchange = () => {
                           <MobileMarketsSideBar setSelectedLink={setSelectedLink} activeLink={selectedLink} toggleMarketSideBar={toggleMarketSideBar} />
                         </div>
                       </div>
-                      <div className="col-span-12 md:col-span-7 bg-gray sm:p-2 overflow-y-scroll">
+                      <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray sm:p-2 overflow-y-scroll">
                         <div className="mk:hidden sticky right-0 left-0 top-0 z-999">
                           <MobileBottom toggleSideBar={toggleSideBar} globalSettings={globalSettings} />
                         </div>

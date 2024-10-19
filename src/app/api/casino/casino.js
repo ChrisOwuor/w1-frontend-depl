@@ -9,7 +9,8 @@ export const fetchGameData = async (casino_id) => {
         )
 
         const data = response.data;
-        return data.data; // Return the relevant data
+        // console.log(data)
+        return data.data; 
     } catch (error) {
         console.error(`Error fetching game data for ${casino_id}:`, error);
         return null; // Return null if there's an error

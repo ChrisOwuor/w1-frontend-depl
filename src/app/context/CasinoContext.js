@@ -4,6 +4,7 @@ export const CasinoContext = createContext();
 
 export const CasinoProvider = ({ children }) => {
     const [openBetForm, setOpenBetForm] = useState(false);
+    const [message, setMessage] = useState("");
     const [bet, setBet] = useState({
         selection: "",
         round_id: "",
@@ -19,9 +20,21 @@ export const CasinoProvider = ({ children }) => {
         setProfit(calculatedProfit);
     }, [bet.rate, bet.stack]);
 
+    // Clear the message after 2 seconds
+    useEffect(() => {
+        console.log(message)
+        if (message) {
+            const timer = setTimeout(() => {
+                setMessage(""); 
+            }, 2500);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
+
     return (
         <CasinoContext.Provider
-            value={{ bet, setBet, openBetForm, setOpenBetForm, profit }}
+            value={{ bet, setBet, openBetForm, setOpenBetForm, profit, message, setMessage }}
         >
             {children}
         </CasinoContext.Provider>

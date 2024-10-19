@@ -50,7 +50,9 @@ const Lucky7Interface = () => {
 
 
   const handleUserSelection = ({ data, selection }) => {
-
+    if(data.gstatus == "0"){
+      return
+    }
     setBet(prev => ({
       ...prev,
       selection: selection,

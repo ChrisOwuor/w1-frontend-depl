@@ -47,6 +47,9 @@ const Teenpatti2020 = () => {
   
 
   const handleUserSelection = ({ data, selection }) => {
+    if(data.gstatus == "0"){
+      return
+    }
     setBet(prev => ({
       ...prev,
       selection: selection,
@@ -411,19 +414,19 @@ const Teenpatti2020 = () => {
             {gameResults && gameResults.map((item, index) => {
               if (item.result == 1) {
                 return (
-                  <p className="bg-[#355E3B] text-[#FF4512] px-3 py-1 rounded-full text-sm sm:text-md font-medium">
+                  <p key={index} className="bg-[#355E3B] text-[#FF4512] px-3 py-1 rounded-full text-sm sm:text-md font-medium">
                     A
                   </p>
                 )
               } else if (item.result == 3) {
                 return (
-                  <p className="bg-[#355E3B] text-[#FFFF33] px-3 py-1 rounded-full text-sm sm:text-md font-medium">
+                  <p key={index} className="bg-[#355E3B] text-[#FFFF33] px-3 py-1 rounded-full text-sm sm:text-md font-medium">
                     B
                   </p>
                 )
               } else {
                 return (
-                  <p className="bg-[#355E3B] px-3 py-1 rounded-full text-sm sm:text-md font-medium">
+                  <p key={index} className="bg-[#355E3B] px-3 py-1 rounded-full text-sm sm:text-md font-medium">
                     {
                       item && item.result
                     }

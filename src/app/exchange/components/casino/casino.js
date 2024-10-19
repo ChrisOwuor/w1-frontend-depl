@@ -17,14 +17,24 @@ export const placeCasinoBet = async (betData) => {
                 },
             }
         );
-        if (res) {
-            return{
-             message: res.data.message,
-             status: "success"   
+        if (res.status == 200) {
+            return {
+                message: res.data.message,
+                status: "0"
+            }
+        }
+        if (res.status == 400) {
+            return {
+                message: res.data.message,
+                status: "1"
             }
         }
     } catch (error) {
         console.error(error)
+        return {
+            message: error?.response?.data?.message,
+            status: "1"
+        }
     }
 }
 
@@ -35,7 +45,7 @@ export const getUserBets = async (casino_id) => {
         // Make a POST request to get user bets
         const res = await axios.post(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/casino/getUserBets`,
-            { casino_id },  
+            { casino_id },
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -44,7 +54,7 @@ export const getUserBets = async (casino_id) => {
         );
 
         if (res) {
-            return res.data.data; 
+            return res.data.data;
         }
     } catch (error) {
         console.error("Error fetching user bets:", error);

@@ -1,6 +1,6 @@
 "use client"
 import React, { useContext, useEffect, useState, useRef } from "react";
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import axios from "axios";
 
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
@@ -21,7 +21,6 @@ import { inhouseStyling } from "@/app/components/Navbar/constants";
 import { fetchUserData } from 'src/app/api/exchange';
 import { getIcon } from "src/app/exchange/utils/utils";
 import { NAVContext } from "@/app/context/NavContext";
-import UserConsentWizard from "@/app/components/Modal/UserConsentWizard";
 import LoginPageTopBar from "@/app/components/auth/LoginTopBar";
 
 
@@ -362,20 +361,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
           ) : (
             <div className="relative ml-1 space-x-2 flex items-center w-full">
               <div className={`flex items-center justify-end gap-x-4 px-1 rounded font-bold max-mk:hidden w-full border-none  py-2 cursor-pointer hover:bg-green-500/[0.2]`} onClick={() => setToggle(prev => !prev)}>
-
-                {/* <div className="text-[0.7rem]">
-                <p className="text-gray-200">  {userData.username}</p>
-
-              </div> */}
                 <div className="flex flex-col">
-                  {/* <div className="text-[0.785rem] flex items-center">
-                    <p className="text-gray-200">Username</p>
-                    <p className="text-gray-200">
-                      {userData && userData.username}
-                    </p>
-                  </div> */}
-
-
                   <div className="text-sm flex items-center gap-x-1">
                     <p className="text-white">Main PTI</p>
                     <p className="text-white">
@@ -398,14 +384,16 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
               </div>
               {
                 toggle && (
-                  <div className="bg-bodydark rounded-lg py-4 px-2 min-w-[12vw] w-full right-0 top-12 absolute z-40">
+                  <div className="bg-white rounded shadow-lg shadow-black min-w-[12vw] w-full right-0 top-16 absolute z-999">
                     <div className="flex flex-col w-full">
+                      <div className="flex items-center bg-[#E5E7EB] p-1.5 rounded-t">
+                        <p className="text-black font-bold text-sm tracking-small">exchange</p>
+                      </div>
                       {
                         accountDropDownLink.length > 0 && accountDropDownLink.map((link, i) => {
                           return (
                             <div
                               key={i}
-                              // href={link.url}
 
                               onClick={() => {
                                 setView(prev => ({
@@ -422,10 +410,10 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                                 setToggle(prev => !prev)
                                 setCurrentCenter(link.code)
                               }}
-                              className="w-full flex items-center bg-gray-800 p-1 mb-1 hover:bg-green-500/[0.2] cursor-pointer"
+                              className="flex items-center border-b border-gray p-1.5 hover:bg-green-500/[0.2] cursor-pointer"
                             >
 
-                              <p className="font-bold text-[0.8rem] w-full text-gray-200" style={{ whiteSpace: 'nowrap' }}>{link.name === "Football" ? "Soccer" : link.name}</p>
+                              <p className="font-medium text-md text-black" style={{ whiteSpace: 'nowrap' }}>{link.name === "Football" ? "Soccer" : link.name}</p>
 
                             </div>
                           )
@@ -433,14 +421,15 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                         })
                       }
 
-                      <div className="mt-10 flex justify-end items-center">
+                      <div className=" flex justify-center items-center p-2">
                         <button
                           type="button"
                           disabled={disable}
                           onClick={handleLogout}
-                          className="inline-block rounded border-none font-bold bg-gray-700 px-4 py-1 hover:bg-orange-500/[0.2] tracking-wide text-white text-[0.7rem]"
+                          className="inline-block w-full rounded border-none font-bold bg-[#294352] px-4 py-1 tracking-wide text-white sm:text-md"
                         >
-                          Logout
+                          LOGOUT
+                          <LoginRoundedIcon className="text-white" fontSize="medium" />
                         </button>
                       </div>
                     </div>

@@ -6,8 +6,6 @@ import React from "react";
 export default function Footer() {
   return (
     <div className="relative bg-gray grid grid-cols-12 items-center pt-10 border-t-2 border-black/[0.2]">
-      <div className="footer-gradient z-0 absolute"></div>
-
       <div className="col-span-12 flex flex-col  justify-center h-full">
         <div className="flex justify-center items-center">
           <div className="flex gap-x-4 items-center">

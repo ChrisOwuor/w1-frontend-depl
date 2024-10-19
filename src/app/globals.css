@@ -319,3 +319,40 @@ html {
   transform: rotate(30deg); 
   z-index: 3;
 }
+
+
+/* Custom CSS for hiding scrollbar */
+.scrollbar-hide {
+  scrollbar-width: none; /* For Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s forwards;
+}

@@ -31,10 +31,34 @@ const Casino = ({ globalSettings }) => {
             videoUrl: "https://winx777.com/casino/?id=3032"
         },
         {
+            name: "Teenpatti Test",
+            image: "/casino_assets/teentest.jpg",
+            dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=teen9",
+            videoUrl: "https://winx777.com/casino/?id=3048"
+        },
+        {
+            name: "Teenpatti open",
+            image: "/casino_assets/teenpattiopen.jpg",
+            dataURL: "https://diamondsocket.winx777.com/v2/api/casinoData?casinoType=teen8",
+            videoUrl: "https://winx777.com/casino/?id=3049"
+        },
+        {
+            name: "Baccarat",
+            image: "/casino_assets/baccarat.jpg",
+            dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=baccarat",
+            videoUrl: "https://winx777.com/casino/?id=3044"
+        },
+        {
             name: "Baccarat 2",
             image: "/casino_assets/b11.png",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=baccarat2",
             videoUrl: "https://winx777.com/casino/?id=3033"
+        },
+        {
+            name: "1 Day Dragon Tiger",
+            image: "/casino_assets/1DAYDRAGONTIGER.jpg",
+            dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt6",
+            videoUrl: "https://winx777.com/casino/?id=3057"
         },
         {
             name: "Race 20",
@@ -104,12 +128,6 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=worli",
             videoUrl: "https://winx777.com/casino/?id=3054"
         },
-        {
-            name: "Teenpatti Test",
-            image: "/casino_assets/teentest.jpg",
-            dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=teen9",
-            videoUrl: "https://winx777.com/casino/?id=3048"
-        },
 
         {
             name: "One Day Poker",
@@ -117,18 +135,8 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=poker",
             videoUrl: "https://winx777.com/casino/?id=3051"
         },
-        {
-            name: "Baccarat",
-            image: "/casino_assets/baccarat.jpg",
-            dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=baccarat",
-            videoUrl: "https://winx777.com/casino/?id=3044"
-        },
-        {
-            name: "1 Day Dragon Tiger",
-            image: "/casino_assets/1DAYDRAGONTIGER.jpg",
-            dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt6",
-            videoUrl: "https://winx777.com/casino/?id=3057"
-        },
+      
+      
 
         {
             name: "Super Over",
@@ -142,12 +150,7 @@ const Casino = ({ globalSettings }) => {
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=war",
             videoUrl: "https://winx777.com/casino/?id=3038"
         },
-        {
-            name: "Teenpatti open",
-            image: "/casino_assets/teenpattiopen.jpg",
-            dataURL: "https://diamondsocket.winx777.com/v2/api/casinoData?casinoType=teen8",
-            videoUrl: "https://winx777.com/casino/?id=3049"
-        },
+
         {
             name: "Cricket Match 20-20",
             image: "/casino_assets/cmatch20.jpg",

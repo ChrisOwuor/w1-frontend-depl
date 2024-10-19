@@ -113,20 +113,20 @@ const BetHistory = () => {
     }
   }
 
-  const styles_01 = `px-3 py-1 border-r border-gray-800 text-[0.8rem] text-gray-400 font-bold tracking-wide`
+  const styles_01 = `px-3 py-1 border-r border-gray-800 text-md text-black font-bold tracking-wide`
   return (
-    <div className="relative overflow-x-auto shadow-md min-h-[80vh]">
+    <div className="relative overflow-x-auto shadow-md min-h-[80vh] ">
 
       <div className="flex justify-between items-center pb-2">
-        <p className='font-bold text-gray-300 text-[0.885rem] tracking-wide mt-2 mx-1'>My Bets</p>
+        <p className='font-bold text-black text-[0.885rem] tracking-wide mt-2 mx-1'>My Bets</p>
         <div className="flex justify-end items-center cursor-pointer" onClick={() => setCurrentCenter("home")}>
           <KeyboardDoubleArrowLeftIcon className="text-orange-400" fontSize="small" />
-          <p className="text-gray-200 font-bold text-[0.8rem]">Home</p>
+          <p className="text-black font-bold text-[0.8rem]">Home</p>
         </div>
       </div>
       <div className="mb-5 bg-blue-600/[0.8] rounded pt-8 pb-4 px-2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 items-center">
         <div className='flex flex-col col-span-1'>
-          <label htmlFor="event_name" className='font-bold text-[0.8rem]'>Sport Name</label>
+          <label htmlFor="event_name" className='font-bold text-[0.8rem] text-black'>Sport Name</label>
           <select
             onChange={(e) => {
               const selectedEvent = e.target.value;
@@ -139,8 +139,10 @@ const BetHistory = () => {
               }
             }}
             className="t_c_1 p_1_sm rounded bg-white p-1"
+            
           >
             <option value="All">All</option>
+            <option value="casino">Casino</option>
             {userData && userData.eventList && userData.eventList.length > 0 && userData.eventList.map((event, i) => (
               <option key={i} value={event}>
                 {event === "Football" ? "Soccer" : event}
@@ -180,7 +182,7 @@ const BetHistory = () => {
 
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-200 tracking-wider bg-gray-700 dark:bg-gray-700 dark:text-gray-200">
+          <thead className="text-md font-bold text-black tracking-wider bg-gray-700 dark:bg-gray-700 dark:text-black">
             <tr className=' whitespace-nowrap overflow-x-auto'>
               <th scope="col" className="px-3 py-1">
                 Sport Name
@@ -222,15 +224,15 @@ const BetHistory = () => {
                     <td className={styles_01}>{betObj.market_name}</td>
                     <td className={styles_01}>{betObj.selection_name}</td>
                     <td className={styles_01}>{betObj.type}</td>
-                    <td className={styles_01}>{parseFloat(betObj.price).toFixed(2)}</td>
+                    <td className={styles_01}>{parseFloat(betObj.price || betObj.rate).toFixed(2)}</td>
                     <td className={styles_01}>
                       {betObj.type === "back"
                         ? parseFloat(betObj.stack).toFixed(2)
-                        : (parseFloat(betObj.stack) * (parseFloat(betObj.price) - 1)).toFixed(2)
+                        : (parseFloat(betObj.stack) * (parseFloat(betObj.price || betObj.rate) - 1)).toFixed(2)
                       }
                     </td>
 
-                    {/* <td className={`${styles_01}`}>{betObj.processed ? betObj.win === "WON" ? <span className='text-green-500'>+{(parseFloat(betObj.price) * parseFloat(betObj.stack) - parseFloat(betObj.stack)).toFixed(2)}</span> : betObj.win === "LOST" ? <span className='text-red-500'>-{(betObj.stack).toFixed(2)}</span> : "--" : "--"}</td> */}
+                    {/* <td className={`${styles_01}`}>{betObj.processed ? betObj.win === "WON" ? <span className='text-green-500'>+{(parseFloat(betObj.price || betObj.rate) * parseFloat(betObj.stack) - parseFloat(betObj.stack)).toFixed(2)}</span> : betObj.win === "LOST" ? <span className='text-red-500'>-{(betObj.stack).toFixed(2)}</span> : "--" : "--"}</td> */}
                     <td className={styles_01}>{`${dateTime.day}/${dateTime.month} ${dateTime.hour}:${dateTime.minute}:${dateTime.second}`}</td>
 
                   </tr>
@@ -241,7 +243,7 @@ const BetHistory = () => {
       </div>
 
       {bets.length === 0 && initialFetch && (
-        <p className="px-3 py-1 text-[0.8rem] font-bold tracking-wide">No data at the moment</p>
+        <p className="px-3 py-1 text-md text-black font-bold tracking-wide">No data at the moment</p>
       )}
     </div>
 

@@ -3,15 +3,21 @@ import React, { useContext } from 'react';
 import { placeCasinoBet } from '../casino/casino';
 
 const PlaceBetCasino = () => {
-  const { bet, setBet, setOpenBetForm, openBetForm, profit } = useContext(CasinoContext)
+  const { bet, setBet, setOpenBetForm, openBetForm, profit, setMessage } = useContext(CasinoContext)
 
   const handleStackChange = (value) => {
     setBet({ ...bet, stack: value });
   };
 
-  const handlePlaceBet = async()=>{
+  const handlePlaceBet = async () => {
     try {
       const res = await placeCasinoBet(bet)
+      if (res.status == "0") {
+        setMessage("Bet placed successfully")
+      }
+      if (res.status == "1") {
+        setMessage(res.message)
+      }
       setOpenBetForm(false)
     } catch (error) {
       console.error(error)
@@ -73,7 +79,7 @@ const PlaceBetCasino = () => {
 
         </div>
         <div className="flex items-center justify-end p-2">
-          <p className='py-1 px-4 cursor-pointer rounded bg-secondary text-white' onClick={()=>handlePlaceBet(bet)}>Submit</p>
+          <p className='py-1 px-4 cursor-pointer rounded bg-secondary text-white' onClick={() => handlePlaceBet(bet)}>Submit</p>
         </div>
         <div className="grid grid-cols-3 gap-x-2 gap-y-1 mt-2 p-2">
           {[{ btnValue: 25 }, { btnValue: 50 }, { btnValue: 100 }, { btnValue: 200 }, { btnValue: 500 }, { btnValue: 1000 },].map((item, index) => {
@@ -163,7 +169,7 @@ const PlaceBetCasino = () => {
           <p className='py-2 px-4 cursor-pointer rounded bg-[#097C93]'>Edit</p>
           <div className="flex items-center gap-x-2">
             <p className='py-2 px-4 cursor-pointer rounded bg-danger'>Reset</p>
-            <p className='py-2 px-4 cursor-pointer rounded bg-success' onClick={()=>handlePlaceBet(bet)}>Submit</p>
+            <p className='py-2 px-4 cursor-pointer rounded bg-success' onClick={() => handlePlaceBet(bet)}>Submit</p>
           </div>
         </div>
       </div>
