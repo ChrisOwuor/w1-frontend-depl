@@ -113,7 +113,7 @@ const BetHistory = () => {
     }
   }
 
-  const styles_01 = `px-3 py-1 border-r border-gray-800 text-md text-black font-bold tracking-wide`
+  const styles_01 = `px-3 py-1 border-b border-gray text-md text-black font-bold tracking-wide`
   return (
     <div className="relative overflow-x-auto shadow-md min-h-[80vh] ">
 
@@ -217,26 +217,49 @@ const BetHistory = () => {
             {bets.length > 0 &&
               bets.map((betObj, i) => {
                 const dateTime = formatTime(betObj.createdAt)
-                return (
-                  <tr key={i} className={` whitespace-nowrap overflow-x-auto border-b border-gray-700 hover:bg-gray-900/[0.5]`}>
-                    <td className={styles_01}>{betObj.sport_name}</td>
-                    <td className={styles_01}>{betObj.match_name}</td>
-                    <td className={styles_01}>{betObj.market_name}</td>
-                    <td className={styles_01}>{betObj.selection_name}</td>
-                    <td className={styles_01}>{betObj.type}</td>
-                    <td className={styles_01}>{parseFloat(betObj.price || betObj.rate).toFixed(2)}</td>
-                    <td className={styles_01}>
-                      {betObj.type === "back"
-                        ? parseFloat(betObj.stack).toFixed(2)
-                        : (parseFloat(betObj.stack) * (parseFloat(betObj.price || betObj.rate) - 1)).toFixed(2)
-                      }
-                    </td>
-
-                    {/* <td className={`${styles_01}`}>{betObj.processed ? betObj.win === "WON" ? <span className='text-green-500'>+{(parseFloat(betObj.price || betObj.rate) * parseFloat(betObj.stack) - parseFloat(betObj.stack)).toFixed(2)}</span> : betObj.win === "LOST" ? <span className='text-red-500'>-{(betObj.stack).toFixed(2)}</span> : "--" : "--"}</td> */}
-                    <td className={styles_01}>{`${dateTime.day}/${dateTime.month} ${dateTime.hour}:${dateTime.minute}:${dateTime.second}`}</td>
-
-                  </tr>
-                )
+                if(betObj.casino_id){
+                  return (
+                    <tr key={i} className={` whitespace-nowrap overflow-x-auto border-b border-gray-700 hover:bg-gray-900/[0.5]`}>
+                      <td className={styles_01}>{betObj.casino_id}</td>
+                      <td className={styles_01}>N/A</td>
+                      <td className={styles_01}>N/A</td>
+                      <td className={styles_01}>{ `${betObj.selection} | Round ID${betObj.round_id}`}</td>
+                      <td className={styles_01}>{betObj.type}</td>
+                      <td className={styles_01}>{parseFloat(betObj.rate).toFixed(2)}</td>
+                      <td className={styles_01}>
+                        {betObj.type === "back"
+                          ? parseFloat(betObj.stack).toFixed(2)
+                          : (parseFloat(betObj.stack) * (parseFloat(betObj.rate) - 1)).toFixed(2)
+                        }
+                      </td>
+  
+                      {/* <td className={`${styles_01}`}>{betObj.processed ? betObj.win === "WON" ? <span className='text-green-500'>+{(parseFloat(betObj.price || betObj.rate) * parseFloat(betObj.stack) - parseFloat(betObj.stack)).toFixed(2)}</span> : betObj.win === "LOST" ? <span className='text-red-500'>-{(betObj.stack).toFixed(2)}</span> : "--" : "--"}</td> */}
+                      <td className={styles_01}>{`${dateTime.day}/${dateTime.month} ${dateTime.hour}:${dateTime.minute}:${dateTime.second}`}</td>
+  
+                    </tr>
+                  )
+                }else{
+                  return (
+                    <tr key={i} className={` whitespace-nowrap overflow-x-auto border-b border-gray-700 hover:bg-gray-900/[0.5]`}>
+                      <td className={styles_01}>{betObj.sport_name}</td>
+                      <td className={styles_01}>{betObj.match_name}</td>
+                      <td className={styles_01}>{betObj.market_name}</td>
+                      <td className={styles_01}>{betObj.selection_name}</td>
+                      <td className={styles_01}>{betObj.type}</td>
+                      <td className={styles_01}>{parseFloat(betObj.price).toFixed(2)}</td>
+                      <td className={styles_01}>
+                        {betObj.type === "back"
+                          ? parseFloat(betObj.stack).toFixed(2)
+                          : (parseFloat(betObj.stack) * (parseFloat(betObj.price) - 1)).toFixed(2)
+                        }
+                      </td>
+  
+                      {/* <td className={`${styles_01}`}>{betObj.processed ? betObj.win === "WON" ? <span className='text-green-500'>+{(parseFloat(betObj.price) * parseFloat(betObj.stack) - parseFloat(betObj.stack)).toFixed(2)}</span> : betObj.win === "LOST" ? <span className='text-red-500'>-{(betObj.stack).toFixed(2)}</span> : "--" : "--"}</td> */}
+                      <td className={styles_01}>{`${dateTime.day}/${dateTime.month} ${dateTime.hour}:${dateTime.minute}:${dateTime.second}`}</td>
+  
+                    </tr>
+                  )
+                }
               })}
           </tbody>
         </table>
