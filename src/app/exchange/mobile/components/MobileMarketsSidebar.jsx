@@ -8,14 +8,9 @@ import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRound
 import { MarketsContext } from "src/app/context/exchange/MarketsContext";
 
 
-export default function MobileMarketsSideBar({ setSelectedLink, activeLink, toggleMarketSideBar }) {
+export default function MobileMarketsSideBar({  toggleMarketSideBar }) {
   const { currentMkt, setCurrentMkt } = useContext(CompetitionContext)
   const { markets } = useContext(MarketsContext)
-
-
-
-
-  
 
   const [loadin, setLoadin] = useState(false)
 

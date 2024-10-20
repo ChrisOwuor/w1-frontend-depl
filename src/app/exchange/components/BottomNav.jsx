@@ -410,7 +410,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                                 setToggle(prev => !prev)
                                 setCurrentCenter(link.code)
                               }}
-                              className="flex items-center border-b border-gray p-1.5 hover:bg-green-500/[0.2] cursor-pointer"
+                              className="flex items-center border-b border-darkstroke p-1.5 hover:bg-green-500/[0.2] cursor-pointer"
                             >
 
                               <p className="font-medium text-md text-black" style={{ whiteSpace: 'nowrap' }}>{link.name === "Football" ? "Soccer" : link.name}</p>
@@ -482,7 +482,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                     localStorage.setItem("current_pg", JSON.stringify(link_.name))
                   }}
                   key={index}
-                  className={`${currentPage === link_.name ? "text-black" : "text-white"} flex justify-center items-center  max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer  border-r-2 border-darkstroke text-sm`}
+                  className={`${currentPage === link_.name ? "text-black" : "text-white"} flex justify-center items-center  max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer  border-r-2 border-black text-sm`}
                 // className={`${currentPage === link_.name ? "bg-gradient-to-r from-orange-500/[0.1] to-orange-600/[0.3]" : "bg-gray-500/[0.4]"} ${link_.name === "In-Play" && "bg-gradient-to-r from-green-900/[0.5] to-green-600"} flex justify-center items-center  max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer rounded`}
                 >
                   {/* {
@@ -516,14 +516,9 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                   }}
                   key={index}
 
-                  className={`${currentPage === modes.name ? "text-black" : "text-white"} flex justify-center items-center  max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer  border-r-2 border-darkstroke text-sm`}
+                  className={`${currentPage === modes.name ? "text-black" : "text-white"} flex justify-center items-center  max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer  border-r-2 border-black text-sm`}
                 >
-                  {/* {
-                    icon && icon != null ? (
-                      <img className="h-[20px] w-[20px]" src={icon.url} alt="icon" />
-                    ) :
-                      modes.icon
-                  } */}
+                
                   <p className="font-bold text-[0.9rem] w-full" style={{ whiteSpace: 'nowrap' }}>{modes.name === "Football" ? "Soccer" : modes.name}</p>
 
                 </div>
@@ -533,16 +528,6 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
         }
 
 
-        {/* <Modal
-          opened={openLogin}
-          onClose={() => handleCloseLogin()}
-          mt={40}
-          padding={0}
-          size={""}
-        >
-          <UserConsentWizard />
-        </Modal>
- */}
 
         <Modal
           opened={openUserconsentwizard}

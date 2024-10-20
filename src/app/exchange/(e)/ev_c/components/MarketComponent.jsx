@@ -330,10 +330,10 @@ const MarketComponent = ({ marketBookOdds, market, openedd, eventData, eventId, 
                         </div>
 
                         {/* Cash Out and Matched section in flex with justify-between */}
-                        <div className="flex justify-between items-center gap-x-1 w-full mt-2">
-                            <p className="text-sm font-bold tracking-wider text-black gap-x-1">
-                                <CreditCardOffIcon className="bg-warning text-black rounded p-1" fontSize="small" />
-                                Cash Out
+                        <div className="flex justify-between items-center gap-x-1 w-full p-1">
+                            <p className="text-sm font-bold tracking-wider text-black">
+                                <CreditCardOffIcon className="bg-warning text-black rounded mr-1 p-1" fontSize="small" />
+                                <span >Cash Out</span>
                             </p>
 
                             <div className="flex items-center gap-x-1">
@@ -352,12 +352,12 @@ const MarketComponent = ({ marketBookOdds, market, openedd, eventData, eventId, 
 
                 <Collapse in={open} className="col-span-12 text-white px-1">
                     <div className="grid grid-cols-12 w-full border-b border-black/[0.2] items-center">
-                        <div className="col-span-8 md:col-span-6 lg:col-span-7 ">
+                        <div className="col-span-8 md:col-span-6">
                             <p className='text-black/[0.8] font-semibold text-xs'>Min/Max</p>
                         </div>
 
-                        <div className="col-span-4 md:col-span-6 lg:col-span-5">
-                            <div className="grid max-mk:grid-cols-6 mk:grid-cols-6">
+                        <div className="col-span-4 md:col-span-6 ">
+                            <div className="grid grid-cols-6">
                                 <div className='bg-[#7EBCEE] p-1 col-span-3 flex justify-center items-center border-black/[0.2]'>
                                     <p className='text-sm font-bold tracking-wide text-black'>Back</p>
                                 </div>
@@ -460,6 +460,7 @@ const MarketComponent = ({ marketBookOdds, market, openedd, eventData, eventId, 
                                             isLineMarket={isLineMarket}
                                             betObj={betObj}
                                             setSelectedEventId={setSelectedEventId}
+                                             otherMarkets={otherMarkets}
                                             handlePlaceBet={handlePlaceBet}
                                             loadin={loadin}
                                             price={price}

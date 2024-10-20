@@ -7,7 +7,6 @@ import { separateTeams } from 'src/app/exchange/utils/utils';
 import { fetchEventInnings, fetchEventIncidents, fetcheEventMarkets, fetcheEventScores, fetchEventFancyMarkets, fetchMKTBK, getFancyMarkets, getScores, getBookmakerMarket } from 'src/app/api/exchange';
 import { MarketsContext } from 'src/app/context/exchange/MarketsContext';
 import Loading from 'src/app/exchange/components/Loading';
-import SoccerScores from '@/app/exchange/components/scoreboard/Soccer';
 import CricketScores from '@/app/exchange/components/scoreboard/CricketScores';
 import FancyMarketComponent from './FancyMarkets';
 import BookmakerMarketComponent from './Bookmaker';
@@ -16,12 +15,14 @@ import { NAVContext } from '@/app/context/NavContext';
 import { INTERVAL } from '@/app/exchange/constants/mktfetchInterval';
 import MarketGrid from './MarketGrid';
 import { MyBetsContext } from '@/app/context/MybetsContext';
+import SoccerScores2 from '@/app/exchange/components/scoreboard/Soccer2';
+import TennisScoreboard from '@/app/exchange/components/scoreboard/TennisScoreboard';
 
 const Markets = ({ toggleMarketSideBar, refresh, setRefresh, globalSettings }) => {
   const { getMyBetsFresh } = useContext(MyBetsContext)
   const { setMarkets } = useContext(MarketsContext);
   const { currentMkt, setCurrentMkt } = useContext(CompetitionContext)
-  const { view, } = useContext(NAVContext);
+  const { view, setCurrentCenter} = useContext(NAVContext);
   const [bookmakerMarkets, setBookmakerMarkets] = useState([])
   const [mktBks, setMktBks] = useState({})
   const [marketIds, setMarketIds] = useState([])
@@ -131,9 +132,8 @@ const Markets = ({ toggleMarketSideBar, refresh, setRefresh, globalSettings }) =
   const scoresRunner = async () => {
     try {
       const scores = await getScores(evId)
-      console.log(scores)
       if (scores) {
-
+        setScores(scores[0])
       }
     } catch (error) {
       console.error(error)
@@ -285,10 +285,10 @@ const Markets = ({ toggleMarketSideBar, refresh, setRefresh, globalSettings }) =
 
 
 
-            {!loadin && scores != {} && scores.event ? (
+            {!loadin && scores != {}  ? (
               <>
                 {spName === "Soccer" && (
-                  <SoccerScores scores={scores} incidents={inc} />
+                  <SoccerScores2 scores={scores} incidents={inc} />
                 )}
                 {spName === "Cricket" && (
                   <CricketScores
@@ -298,7 +298,7 @@ const Markets = ({ toggleMarketSideBar, refresh, setRefresh, globalSettings }) =
                   />
                 )}
                 {spName === "Tennis" && (
-                  <NewTennis
+                  <TennisScoreboard
                     scores={scores}
                     incidents={inc}
                     teamA={teamNames[0]}

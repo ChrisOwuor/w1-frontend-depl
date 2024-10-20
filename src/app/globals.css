@@ -26,7 +26,7 @@ body {
 
 /*stakebuttons*/
 html {
-  font-size: 14px; /* Base font size for 1rem */
+  font-size: 16px; /* Base font size for 1rem */
 }
 .sButton{
   width: 7rem;
@@ -355,4 +355,14 @@ html {
 
 .slide-out {
   animation: slide-out 0.5s forwards;
+}
+
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit browsers */
 }

@@ -16,13 +16,13 @@ const SettingsComponent = () => {
         <Link
           href="?pg=settings&tb=password"
         >
-          <h4 className={`font-bold rounded text-sm text-gray-200 ${pg === "password" && "bg-gray-500"} p-1 cursor-pointer`}>Password</h4>
+          <h4 className={`font-bold rounded text-sm text-gray-200 ${pg === "password" && "bg-gray-500"} p-1 cursor-pointer`}>Update password</h4>
         </Link>
-        <Link
+        {/* <Link
           href="?pg=settings&tb=stakeButtons"
         >
           <h4 className={`font-bold rounded text-sm text-gray-200 ${pg === "stateButtons" && "bg-gray-500"} p-1 cursor-pointer`}>Stake Buttons</h4>
-        </Link>
+        </Link> */}
 
       </div>
 
@@ -40,7 +40,7 @@ const SettingsComponent = () => {
       {
         pg === "stakeButtons" && (
           <div className="flex w-full">
-            <EditStakeButtons />
+            {/* <EditStakeButtons /> */}
           </div>
         )
       }

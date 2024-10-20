@@ -48,7 +48,7 @@ const Exchange = () => {
 
   useEffect(() => {
     if (message) {
-      setVisible(true); 
+      setVisible(true);
       const timer = setTimeout(() => {
         setVisible(false);
       }, 2000);
@@ -151,13 +151,18 @@ const Exchange = () => {
                   )}
                   <div className=" text-white grid grid-cols-12 bg-white gap-x-2">
                     {/* <Navbar /> */}
-                    <div className="col-span-12 max-mk:hidden sticky top-0 z-9999">
-                      <Bottom toggleSideBar={toggleSideBar} setCurrentCenter={setCurrentCenter} globalSettings={globalSettings} />
+                    <div className="col-span-12 sticky top-0 z-9999">
+                      <div className="max-sm:hidden">
+                        <Bottom toggleSideBar={toggleSideBar} setCurrentCenter={setCurrentCenter} globalSettings={globalSettings} />
+                      </div>
+                      <div className="sm:hidden">
+                        <MobileBottom toggleSideBar={toggleSideBar} globalSettings={globalSettings} />
+                      </div>
                     </div>
 
 
 
-                    <div className="col-span-12 grid grid-cols-12 sm:mx-2 relative" >
+                    <div className="col-span-12 grid grid-cols-12 sm:mx-2" >
                       <div className='col-span-2 bg-white max-md:hidden'>
 
                         {
@@ -166,22 +171,20 @@ const Exchange = () => {
                             :
                             <Sidebar setSelectedLink={setSelectedLink} activeLink={selectedLink} />
                         }
-                        <div className={`${hideSideBar ? "slideInLeft" : "slideOutLeft"
-                          } fixed top-14 left-0 bottom-0 right-0 w-full md:col-span-2 flex flex-col`}>
+
+                      </div>
+                      {/* <div className={`${hideSideBar ? "slideInLeft" : "slideOutLeft"
+                          }  z-9999 right-0 w-full md:col-span-2 flex flex-col`}>
                           <MobileSideBar setSelectedLink={setSelectedLink} activeLink={selectedLink} toggleSideBar={toggleSideBar} />
                         </div>
                         <div className={`${!hideMarketSideBar ? "slideOutLeft" : "slideInLeft"
-                          } fixed top-14 left-0 bottom-0 min-w-[100%] md:col-span-2 flex flex-col`}>
+                          }  min-w-[100%] z-9999 md:col-span-2 flex flex-col`}>
                           <MobileMarketsSideBar setSelectedLink={setSelectedLink} activeLink={selectedLink} toggleMarketSideBar={toggleMarketSideBar} />
-                        </div>
-                      </div>
-                      <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray sm:p-2 overflow-y-scroll">
-                        <div className="mk:hidden sticky right-0 left-0 top-0 z-999">
-                          <MobileBottom toggleSideBar={toggleSideBar} globalSettings={globalSettings} />
-                        </div>
+                        </div> */}
+                      <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray sm:p-2 overflow-y-scroll hide-scrollbar">
                         <div className="col-span-1 max-sm:hidden">
                           <div className="w-full">
-                            <SlidingText />
+                            {view != "" && currentCenter == "home" && <SlidingText />}
                           </div>
                         </div>
 
@@ -212,6 +215,9 @@ const Exchange = () => {
                                   return <ProfitLoss />
                                 case "account":
                                   return <AccountHome />
+
+                                case "sports":
+                                  return <MobileSideBar setSelectedLink={setSelectedLink} activeLink={selectedLink} toggleSideBar={toggleSideBar} />
                                 case "userconsent":
                                   return (
                                     <div className="fixed top-0 z-999 bottom-0 right-0 left-0 flex justify-center items-center bg-black/[0.85]">
@@ -240,7 +246,7 @@ const Exchange = () => {
                           <MobileFooter globalSettings={globalSettings} />
                         </div>
                         <div className="mk:hidden fixed bottom-0 right-0 left-0 z-99999">
-                          <MobileBottomNav toggleSideBar={toggleSideBar} setHideSideBar={setHideSideBar} globalSettings={globalSettings} />
+                          <MobileBottomNav setCurrentCenter={setCurrentCenter} toggleSideBar={toggleSideBar} setHideSideBar={setHideSideBar} globalSettings={globalSettings} />
                         </div>
                       </div>
                       <div className="col-span-3 bg-white max-sm:hidden">

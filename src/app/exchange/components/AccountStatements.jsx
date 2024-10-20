@@ -9,8 +9,8 @@ import { NAVContext } from "@/app/context/NavContext";
 import { sendHttpRequest } from "@/app/api/ship_yard/sender";
 
 const stylings = {
-  header: `text-start p-3`,
-  body: `px-3 py-2 text-gray-100 text-start text-[0.8rem] font-bold tracking-wide`
+  header: `text-start p-3 border-r border-black/[0.3] whitespace-nowrap`,
+  body: `border-r border-black/[0.3] whitespace-nowrap px-3 py-2 text-black text-start text-sm font-bold tracking-wide`
 }
 function sortTransactionsByDateDescending(transactions) {
   return transactions.sort((a, b) => {
@@ -84,36 +84,36 @@ export default function AccountStatements() {
     }
   }
   return (
-    <div className="relative overflow-x-auto shadow-md">
-      <div className="flex justify-between items-center pb-2">
-        <p className='font-bold text-gray-300 text-[0.885rem] tracking-wide mt-2 mx-1'>Account Statements</p>
+    <div className="relative overflow-x-auto shadow-md bg-white">
+      <div className="flex justify-between items-center p-2">
+        <p className='font-bold text-black text-'>Account Statements</p>
         <div className="flex justify-end items-center cursor-pointer" onClick={() => setCurrentCenter("home")}>
           <KeyboardDoubleArrowLeftIcon className="text-orange-400" fontSize="small" />
-          <p className="text-gray-200 font-bold text-[0.8rem]">Home</p>
+          <p className="text-black font-bold text-sm">Home</p>
         </div>
       </div>
       {/* time filter */}
       <div className="mb-5 bg-blue-600/[0.8] rounded pt-8 pb-4 px-2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 items-center">
         <div className='flex flex-col col-span-1'>
-          <label htmlFor="start_date" className='font-bold text-[0.8rem]'>Start Date</label>
+          <label htmlFor="start_date" className='font-bold text-sm'>Start Date</label>
           <input type="date" id="start_date" onChange={(e) => setStartDate(e.target.value)} value={startDate} placeholder='Start Date' className='t_c_1 p_1_sm rounded bg-white p-1' />
         </div>
         <div className='flex flex-col col-span-1'>
-          <label htmlFor="end_date" className='font-bold text-[0.8rem]'>End Date</label>
+          <label htmlFor="end_date" className='font-bold text-sm'>End Date</label>
           <input type="date" id="end_date" onChange={(e) => setEndDate(e.target.value)} value={endDate} placeholder='End Date' className='t_c_1 p_1_sm rounded bg-white p-1' />
         </div>
         <div className='flex flex-col col-span-1'>
-          <label htmlFor="actions" className='font-bold text-[0.8rem]'>Actions</label>
+          <label htmlFor="actions" className='font-bold text-sm'>Actions</label>
           <div className="p-1 flex items-center ">
             <Tooltip.Group>
               <Group justify="center">
                 <Tooltip openDelay={500} closeDelay={100} position="bottom" offset={2} arrowOffset={15} arrowSize={5} arrowRadius={2} withArrow label="Delete Selected Bet History">
-                  <div className="flex items-center bg-gradient-to-r cursor-pointer from-gray-900 to-orange-500 rounded px-2"
+                  <div className="flex items-center bg-danger cursor-pointer rounded px-2 py-1"
                     onClick={() => {
                       delAcStatements()
                     }}>
-                    <DeleteTwoToneIcon className='text-orange-100  rounded p-1' fontSize='medium' />
-                    <p className="p_2 font-bold">Delete</p>
+                    <DeleteTwoToneIcon className='text-orange-100  p-1' fontSize='medium' />
+                    <p className="p_2 font-bold ">Delete</p>
                   </div>
 
                 </Tooltip>
@@ -124,9 +124,9 @@ export default function AccountStatements() {
       </div>
 
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-200 tracking-wider bg-gray-700 dark:bg-gray-700 dark:text-gray-200">
+      <div className="overflow-x-auto m-4 pb-10">
+        <table className="w-full text-sm text-left rtl:text-right text-black">
+          <thead className="text-xs text-black tracking-wider bg-gray border border-black/[0.3]">
             <tr className="">
               <th scope="col" className={`${stylings.header}`}>
                 Voucher ID
@@ -158,16 +158,16 @@ export default function AccountStatements() {
                 <td className={`${stylings.body}`}>{item.marketId}</td>
                 <td className={`${stylings.body}`}>{parseDateTime(item.settledDate)}</td>
                 <td className={`${stylings.body} whitespace-nowrap overflow-x-auto`}>{item.narration}</td>
-                <td className={`${stylings.body} text-red-500`}>{(item.debit).toFixed(2)}</td>
-                <td className={`${stylings.body} text-green-400`}>{(item.credit).toFixed(2)}</td>
-                <td className={`${stylings.body} text-green-400`}>{(item.runningBalance).toFixed(2)}</td>
+                <td className={`${stylings.body} text-danger`}>{(item.debit).toFixed(2)}</td>
+                <td className={`${stylings.body} text-success`}>{(item.credit).toFixed(2)}</td>
+                <td className={`${stylings.body} text-success`}>{(item.runningBalance).toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       {acStatements.length === 0 && (
-        <p className="px-3 py-2 text-[0.8rem] text-gray-500 font-bold tracking-wide">No data at the moment</p>
+        <p className="px-3 py-2 text-sm text-gray-500 font-bold tracking-wide">No data at the moment</p>
       )}
     </div>
 

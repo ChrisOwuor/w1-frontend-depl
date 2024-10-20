@@ -9,7 +9,7 @@ const CricketScores = ({ innings, incidents, scores, matchId }) => {
     const [currentCollpsed, setCurrentCollaped] = useState("Scorecard")
     // useEffect(() => {
     //     (async () => {
-    //         const scores = await getScores(evId)
+    //         const scores = await getScores(matchId)
     //         if(scores){
     //             console.log(scores)
     //         }

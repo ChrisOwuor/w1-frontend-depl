@@ -45,28 +45,18 @@ function MyProfile() {
   
 
   return (
-    <div className="">
+    <div className="relative overflow-x-auto shadow-md bg-white">
      <div className="flex justify-between items-center pb-2">
-        <p className='font-bold text-gray-300 text-[0.885rem] tracking-wide mt-2 mx-1'>My Profile</p>
+        <p className='font-bold text-black text-[0.885rem] tracking-wide mt-2 mx-1'>My Profile</p>
         <div className="flex justify-end items-center cursor-pointer" onClick={() => setCurrentCenter("home")}>
           <KeyboardDoubleArrowLeftIcon className="text-orange-400" fontSize="small" />
-          <p className="text-gray-300 font-bold text-[0.8rem]">Home</p>
+          <p className="text-black font-bold text-[0.8rem]">Home</p>
         </div>
       </div>
 
       {userData ? (
-        <div className="bg-gray-300 p-2">
-
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
-            <div className="col-span-1 md:col-span-2 ">
-           
-              <div className="mt-20 col-span-1">
-                <SettingsComponent />
-              </div>
-            </div>
-
-          </div>
+        <div className="flex bg-white p-4">
+         <SettingsComponent />
         </div>
       ) : (
         <p className="text-gray-800 p-5">loading</p>

@@ -13,15 +13,15 @@ const SoccerScores = ({ incidents, scores }) => {
   };
   return (
     <>
-      {scores && scores.event && (
+      {scores && (
         <Box
           mx="auto"
           className={`flex w-full flex-col bg-green-600/[0.5] my-2 `}
         >
           <Group position="start" mb={5} onClick={onClick} className="p-1">
             <div className=" grid grid-cols-12 w-full gap-x-1 mt-2">
-              <div className="col-span-5 max-mk:col-span-3 flex flex-col justify-center items-center text-center gap-y-2">
-                {scores.event.homeTeam && scores.event.homeTeam.country ? (
+              {/* <div className="col-span-5 max-mk:col-span-3 flex flex-col justify-center items-center text-center gap-y-2">
+                {scores.home.homeTeam && scores.event.homeTeam.country ? (
                   <div className="relative">
                     <img
                       src={`https://api.sofascore.app/api/v1/team/${
@@ -43,19 +43,19 @@ const SoccerScores = ({ incidents, scores }) => {
                   {scores.event.homeTeam &&
                     `${scores.event.homeTeam.shortName}`}
                 </p>
-              </div>
+              </div> */}
               <div className="col-span-2 max-mk:col-span-6 grid grid-cols-2 text-center  rounded">
                 <div className="col-span-2 flex justify-center items-center">
                   <p className="text-[1.5rem] font-bold tracking-wider text-orange-500">
-                    {scores.event.homeScore &&
-                      `${scores.event.homeScore.current}`}
+                    {scores.score &&
+                      `${scores.score.home.score}`}
                   </p>
                   <p className="text-[1rem] mx-2 font-bold tracking-wider text-orange-500">
                     -
                   </p>
                   <p className="text-[1.5rem] font-bold tracking-wider text-orange-500">
-                    {scores.event.awayScore &&
-                      `${scores.event.awayScore.current}`}
+                    {scores.score &&
+                      `${scores.score.away.score}`}
                   </p>
                 </div>
               </div>

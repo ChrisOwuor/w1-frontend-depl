@@ -8,7 +8,7 @@ const MarketOddsComponent = ({ mktBk, styling2, ii, handleEventPlaceBet, showLas
             {
                 eventData && (
                     <>
-                        <div className={`max-sm:hidden relative grid max-mk:grid-cols-4 ${otherMarkets === true ? "mk:grid-cols-5" : "mk:grid-cols-6"} gap-x-1`}>
+                        <div className={`max-sm:hidden relative grid max-mk:grid-cols-4 ${otherMarkets === true ? "mk:grid-cols-6" : "mk:grid-cols-6"} gap-x-1`}>
                             {
                                 mktBk && mktBk.status === "CLOSED" ?
                                     mktBk.inplay === true ?
@@ -38,7 +38,10 @@ const MarketOddsComponent = ({ mktBk, styling2, ii, handleEventPlaceBet, showLas
                                 : <span className='text-transparent'>0</span>
 
                         } */}
-
+                        {
+                            otherMarkets === true && 
+                            <div className=""></div>
+                        }
 
 
                             {/* 3 */}
@@ -147,7 +150,6 @@ const MarketOddsComponent = ({ mktBk, styling2, ii, handleEventPlaceBet, showLas
                                                 <span className='text-transparent'>0</span>
                                             </p>
                                         </div>
-
                                     :
                                     <div
                                         className={`${styling2.oddsStyle} ${styling2.backOdd} `}

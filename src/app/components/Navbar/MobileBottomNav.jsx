@@ -12,10 +12,8 @@ import HouseIcon from '@mui/icons-material/House';
 
 export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalSettings }) {
     const { setView, setCurrentCenter } = useContext(NAVContext)
-    const { setOpenLogin } = useContext(AuthContext);
-    const loggedIn = isAuthenticated()
+
     const searchParams = useSearchParams()
-    const prof = searchParams.get("ac")
     const [toggle, setToggle] = useState(false)
 
 
@@ -119,6 +117,7 @@ export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalS
                     //     ...prev,
                     //     currentView: ""
                     // }))
+                    setCurrentCenter("sports")
                     toggleSideBar()
                 }} className={`mb-1 flex items-center justify-center gap-1  rounded  px-2 hover:text-white cursor-pointer`} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
 

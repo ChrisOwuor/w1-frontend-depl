@@ -70,10 +70,10 @@ export default function MobileSideBar({ setSelectedLink, activeLink, toggleSideB
   }
 
   return (
-    <ScrollArea.Autosize mih={1} offsetScrollbars type="scroll" scrollbarSize={10}  className="min-w-[100%] w-full">
+    <ScrollArea.Autosize mih={1} offsetScrollbars type="scroll" scrollbarSize={2}  className="min-w-[100%] w-full">
       <div className="w-full flex flex-col justify-between">
         <div className="grid grid-cols-12">
-          <div className="col-span-12 bg-white z-9999">
+          <div className="col-span-12 bg-white z-99">
 
             <div className="flex w-full justify-center items-center text-center my-4">
               <ArrowCircleLeftRoundedIcon fontSize="large" onClick={() => toggleSideBar()} className="font-bold text-primary" />

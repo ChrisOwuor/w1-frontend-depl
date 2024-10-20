@@ -5,7 +5,7 @@ import React from 'react'
  * @param {*} param0 
  * @returns 
  */
-const PlaceBet = ({ betObj, setSelectedEventId, handlePlaceBet, event, loadin, setPrice, setStack, stack, price, profit, userData, marketType, isLineMarket }) => {
+const PlaceBet = ({ betObj, setSelectedEventId, handlePlaceBet, event, loadin, setPrice, setStack, stack, price, profit, userData, marketType,  otherMarkets }) => {
     const boxValues = [100, 200, 500, 5000, 10000, 25000, 50000, 100000];
     return (
         <>
@@ -41,7 +41,7 @@ const PlaceBet = ({ betObj, setSelectedEventId, handlePlaceBet, event, loadin, s
                             </div>
                         </div>
                         <div className="col-span-3 grid grid-cols-6 items-end">
-                            <div className="flex col-span-1 max-mk:hidden">
+                            <div className={`flex col-span-1 max-mk:hidden ${otherMarkets == true && hidden}`}>
                                 <button
                                     type='button'
                                     className='bg-orange-700 w-full rounded py-2 text-[0.8rem] px-2 mx-1'

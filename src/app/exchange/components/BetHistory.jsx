@@ -182,31 +182,31 @@ const BetHistory = () => {
 
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-md font-bold text-black tracking-wider bg-gray-700 dark:bg-gray-700 dark:text-black">
+          <thead className="text-md font-bold text-black bg-[#E0E7E7]">
             <tr className=' whitespace-nowrap overflow-x-auto'>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Sport Name
               </th>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Event Name
               </th>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Market Name
               </th>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Selection
               </th>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Type
               </th>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Odds Req.
               </th>
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Stack
               </th>
 
-              <th scope="col" className="px-3 py-1">
+              <th scope="col" className="px-3 py-2">
                 Bet Placing Time
               </th>
 
