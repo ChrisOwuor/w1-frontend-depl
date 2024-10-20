@@ -153,7 +153,7 @@ export default function Sidebar({ setSelectedLink, activeLink }) {
                                 return (
                                   <p
                                     key={index}
-                                    className={`text-sm cursor-pointer truncate flex w-full px-2 py-1 tracking-wide font-medium border-b border-secondary/[0.2] text-black hover:bg-orange-400/[0.1] ${competition_.series_id == view.competitionId && "bg-orange-400/[0.2]"}`}
+                                    className={`text-sm cursor-pointer flex px-2 py-1 font-medium border-b border-secondary/[0.2] text-black hover:bg-orange-400/[0.1] ${competition_.series_id == view.competitionId && "bg-orange-400/[0.2]"}`}
                                     onClick={() => {
                                       setCurrentCenter("events")
                                       setView(prevView => ({

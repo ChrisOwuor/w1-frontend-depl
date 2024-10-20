@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Loader } from "@mantine/core";
 import { ScrollArea } from '@mantine/core';
 import { CompetitionContext } from "src/app/context/exchange/CompetitonContext";
-import DoneOutlineTwoToneIcon from '@mui/icons-material/DoneOutlineTwoTone';
 import ArrowDropDownTwoToneIcon from '@mui/icons-material/ArrowDropDownTwoTone';
 import { NAVContext } from "@/app/context/NavContext";
 import { getActiveMarkets } from "@/app/api/exchange";
@@ -36,14 +35,14 @@ export default function MarketsSidebar() {
     return (
 
         <div className="w-full h-[90vh] bg-white z-9999">
-            <div className="flex items-center p-2 rounded-t bg-primary justify-between">
+            <div className="flex items-center p-2 bg-primary justify-between">
                 <p className="text-sm font-semibold text-white"></p>
                 <p className="text-sm font-semibold text-white">Sports</p>
             </div>
 
             {
                 eventData.event != undefined && (
-                    <div className="flex flex-col pl-2 pr-1">
+                    <div className="flex flex-col pr-1 justify-start">
                         <div
                             onClick={() => {
                                 setCurrentCenter("home")
@@ -58,34 +57,34 @@ export default function MarketsSidebar() {
                                     eventId: "",
                                 })
                             }}
-                            className="flex items-center rounded-t justify-between py-1"
+                            className="flex items-center justify-between py-1"
                         >
                             <div className="flex items-center pl-1">
-                                <p className="text-[1.1rem] font-bold tracking-wider ">
+                                <p className="text-md font-semibold text-black">
                                     {view.sportName}
                                 </p>
                             </div>
-                            <ArrowDropDownTwoToneIcon fontSize="medium" color="white" />
+                            <ArrowDropDownTwoToneIcon fontSize="medium" className="text-black" />
                         </div>
-                        <p className="text-black text-[0.9rem]  flex items-center justify-between ml-1 pl-1 py-3 font-semibold tracking-wide bg-gray-800 truncate">{view.competitionName}<ArrowDropDownTwoToneIcon fontSize="small" color="white" /></p>
-                        <p className="text-black text-[0.8rem]  flex items-center justify-between ml-2 pl-2 py-2 cursor-pointer font-semibold tracking-wide bg-gray-700 truncate" onClick={() => window.location.reload()}>{view.eventName}<ArrowDropDownTwoToneIcon fontSize="smaller" color="white" /></p>
+                        <p className="text-black text-md font-semibold flex items-center justify-between ml-1 pl-1 whitespace-nowrap">{view.competitionName}<ArrowDropDownTwoToneIcon fontSize="small" className="text-black" /></p>
+                        <p className="text-black text-sm whitespace-wrap font-semibold ml-4 cursor-pointer" onClick={() => window.location.reload()}>{view.eventName}</p>
 
                     </div>
                 )
             }
 
-            <div className="flex flex-col ml-3 pl-3 items-center font-medium text-black">
-                <ScrollArea offsetScrollbars scrollbarSize={4}
+            <div className="flex flex-col ml-4 pl-2 items-center font-medium text-black">
+                <ScrollArea offsetScrollbars scrollbarSize={0}
                     h={700}
                     type="scroll"
                     className=" w-full">
 
-                    <div className=" flex flex-col mt-1 ">
+                    <div className=" flex flex-col">
                         {
                             loadin ?
 
                                 <div className="flex h-full justify-center items-center">
-                                    < Loader color="white" />
+                                    < Loader color="black" />
                                 </div>
 
                                 :
@@ -93,14 +92,14 @@ export default function MarketsSidebar() {
                                     <div className="flex flex-col">
                                         <div
 
-                                            className={`border-b py-1 border-gray-600 text-black hover:bg-gray-400 ${currentMkt.mkt_name === "Popular" ? 'bg-yellow-500/[0.5]' : ""}`}
+                                            className={`py-1 text-black hover:bg-gray-400 ${currentMkt.mkt_name === "Popular" ? 'bg-yellow-500/[0.5]' : ""}`}
                                             onClick={() => setCurrentMkt({
                                                 mkt_name: "Popular",
                                                 mkt_id: ""
                                             })}
 
                                         >
-                                            <p className={`flex justify-between text-[0.8rem] cursor-pointer tracking-wide font-bold`}>{"Popular"} <DoneOutlineTwoToneIcon fontSize="smaller" color="white" className="" /></p>
+                                            <p className={`flex justify-between text-sm cursor-pointer tracking-wide`}>{"Popular"} </p>
                                         </div>
                                         {
 
@@ -108,14 +107,14 @@ export default function MarketsSidebar() {
                                                 return (
                                                     <div
                                                         key={index}
-                                                        className={`border-b py-1 border-gray-600 text-black hover:bg-gray-400 ${currentMkt.mkt_name === market.market_name ? 'bg-yellow-500/[0.5]' : ""}`}
+                                                        className={`border-b border-black/[0.3] py-1 text-black hover:bg-gray-400 ${currentMkt.mkt_name === market.market_name ? 'bg-yellow-500/[0.5]' : ""}`}
                                                         onClick={() => setCurrentMkt({
                                                             mkt_name: market.market_name,
                                                             mkt_id: market.market_id
                                                         })}
 
                                                     >
-                                                        <p className={`flex justify-between text-[0.8rem] cursor-pointer tracking-wide font-bold`}>{market.market_name} <DoneOutlineTwoToneIcon fontSize="smaller" color="white" className="" /></p>
+                                                        <p className={`flex justify-between text-sm cursor-pointer`}>{market.market_name} </p>
                                                     </div>
                                                 )
 
