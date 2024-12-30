@@ -4,9 +4,9 @@
   "private": true,
   "author": "grenlyfe",
   "scripts": {
-    "dev": "next dev -p 3094",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 3094",
+    "start": "next start -p 3336",
     "lint": "next lint"
   },
   "dependencies": {
