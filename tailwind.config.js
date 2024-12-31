@@ -294,7 +294,8 @@ export const theme = {
     },
   },
 };
-export const plugins = [require("flowbite/plugin"),
+import flowbitePlugin from "flowbite/plugin";
+export const plugins = [flowbitePlugin,
 function ({ addUtilities }) {
   addUtilities({
     '.scrollbar-hidden': {

@@ -24,7 +24,7 @@ import ExBetslip from "./betslip/Betslip";
 import MarketsSidebar from "./MarketsSideBar";
 import MobileMarketsSideBar from "../mobile/components/MobileMarketsSidebar";
 import { getGlobalSetings } from "@/app/api/exchange";
-import Casino from "./casino/Casino";
+import CasinoView from "./casino/CasinoView"
 import AccountHome from "./Account";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import UserConsentWizard from "@/app/components/Modal/UserConsentWizard";
@@ -200,7 +200,7 @@ const Exchange = () => {
                                     <div className="w-full">
                                       <HorizontalSlides globalSettings={globalSettings} />
                                       <Populars />
-                                      <Casino globalSettings={globalSettings} />
+                                      <CasinoView globalSettings={globalSettings} />
                                     </div>
                                   );
                                 case "event_markets":

@@ -4,7 +4,7 @@ import { AuthContext } from '@/app/context/AuthContext';
 import { NAVContext } from '@/app/context/NavContext';
 import React, { useContext, useState } from 'react';
 
-const Casino = ({ globalSettings }) => {
+const CasinoHome = ({ globalSettings }) => {
     const casinoGames = [
         {
             name: "20-20 Teenpatti",
@@ -273,4 +273,4 @@ const Casino = ({ globalSettings }) => {
     );
 };
 
-export default Casino;
+export default CasinoHome;
