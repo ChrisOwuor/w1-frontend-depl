@@ -245,7 +245,7 @@ html {
 }
 
 .animate-slidindAds {
-  animation: slideRight 40s infinite;
+  animation: slideRight 30s infinite linear;
 }
 
 /* exposure text styling */

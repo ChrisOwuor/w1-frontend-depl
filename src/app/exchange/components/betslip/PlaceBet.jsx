@@ -126,7 +126,7 @@ const PlaceBet = ({ betObj, setSelectedEventId, handlePlaceBet, event, loadin, s
 
                         <div className="w-full grid mk:grid-cols-8 grid-cols-4 gap-1">
                             {boxValues.map((value, index) => (
-                                <div key={index} onClick={() => setStack(value)} className='flex justify-center col-span-1   text-center bg-gray-800 hover:bg-gray-600  cursor-pointer border py-1 px-6 border-gray-400 rounded'>
+                                <div key={index} onClick={() => setStack(parseFloat(value))} className='flex justify-center col-span-1   text-center bg-gray-800 hover:bg-gray-600  cursor-pointer border py-1 px-6 border-gray-400 rounded'>
                                     <p className='font-bold text-[0.8rem]'>{value}</p>
                                 </div>
                             ))}

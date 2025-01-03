@@ -32,7 +32,7 @@ const SlidingText = () => {
                 if (msg.length > 0) {
                     setContents([msg[0].message])
                 } else {
-                    setContents(["Welcome to Aurabet"])
+                    setContents(["PLAYRUNEXCHANGE TRADE BETTER PLAYRUNEXCHANGE TRADE BETTER","PLAYRUNEXCHANGE TRADE BETTER PLAYRUNEXCHANGE TRADE BETTER"])
                 }
             }
         })()
@@ -41,11 +41,12 @@ const SlidingText = () => {
     return (
 
         <div className="relative h-[4vh]  min-mk:mt-2">
-            <img src="/sliding_screen_bg.png" alt="" className='h-[4vh] opacity-60 w-full object-cover rounded-t' />
-            <div className="absolute top-0 bottom-0 left-0 right-0 overflow-hidden flex sliding- to-orange-500/[0.1] h-[4vh]">
+            <img src="/sliding_screen_bg.png" alt="" className='h-[4vh] z-[99] w-full object-cover rounded-t' />
+            <div className="absolute inset-0 bg-green-700 z-[99] opacity-20"></div>
+            <div className="absolute top-0 bottom-0 left-0 right-0 overflow-hidden z-[9999] flex sliding- to-orange-500/[0.1] h-[4vh]">
 
-                <div className={`flex justify-end items-center overflow-hidden  animate-slidindAds min-w-[1300px]  text-gray-200 `}>
-                    <p className={`text-end pr-1 pl-0 tracking-wider  w-full py-1 `}>
+                <div className={`flex justify-end items-center overflow-hidden  animate-slidindAds min-w-[1300px]`}>
+                    <p className={`text-end  text-white leading-tight font-bold pr-1 pl-0 tracking-wider  w-full px-1 `}>
                         {contents[0]}
                     </p>
 

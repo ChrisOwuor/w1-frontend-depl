@@ -684,13 +684,12 @@ const CompetionCollapseTwo = ({ competitionTitle, matches, opened, marketsBook, 
                                   handlePlaceBet={handlePlaceBet}
                                   loadin={loadin}
                                   price={price}
-                                  stake={stake}
+                                  stack={stake}
                                   setPrice={setPrice}
-                                  setStake={setStake}
+                                  setStack={setStake}
                                   profit={profit}
                                   userData={userData}
                                   event={match}
-
                                 />
                               )}
                             </div>

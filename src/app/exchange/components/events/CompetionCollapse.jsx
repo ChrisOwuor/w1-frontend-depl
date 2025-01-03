@@ -177,7 +177,7 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
       {
         matches && matches.length > 0 && (
           <Box mx="auto" className={` ${hide && "hidden"}`}>
-            <Collapse in={true} className="w-full">
+            <Collapse in={true} className="w-full h-full">
               {/* LEAGUES */}
               <div className='flex gap-x-4 w-full'>
                 <div className="w-full overflow-y-auto max">
@@ -252,7 +252,7 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                                           <span className={`${styling1.teamNames} mr-2`}>{team1} {" v "} {team2}</span>
                                           {
                                             pass ?
-                                              <span className={`text-sm sm:text-md  tracking-wide font-bold ${flicker ? "text-danger" : "text-success"}`}>In Play</span> :
+                                              <span className={`text-sm sm:text-md  tracking-wide font-bold whitespace-nowrap ${flicker ? "text-danger" : "text-success"}`}>In Play</span> :
                                               <p className='text-sm sm:text-md  tracking-wide text-black font-bold'>{date_.date}{" "} {date_.time}</p>
                                           }
                                         </div>
@@ -280,7 +280,7 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                                       {
                                         pass ?
                                           <div className="flex justify-center gap-x-1  items-center w-full h-full">
-                                            <p className='text-[0.695rem] md:text-[0.785rem]   tracking-wide text-white font-bold'>In Play</p>
+                                            <p className='text-[0.695rem] md:text-[0.785rem]   tracking-wide text-white font-bold '>In Play</p>
                                           </div> :
                                           <div className="flex flex-col justify-center items-center">
                                             <p className='text-[0.65rem] text-center md:text-[0.8rem]  tracking-wide text-primary3 font-bold'>{date_.date}</p>

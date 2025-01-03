@@ -8,8 +8,8 @@ const roboto = Roboto({
 })
 
 export const metadata = {
-  title: 'Bet',
-  description: 'Developed by GrenLyfe',
+  title: 'PLAYRUNEXCHANGE ',
+  description: 'PLAYRUNEXCHANGE - Bet better on the best betting exchange',
 }
 
 export default function RootLayout({ children }) {

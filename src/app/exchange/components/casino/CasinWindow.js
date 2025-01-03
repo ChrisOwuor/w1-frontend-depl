@@ -69,7 +69,7 @@ const CasinoWindow = () => {
               <div className="md:col-span-8 col-span-12 h-full relative">
                 <div className="flex justify-center items-center h-full">
                   <iframe
-                    src={activeCasino && `http://82.112.226.123:8000/casino/?id=3056`}
+                    src={activeCasino && `https://allpanelexch.com/mediaplayer/teen20/081bd1ec-eda4-4af4-b22d-f32cf49d4486?ip=5.161.198.75`}
                     title="Casino Game Video"
                     width="100%"
                     height="100%"

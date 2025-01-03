@@ -5,7 +5,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import { io } from 'socket.io-client';
 import { CasinoContext } from '@/app/context/CasinoContext';
 import axios from 'axios';
-import { fetchGameData } from '@/app/api/casino/casino';
+import { fetchGameData, getTeen2020 } from '@/app/api/casino/casino';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -28,7 +28,9 @@ const Teenpatti2020 = () => {
     const casinoId = "20-20 Teenpatti"; 
   
     const updateGameData = async () => {
-      const data = await fetchGameData(casinoId); 
+      const data = await getTeen2020(casinoId); 
+
+      console.log(data)
   
       if (data) {
         setGameData(data.data);
