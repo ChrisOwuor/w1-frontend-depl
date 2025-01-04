@@ -238,7 +238,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
       >
         <div
           onClick={() => window.location.reload()}
-          className="cursor-pointer w-auto h-16 flex items-center justify-center"
+          className="cursor-pointer w-auto h-18 flex items-center justify-center"
         >
           {globalSettings && globalSettings.businessLogo && (
             <img

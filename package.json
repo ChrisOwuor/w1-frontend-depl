@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "author": "grenlyfe",
+  "author": "raptor",
   "scripts": {
     "dev": "next dev -p 3336",
     "build": "next build",

@@ -2,10 +2,9 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { NAVContext } from '@/app/context/NavContext';
 import LockIcon from '@mui/icons-material/Lock';
-import { io } from 'socket.io-client';
 import { CasinoContext } from '@/app/context/CasinoContext';
-import axios from 'axios';
 import { fetchGameData, getTeen2020 } from '@/app/api/casino/casino';
+import VideoPlayer from './VideoPlayer';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,7 +29,7 @@ const Teenpatti2020 = () => {
     const updateGameData = async () => {
       const data = await getTeen2020(casinoId); 
 
-      console.log(data)
+      // console.log(data)
   
       if (data) {
         setGameData(data.data);
@@ -66,6 +65,8 @@ const Teenpatti2020 = () => {
 
   return (
     <>
+
+    <VideoPlayer/>
       {
         gameData && gameData.t1 && (
           <div className="relative flex flex-col gap-x-2 bg-black h-[27vh] md:h-[47vh]">

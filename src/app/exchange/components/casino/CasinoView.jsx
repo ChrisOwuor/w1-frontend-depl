@@ -8,25 +8,25 @@ const CasinoHome = ({ globalSettings }) => {
     const casinoGames = [
         {
             name: "20-20 Teenpatti",
-            image: "/casino_assets/teenpatti2020.jpg",
+            image: "/casino/teen20.jpg",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=teen20",
             videoUrl: "https://winx777.com/casino/?id=3030"
         },
         {
             name: "20-20 Dragon Tiger",
-            image: "/casino_assets/dragontiger2020.jpg",
+            image: "/casino/dt20.jpg",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt20",
             videoUrl: "https://winx777.com/casino/?id=3035"
         },
         {
             name: "20-20 Dragon Tiger 2",
-            image: "/casino_assets/dt202.jpg",
+            image: "/casino/dt202.jpg",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt202",
             videoUrl: "https://winx777.com/casino/?id=3059"
         },
         {
             name: "Lucky7 B",
-            image: "/casino_assets/lucky7B.jpg",
+            image: "/casino/lucky7B.jpg",
             dataURL: "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=lucky7eu",
             videoUrl: "https://winx777.com/casino/?id=3032"
         },

@@ -37,7 +37,7 @@ const HorizontalSlides = ({ globalSettings }) => {
               src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${ad}`}
               alt={`Banner ${i + 1}`}
               style={{ display: i === current ? 'block' : 'none' }}
-              className="w-full sm:h-[250px] h-full object-cover"
+              className="w-full sm:h-[250px] h-full object-cover ease-in-out duration-500"
             />
           ))
         )}
