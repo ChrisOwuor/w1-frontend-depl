@@ -19,7 +19,7 @@ const AccountHome = () => {
   }, []);
 
   return (
-    <div className="relative w-full bg-white flex items-center ">
+    <div className="relative w-full bg-white flex items-center p-4">
       <div className="w-full  shadow-lg rounded-b-lg mt-2">
         <div className="flex flex-col space-y-4">
           <div

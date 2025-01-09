@@ -159,6 +159,33 @@ export const getMatches = async (sport_id, series_id) => {
   }
 };
 
+export const getRaceEvents = async (sport_id, series_id) => {
+  try {
+    const token = localStorage.getItem("tk");
+    if (token) {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/getRaceEvents`,
+        {
+          sport_id: sport_id,
+          series_id: series_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res && res.data) {
+        return res.data.matches
+        // console.log(res)
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
 export const fetcheSportCompetitions = async (eventTypeId) => {
   try {

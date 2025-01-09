@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import axios from "axios";
 
 import { isAuthenticated } from "../funcStore/authenticate";
@@ -10,37 +10,41 @@ import { Button, Modal } from "@mantine/core";
 import Create from "../Modal/Create";
 import Login from "../Modal/Login";
 
-import { fetchUserData } from 'src/app/api/exchange';
+import { fetchUserData } from "src/app/api/exchange";
 import UserConsentWizard from "../Modal/UserConsentWizard";
 import { NAVContext } from "@/app/context/NavContext";
 
-
 export default function MobileBottom({ toggleSideBar, globalSettings }) {
-  const [currentPage, setCurrentPage] = useState("")
+  const [currentPage, setCurrentPage] = useState("");
   const [opened, setOpened] = useState(false);
   const [openedCreate, setOpenedCreate] = useState(false);
   const [loggedIN, setLoggedIN] = useState(false);
   const [disable, setDisable] = useState(false);
-  const { currentCenter, setCurrentCenter } = useContext(NAVContext)
-  const { openUserconsentwizard, setOpenUserconsentwizard, openLogin, setOpenLogin, setOpenRegister, openRegister, userData, getfreshUserData } =
-    useContext(AuthContext);
-
+  const { currentCenter, setCurrentCenter } = useContext(NAVContext);
+  const {
+    openUserconsentwizard,
+    setOpenUserconsentwizard,
+    openLogin,
+    setOpenLogin,
+    setOpenRegister,
+    openRegister,
+    userData,
+    getfreshUserData,
+  } = useContext(AuthContext);
 
   useEffect(() => {
-    const crnturl = localStorage.getItem("current_pg")
+    const crnturl = localStorage.getItem("current_pg");
     if (crnturl) {
-      const currentpg = JSON.parse(crnturl)
-      setCurrentPage(currentpg)
+      const currentpg = JSON.parse(crnturl);
+      setCurrentPage(currentpg);
     } else {
-      setCurrentPage("Home")
+      setCurrentPage("Home");
     }
     const loggedIN = isAuthenticated();
     if (loggedIN) {
       fetchUserData();
     }
   }, []);
-
-
 
   useEffect(() => {
     const action = localStorage.getItem("openLogin");
@@ -111,7 +115,6 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
     }
   };
 
-
   useEffect(() => {
     if (userData != {}) {
       // const bal = parseInt(userData.availableBalance)
@@ -119,11 +122,9 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
       // setUserBal(bal)
       // setUserExposure(exposure)
     } else {
-      getfreshUserData()
+      getfreshUserData();
     }
-  }, [userData])
-
-
+  }, [userData]);
 
   const [isScreenSmall, setIsScreenSmall] = useState("false");
 
@@ -141,57 +142,77 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
     };
 
     // Listen for changes in screen size
-    const mediaQuery = window.matchMedia(`(max-width: ${screenWidthThreshold}px)`);
+    const mediaQuery = window.matchMedia(
+      `(max-width: ${screenWidthThreshold}px)`
+    );
 
     // Initial check for screen size
     handleScreenSizeChange(mediaQuery);
 
     // Add event listener for screen size changes
-    mediaQuery.addEventListener('change', handleScreenSizeChange);
+    mediaQuery.addEventListener("change", handleScreenSizeChange);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleScreenSizeChange);
+      mediaQuery.removeEventListener("change", handleScreenSizeChange);
     };
   }, []);
 
   return (
-    <div className="w-full flex justify-between gap-x-1 px-2 items-center" style={{ backgroundColor: globalSettings && globalSettings.topBarBgColor || "#002C5C" }}>
+    <div
+      className="w-full flex justify-between gap-x-1 px-2 items-center"
+      style={{
+        backgroundColor:
+          (globalSettings && globalSettings.topBarBgColor) || "#002C5C",
+      }}
+    >
       <div className="w-full flex justify-start items-center">
-        <Link href="/#" passHref >
-          <div onClick={() => window.location.reload()} className="cursor-pointer">
-            <img src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings && globalSettings.businessLogo || "uploads/betlogo.png"}`} alt="profile"
-              className="w-18 h sm:h-full" />
-          </div>
-        </Link>
+        <div
+          onClick={() => window.location.reload()}
+          className="cursor-pointer w-auto h-14 flex items-center justify-center"
+        >
+          {globalSettings && globalSettings.businessLogo && (
+            <img
+              src={
+                globalSettings?.businessLogo &&
+                `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
+              }
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          )}
+        </div>
       </div>
       <div className="flex gap-1 items-center justify-end w-full">
         {!loggedIN ? (
           <div className="flex items-center justify-end gap-x-4 px-1 rounded font-bold py-1 cursor-pointer">
-            <div onClick={() => {
-              setCurrentCenter("userconsent")
-              setOpenLogin(true)
-            }} className={`bg-warning flex items-center justify-center gap-1  rounded py-2 px-3 hover:text-gray-200 cursor-pointer`}>
-              <p className="font-bold text-black  text-md">
-                Login
-              </p>
+            <div
+              onClick={() => {
+                setCurrentCenter("userconsent");
+                setOpenLogin(true);
+              }}
+              className={`bg-warning flex items-center justify-center gap-1  rounded py-2 px-3 hover:text-gray-200 cursor-pointer`}
+            >
+              <p className="font-bold text-black  text-md">Login</p>
               <VpnKeyIcon fontSize="small" className="text-black" />
             </div>
           </div>
         ) : (
-          <div className={`flex items-center gap-x-4 px-1 rounded font-bold py-2 cursor-pointer text-white  text-[0.8rem]`} onClick={() => isScreenSmall === "false" && setToggle(prev => !prev)}>
-
+          <div
+            className={`flex items-center gap-x-4 px-1 rounded font-bold py-2 cursor-pointer text-white  text-[0.8rem]`}
+            onClick={() =>
+              isScreenSmall === "false" && setToggle((prev) => !prev)
+            }
+          >
             <div className="flex flex-col ">
-
               <div className="flex items-center gap-x-2 text-sm">
                 <p>Balance</p>
                 {userData != {} && userData.availableBalance ? (
                   <p className="text-green-400">
                     {parseInt(userData.availableBalance).toFixed(2)}
                   </p>
-                ) :
-                  (
-                    <p className="text-green-400">{`--`}</p>)
-                }
+                ) : (
+                  <p className="text-green-400">{`--`}</p>
+                )}
               </div>
               <div className="flex items-center gap-x-2 text-sm">
                 <p>Exposure</p>
@@ -200,11 +221,11 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
                   <p className="text-red-500">
                     {parseInt(userData.exposure).toFixed(2)}
                   </p>
-                ) :
-                  (
-                    <p className="text-white">(<span className="text-red-500">0.00</span>)</p>
-                  )
-                }
+                ) : (
+                  <p className="text-white">
+                    (<span className="text-red-500">0.00</span>)
+                  </p>
+                )}
               </div>
             </div>
             <Button
@@ -216,12 +237,7 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
             </Button>
           </div>
         )}
-
       </div>
-
-
-
-
 
       <Modal
         opened={openUserconsentwizard}
@@ -229,7 +245,6 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
         title="Login"
         size={""}
         zIndex={9999}
-
       >
         <Login />
       </Modal>
@@ -242,6 +257,5 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
         <Create />
       </Modal>
     </div>
-
   );
 }

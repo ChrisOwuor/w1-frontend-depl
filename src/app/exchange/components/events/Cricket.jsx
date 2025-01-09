@@ -2,18 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { CompetitionContext } from "src/app/context/exchange/CompetitonContext";
 import Loading from "../Loading";
 import CompetionCollapseTwo from "./CollapseCompTwo";
-import {
-  fetchMKTBK,
-  
-  getMatches,
-} from "src/app/api/exchange";
+import { fetchMKTBK, getMatches, getRaceEvents } from "src/app/api/exchange";
 import { INTERVAL } from "../../constants/mktfetchInterval";
 import { sleep } from "../../utils/sleep";
 import { NAVContext } from "@/app/context/NavContext";
+import RaceEvents from "./RaceEvents";
 
 const MatchesComponent = () => {
   const { currentCompetition } = useContext(CompetitionContext);
-  const { view } = useContext(NAVContext)
+  const { view } = useContext(NAVContext);
   const [opened, setOpened] = useState(true);
   const [matches, setMatches] = useState([]);
   const [marketsBook, setMarketsBook] = useState([]);
@@ -25,10 +22,10 @@ const MatchesComponent = () => {
     if (view.sportId != "" && view.competitionId != "") {
       (async () => {
         setLoadin(true);
-        const events = await getMatches(
-          view.sportId,
-          view.competitionId
-        );
+        const events = ["7", "4339"].includes(view.sportId)
+          ? await getRaceEvents(view.sportId, view.competitionId)
+          : await getMatches(view.sportId, view.competitionId);
+
         if (events && events.length > 0) {
           setMatches(events);
         } else {
@@ -37,7 +34,7 @@ const MatchesComponent = () => {
         setLoadin(false);
       })();
     }
-  }, [view])
+  }, [view]);
 
   useEffect(() => {
     if (matches) {
@@ -63,7 +60,11 @@ const MatchesComponent = () => {
   }, [matches]);
 
   useEffect(() => {
-    if (mktIds.length > 0 && view.sportName != "" && view.competitionName != "") {
+    if (
+      mktIds.length > 0 &&
+      view.sportName != "" &&
+      view.competitionName != ""
+    ) {
       const fetchData = async () => {
         try {
           const mktbook = await fetchMKTBK(mktIds);
@@ -88,38 +89,50 @@ const MatchesComponent = () => {
     }
   }, [currentCompetition]);
 
-
   return (
     <div className="flex flex-col w-full h-full">
-
       {matches.length > 0 &&
-        view.sportName != "" &&
-        view.competitionName != "" ? (
+      view.sportName != "" &&
+      view.competitionName != "" ? (
         <div className="">
-          <CompetionCollapseTwo
-            onClick={onClick}
-            opened={opened}
-            matches={matches}
-            competitionId={view.competitionId}
-            sportId={view.sportId}
-            sportName={view.sportName}
-            marketsBook={marketsBook}
-            competitionTitle={view.competitionName}
-            competitionRegion={view.competitionRegion}
-          />
+          {["7", "4339"].includes(view.sportId) ? (
+            <RaceEvents
+              onClick={onClick}
+              opened={opened}
+              matches={matches}
+              competitionId={view.competitionId}
+              sportId={view.sportId}
+              sportName={view.sportName}
+              marketsBook={marketsBook}
+              competitionTitle={view.competitionName}
+              competitionRegion={view.competitionRegion}
+            />
+          ) : (
+            <CompetionCollapseTwo
+              onClick={onClick}
+              opened={opened}
+              matches={matches}
+              competitionId={view.competitionId}
+              sportId={view.sportId}
+              sportName={view.sportName}
+              marketsBook={marketsBook}
+              competitionTitle={view.competitionName}
+              competitionRegion={view.competitionRegion}
+            />
+          )}
         </div>
       ) : (
         <div className=" text-white w-full bg-blue-600/[0.1] p-2 flex items-center">
-
-          <p className="p_2 text-black tracking-wider">No matches for <span className="text-green-400 font-bold">{view.competitionName}</span> at the moment, please come back later.</p>
+          <p className="p_2 text-black tracking-wider">
+            No matches for{" "}
+            <span className="text-green-400 font-bold">
+              {view.competitionName}
+            </span>{" "}
+            at the moment, please come back later.
+          </p>
         </div>
-      )
-      }
-      {
-        loadin && <Loading stylings="min-h-[50vh]" />
-      }
-
-
+      )}
+      {loadin && <Loading stylings="min-h-[50vh]" />}
     </div>
   );
 };

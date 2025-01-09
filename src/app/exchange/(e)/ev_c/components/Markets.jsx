@@ -17,6 +17,7 @@ import MarketGrid from './MarketGrid';
 import { MyBetsContext } from '@/app/context/MybetsContext';
 import SoccerScores2 from '@/app/exchange/components/scoreboard/Soccer2';
 import TennisScoreboard from '@/app/exchange/components/scoreboard/TennisScoreboard';
+import ScoreboardCricket from '@/app/exchange/components/scoreboard/ScoreboardCricket';
 
 const Markets = ({ toggleMarketSideBar, refresh, setRefresh, globalSettings }) => {
   const { getMyBetsFresh } = useContext(MyBetsContext)
@@ -291,8 +292,9 @@ const Markets = ({ toggleMarketSideBar, refresh, setRefresh, globalSettings }) =
                   <SoccerScores2 scores={scores} incidents={inc} />
                 )}
                 {spName === "Cricket" && (
-                  <CricketScores
+                  <ScoreboardCricket
                     scores={scores}
+                    matchId={view.eventId}
                     incidents={inc}
                     innings={innings && innings.innings}
                   />

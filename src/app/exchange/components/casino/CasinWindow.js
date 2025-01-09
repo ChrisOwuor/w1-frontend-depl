@@ -68,8 +68,16 @@ const CasinoWindow = () => {
               <div className="col-span-4 max-md:hidden"></div>
               <div className="md:col-span-8 col-span-12 h-full relative">
                 <div className="flex justify-center items-center h-full">
-                  <iframe
+                  {/* <iframe
                     src={activeCasino && `http://82.112.226.123:8000/casino/?id=3056`}
+                    title="Casino Game Video"
+                    width="100%"
+                    height="100%"
+                    className="rounded"
+                    allowFullScreen
+                  /> */}
+                     <iframe
+                    src={`https://testengine.macawgaming.com/play?session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYXNpbm9TZXNzaW9uSWQiOiIxZWJmNDhjNC0xYzhkLTQzNjEtOGQ0Ny00MmJhYTQ5MzU5OTUiLCJwbGF5ZXJJZCI6IjViZDQwNjJlLTNjZDItNDMwNC04ODBjLTAxMDA1MzRlYmQ4ZiIsImdhbWVJZCI6IjEyMCIsImRpc3BsYXlOYW1lIjoiREVNTyIsImdjIjoiMCIsImN1cnJlbmN5IjoiSU5SIiwibG9iYnlJZCI6IjUyYWI3OWQxLThjMTctNGUwNy1hMzUxLWJjNjZhNDY0ZDhiNUlOUjEwMTM0IiwibWluQmV0IjoiNTAuMDAwMDAwMDAwIiwibWF4QmV0IjoiMTUwMDAuMDAwMDAwMDAwIiwic3RhcnRCZXQiOiIxMDAuMDAwMDAwMDAwIiwiYmV0SW5jcmVtZW50IjoiNTAuMDAwMDAwMDAwIiwibWF4V2luIjoiMTAwMDAwMC4wMDAwMDAwMDAiLCJsaW5lcyI6IjIwIiwic2l0ZUlkIjoicGxheXJ1biIsImRlY2ltYWxzIjoiMiIsIm5iZiI6MTczNjQzODA0MywiZXhwIjoxNzM2NTI0NDQzLCJpYXQiOjE3MzY0MzgwNDN9.EwmMzuCSsh-tz9pyZQfsO0Pm2GZIG7KUxRId6ko0pTc&language=1&returnUrl=https%3a%2f%2fplayrunexchange.com`}
                     title="Casino Game Video"
                     width="100%"
                     height="100%"

@@ -234,11 +234,12 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
           backgroundColor:
             (globalSettings && globalSettings.topBarBgColor) || "#002C5C",
         }}
-        className="flex w-full justify-between items-center text-center p-2"
+        className="flex w-full justify-between items-center text-center px-2"
       >
         <div
+        
           onClick={() => window.location.reload()}
-          className="cursor-pointer w-auto h-18 flex items-center justify-center"
+          className="cursor-pointer w-auto h-26 flex items-center justify-center"
         >
           {globalSettings && globalSettings.businessLogo && (
             <img

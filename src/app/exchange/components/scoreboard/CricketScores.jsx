@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Box, Collapse, Group } from '@mantine/core'
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { getScores } from '@/app/api/exchange';
 
 const CricketScores = ({ innings, incidents, scores, matchId }) => {
     const [open, setOpen] = useState(false)

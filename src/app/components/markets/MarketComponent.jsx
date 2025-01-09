@@ -6,7 +6,7 @@ import { styling2 } from 'src/app/custom_styling/styling';
 import { isAuthenticated } from 'src/app/components/funcStore/authenticate';
 import { AuthContext } from 'src/app/context/AuthContext';
 import { placeBet } from 'src/app/api/exchange/bets';
-import MarketOddsComponent from './MarketOddsCompoent';
+import MarketOddsComponent from './MarketOddsComponent';
 import PlaceBet from 'src/app/exchange/components/betslip/PlaceBet';
 import CreditCardOffIcon from '@mui/icons-material/CreditCardOff';
 import { MyBetsContext } from '@/app/context/MybetsContext';

@@ -42,7 +42,7 @@ const ProfitLoss = () => {
 
   }, [])
   return (
-    <div className="relative overflow-x-auto shadow-md bg-white">
+    <div className="relative overflow-x-auto shadow-md bg-white p-4">
       <div className="flex justify-between items-center p-2">
         <p className='font-bold text-black text-md mx-1'>Profit & Loss</p>
         <div className="flex justify-end items-center cursor-pointer" onClick={() => setCurrentCenter("home")}>

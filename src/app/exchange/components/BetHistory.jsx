@@ -115,7 +115,7 @@ const BetHistory = () => {
 
   const styles_01 = `px-3 py-1 border-b border-gray text-md text-black font-bold tracking-wide`
   return (
-    <div className="relative overflow-x-auto shadow-md min-h-[80vh] ">
+    <div className="relative overflow-x-auto shadow-md min-h-[80vh] p-4">
 
       <div className="flex justify-between items-center pb-2">
         <p className='font-bold text-black text-[0.885rem] tracking-wide mt-2 mx-1'>My Bets</p>

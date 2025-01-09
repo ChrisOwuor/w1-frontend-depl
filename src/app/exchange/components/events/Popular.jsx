@@ -98,7 +98,7 @@ const Populars = () => {
 
 
     return (
-        <div className='mb-4'>
+        <div className=''>
             {/* mobile */}
             <div className="flex flex-col w-full sm:hidden ">
 

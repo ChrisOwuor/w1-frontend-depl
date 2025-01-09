@@ -353,3 +353,201 @@ export const iconOBJS = [
 
 
 ]
+
+export  const casinoGames = [
+  {
+    name: "20-20 Teenpatti",
+    image: "/casino/teen20.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=teen20",
+    videoUrl: "https://winx777.com/casino/?id=3030",
+  },
+  {
+    name: "20-20 Dragon Tiger",
+    image: "/casino/dt20.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt20",
+    videoUrl: "https://winx777.com/casino/?id=3035",
+  },
+  {
+    name: "20-20 Dragon Tiger 2",
+    image: "/casino/dt202.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt202",
+    videoUrl: "https://winx777.com/casino/?id=3059",
+  },
+  {
+    name: "Lucky7 B",
+    image: "/casino/lucky7B.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=lucky7eu",
+    videoUrl: "https://winx777.com/casino/?id=3032",
+  },
+  {
+    name: "Teenpatti Test",
+    image: "/casino_assets/teentest.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=teen9",
+    videoUrl: "https://winx777.com/casino/?id=3048",
+  },
+  {
+    name: "Teenpatti open",
+    image: "/casino_assets/teenpattiopen.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v2/api/casinoData?casinoType=teen8",
+    videoUrl: "https://winx777.com/casino/?id=3049",
+  },
+  {
+    name: "Baccarat",
+    image: "/casino_assets/baccarat.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=baccarat",
+    videoUrl: "https://winx777.com/casino/?id=3044",
+  },
+  {
+    name: "Baccarat 2",
+    image: "/casino_assets/b11.png",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=baccarat2",
+    videoUrl: "https://winx777.com/casino/?id=3033",
+  },
+  {
+    name: "1 Day Dragon Tiger",
+    image: "/casino_assets/1DAYDRAGONTIGER.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=dt6",
+    videoUrl: "https://winx777.com/casino/?id=3057",
+  },
+  {
+    name: "Race 20",
+    image: "/casino_assets/race20.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=race20",
+    videoUrl: "https://winx777.com/casino/?id=3036",
+  },
+  {
+    name: "3 Card",
+    image: "/casino_assets/3card.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=3cardj",
+    videoUrl: "https://winx777.com/casino/?id=3039",
+  },
+  {
+    name: "32 Card A",
+    image: "/casino_assets/card32.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=card32",
+    videoUrl: "https://winx777.com/casino/?id=3055",
+  },
+
+  {
+    name: "32 Cards b",
+    image: "/casino_assets/32CARDB.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=card32eu",
+    videoUrl: "https://winx777.com/casino/?id=3034",
+  },
+  {
+    name: "Casino Meter",
+    image: "/casino_assets/cmeter.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=cmeter",
+    videoUrl: "https://winx777.com/casino/?id=3046",
+  },
+
+  {
+    name: "Teenpatti onday",
+    image: "/casino_assets/1teenpatti.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=Teen",
+    videoUrl: "https://winx777.com/casino/?id=3031",
+  },
+  {
+    name: "Andar Bahar",
+    image: "/casino_assets/andarbahar20.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=ab20",
+    videoUrl: "https://winx777.com/casino/?id=3053",
+  },
+  {
+    name: "Bollywood Casino",
+    image: "/casino_assets/bollywoodcasino.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=btable",
+    videoUrl: "https://winx777.com/casino/?id=3041",
+  },
+  {
+    name: "Andar Bahar 2",
+    image: "/casino_assets/andarbahar2.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=abj",
+    videoUrl: "https://winx777.com/casino/?id=3043",
+  },
+  {
+    name: "20-20 Poker",
+    image: "/casino_assets/poker20.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=poker20",
+    videoUrl: "https://winx777.com/casino/?id=3052",
+  },
+  {
+    name: "Worli Matka",
+    image: "/casino_assets/worlimatka.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=worli",
+    videoUrl: "https://winx777.com/casino/?id=3054",
+  },
+
+  {
+    name: "One Day Poker",
+    image: "/casino_assets/poker1day.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=poker",
+    videoUrl: "https://winx777.com/casino/?id=3051",
+  },
+
+  {
+    name: "Super Over",
+    image: "/casino_assets/superover.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=superover",
+    videoUrl: "https://winx777.com/casino/?id=3060",
+  },
+  {
+    name: "Casino war",
+    image: "/casino_assets/casinowar.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=war",
+    videoUrl: "https://winx777.com/casino/?id=3038",
+  },
+
+  {
+    name: "Cricket Match 20-20",
+    image: "/casino_assets/cmatch20.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=cmatch20",
+    videoUrl: "https://winx777.com/casino/?id=3045",
+  },
+
+  {
+    name: "Queen",
+    image: "/casino_assets/queen.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=queen",
+    videoUrl: "https://winx777.com/casino/?id=3037",
+  },
+  {
+    name: "instant Worli",
+    image: "/casino_assets/worli2.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=worli2",
+    videoUrl: "https://winx777.com/casino/?id=3040",
+  },
+  {
+    name: "Amar Akbar Anthony",
+    image: "/casino_assets/amarakbaranthony.jpg",
+    dataURL:
+      "https://diamondsocket.winx777.com/v1/api/casinoData?casinoType=aaa",
+    videoUrl: "https://winx777.com/casino/?id=3056",
+  },
+];

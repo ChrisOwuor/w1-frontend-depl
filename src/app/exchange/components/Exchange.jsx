@@ -35,6 +35,7 @@ import { CasinoContext } from "@/app/context/CasinoContext";
 import CasinoBets from "./betslip/CasinoBets";
 import CasinoNotifications from "@/app/components/casino_uis/modals/CasinoNotifications";
 import CricketHome from "./events/CricketHome";
+import RaceMarkets from "@/app/components/markets/RaceMarkets";
 
 const Exchange = () => {
   const {
@@ -171,7 +172,11 @@ const Exchange = () => {
                 <div className="col-span-12 grid grid-cols-12 sm:mx-2">
                   <div className="col-span-2 bg-white max-md:hidden">
                     {currentCenter === "event_markets" ? (
-                      <MarketsSidebar />
+                      ["7", "4339"].includes(view.sportId) ? (
+                        <MarketsSidebar />
+                      ) : (
+                        <MarketsSidebar />
+                      )
                     ) : (
                       <Sidebar
                         setSelectedLink={setSelectedLink}
@@ -180,7 +185,7 @@ const Exchange = () => {
                     )}
                   </div>
 
-                  <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray sm:p-2 overflow-y-scroll hide-scrollbar">
+                  <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar">
                     <div className="col-span-1 max-sm:hidden">
                       <div className="w-full">
                         {view != "" && currentCenter == "home" && (
@@ -221,14 +226,15 @@ const Exchange = () => {
                                   <CricketHome />
                                 </div>
                               );
-
                             case "virtualsports":
                               return (
                                 <div className="w-full">
                                   <HorizontalSlides
                                     globalSettings={globalSettings}
                                   />
-                                  <p className="text-lg font-bold leading-loose p-10 text-primary uppercase">{ currentCenter+" "} Coming soon</p>
+                                  <p className="text-lg font-bold leading-loose p-10 text-primary uppercase">
+                                    {currentCenter + " "} Coming soon
+                                  </p>
                                 </div>
                               );
                             case "allcasinos":
@@ -243,16 +249,27 @@ const Exchange = () => {
                             case "event_markets":
                               return (
                                 <div className="relative z-1 cols-span-12  h-full">
-                                  <Markets
-                                    toggleMarketSideBar={toggleMarketSideBar}
-                                    refresh={refresh}
-                                    setRefresh={setRefresh}
-                                    globalSettings={globalSettings}
-                                  />
+                                  {["7", "4339"].includes(view.sportId) ? (
+                                    <RaceMarkets
+                                      toggleMarketSideBar={toggleMarketSideBar}
+                                      refresh={refresh}
+                                      setRefresh={setRefresh}
+                                      globalSettings={globalSettings}
+                                    />
+                                  ) : (
+                                    <Markets
+                                      toggleMarketSideBar={toggleMarketSideBar}
+                                      refresh={refresh}
+                                      setRefresh={setRefresh}
+                                      globalSettings={globalSettings}
+                                    />
+                                  )}
                                 </div>
                               );
                             case "khasino":
                               return <CasinoWindow />;
+                              case "supplycasino":
+                                return <CasinoWindow />;
                             case "p&l":
                               return <ProfitLoss />;
                             case "account":
