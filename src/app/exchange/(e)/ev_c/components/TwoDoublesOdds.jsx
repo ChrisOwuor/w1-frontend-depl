@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Box, Collapse, Group } from '@mantine/core'
-import styling1 from 'src/app/custom_styling/styling'
+import styling1 from '@/app/exchange/(e)/custom_styling/styling'
 import { ExchangeBetslipContext } from 'src/app/context/exchange/UserExchangeBetslipContext';
 
 

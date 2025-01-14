@@ -10,9 +10,8 @@ import Create from "@/app/components/Modal/Create";
 import Login from "@/app/components/Modal/Login";
 
 import { fetchUserData } from "src/app/api/exchange";
-import { NAVContext } from "../../context/NavContext"; 
+import { NAVContext } from "@/app/context/NavContext";
 import LoginPageTopBar from "@/app/components/auth/LoginTopBar";
-import { useRouter } from "next/navigation";
 
 const IconLink = ({
   name,
@@ -20,11 +19,9 @@ const IconLink = ({
   setCurrentPage,
   setView,
   setCurrentCenter,
-  router
 }) => (
   <div
     onClick={() => {
-      router.push('/?')
       setView((prev) => ({
         currentView: "home",
         from: "/",
@@ -108,7 +105,7 @@ const accountDropDownLink = [
   { name: "Profit & Loss", url: "#" },
 ];
 
-export default function Bottom({ toggleSideBar, globalSettings }) {
+export default function CasinoTopbar({  globalSettings }) {
   const [userBal, setUserBal] = useState("");
   const [userExposure, setUserExposure] = useState("");
   const [currentPage, setCurrentPage] = useState("Home");
@@ -218,8 +215,6 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
   };
 
   const [toggle, setToggle] = useState(false);
-
-  const router = useRouter()
 
   useEffect(() => {
     if (userData != "") {
@@ -336,8 +331,8 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
           (globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB"
         }] px-1 w-full flex justify-between gap-x-1 items-center`}
       >
-        <div
-          onClick={toggleSideBar}
+        {/* <div
+          onClick={
           className={`min-w-[40px] md:hidden flex items-center justify-center gap-1 rounded px-2 hover:text-white cursor-pointer`}
           style={{
             whiteSpace: "nowrap",
@@ -350,7 +345,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
             alt="external-menu-100-most-used-icons-flaticons-lineal-color-flat-icons"
             className="bg-white rounded-full h-[24px] w-[24px]"
           />
-        </div>
+        </div> */}
         {currentPage && (
           <div
             className="flex items-center w-full gap-x-1 text-white text-sm overflow"
@@ -369,7 +364,6 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                 setCurrentPage={setCurrentPage}
                 setView={setView}
                 setCurrentCenter={setCurrentCenter}
-                router={router}
               />
             ))}
           </div>

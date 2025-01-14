@@ -22,7 +22,6 @@ import InPlay from "./Inplay";
 import Markets from "../(e)/ev_c/components/Markets";
 import ExBetslip from "./betslip/Betslip";
 import MarketsSidebar from "./MarketsSideBar";
-import MobileMarketsSideBar from "../mobile/components/MobileMarketsSidebar";
 import { getGlobalSetings } from "@/app/api/exchange";
 import CasinoView from "./casino/CasinoView";
 import AccountHome from "./Account";
@@ -39,7 +38,7 @@ import RaceMarkets from "@/app/components/markets/RaceMarkets";
 import GapView from "./casino/GapCasino";
 import { useSearchParams } from "next/navigation";
 
-const Exchange = () => {
+const Casinomain = () => {
   const {
     currentCenter,
     setCurrentCenter,
@@ -175,21 +174,12 @@ const Exchange = () => {
                       globalSettings={globalSettings}
                     />
                   </div>
-                  {/* casino */}
-                  {showCasino && (
-                    <div className="col-span-12 h-full ">
-                      <GapView />
-                    </div>
-                  )}
                 </div>
-
-                {/* exchange */}
                 <div
                   className={`col-span-12 grid grid-cols-12 sm:mx-2 ${
                     showCasino && "hidden"
                   }`}
                 >
-                  {/* side section */}
                   <div className="col-span-2 bg-white max-md:hidden">
                     {currentCenter === "event_markets" ? (
                       ["7", "4339"].includes(view.sportId) ? (
@@ -204,7 +194,7 @@ const Exchange = () => {
                       />
                     )}
                   </div>
-                  {/* center section */}
+
                   <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar">
                     <div className="col-span-1 max-sm:hidden">
                       <div className="w-full">
@@ -337,7 +327,6 @@ const Exchange = () => {
                       />
                     </div>
                   </div>
-                  {/* right section */}
                   <div className="col-span-3 bg-white max-sm:hidden">
                     {activeCasino && currentCenter == "khasino" ? (
                       <>
@@ -349,6 +338,11 @@ const Exchange = () => {
                     )}
                   </div>
                 </div>
+                {showCasino && (
+                  <div className="col-span-12 h-full">
+                    <GapView />
+                  </div>
+                )}
               </div>
             </div>
           ) : (
@@ -363,4 +357,4 @@ const Exchange = () => {
   );
 };
 
-export default Exchange;
+export default Casinomain;

@@ -2,7 +2,7 @@ import { Box, Collapse, Group } from '@mantine/core'
 import React, { useContext, useEffect, useState } from 'react'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import { formatNumber, updateProfit } from 'src/app/exchange/utils/utils';
-import { styling2 } from 'src/app/custom_styling/styling';
+import { styling2 } from '@/app/exchange/(e)/custom_styling/styling';
 import { isAuthenticated } from 'src/app/components/funcStore/authenticate';
 import { AuthContext } from 'src/app/context/AuthContext';
 import { placeBet } from 'src/app/api/exchange/bets';

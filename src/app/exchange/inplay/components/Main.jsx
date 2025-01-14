@@ -1,7 +1,7 @@
 import React from "react";
 import CenterMain from "./events/CenterMain";
 import InPlayCenter from "./events/InplayComponent";
-import SlidingText from "../../ads/SlidingText";
+import SlidingText from "../../components/betslip/ads/SlidingText";
 
 const Main = ({ selectedLink }) => {
 

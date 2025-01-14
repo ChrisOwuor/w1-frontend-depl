@@ -1,4 +1,4 @@
-import { styling1 } from "@/app/custom_styling/styling";
+import { styling1 } from "@/app/exchange/(e)/custom_styling/styling";
 import React, { useEffect, useState } from "react"
 
 

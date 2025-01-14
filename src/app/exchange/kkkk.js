@@ -5,7 +5,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { formatNumber, updateProfit } from 'src/app/exchange/utils/utils';
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
-import { styling2 } from 'src/app/custom_styling/styling';
+import { styling2 } from '@/app/exchange/(e)/custom_styling/styling';
 import { ExchangeBetslipContext } from 'src/app/context/exchange/UserExchangeBetslipContext';
 import { isAuthenticated } from 'src/app/components/funcStore/authenticate';
 import { AuthContext } from 'src/app/context/AuthContext';

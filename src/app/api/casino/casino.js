@@ -32,13 +32,33 @@ export const getTeen2020 = async (casino_id) => {
 
 // gap
 
-export const getGapCasinos = async (casino_code) => {
+export const getGapCasinos = async ({ type, provider, category }) => {
   try {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/casino/getCasinos`,
       {
-        casino_code,
+        type,
+        provider,
+        category
       }
+    );
+
+    const data = response.data;
+    return data.data;
+  } catch (error) {
+    console.error(`Error fetching game data:`, error);
+    return null; // Return null if there's an error
+  }
+};
+
+export const getProviders = async (casino_code) => {
+  try {
+    const token = localStorage.getItem("tk");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/casino/getProviders`
     );
 
     const data = response.data;
@@ -48,6 +68,27 @@ export const getGapCasinos = async (casino_code) => {
     return null; // Return null if there's an error
   }
 };
+
+export const getCategories = async ({provider}) => {
+  try {
+    const token = localStorage.getItem("tk");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/casino/getCategories?p=${provider}`
+    );
+
+    const data = response.data;
+    
+    return data.data;
+  } catch (error) {
+    console.error(`Error fetching game data for ${casino_code}:`, error);
+    return null; // Return null if there's an error
+  }
+};
+
+
 const getip = async () => {
   let clientIp = null;
   let attempts = 0;
@@ -58,7 +99,7 @@ const getip = async () => {
       // Fetch the client's IP address
       const response = await fetch("https://api.ipify.org?format=json");
       const data = await response.json();
-      return data.ip
+      return data.ip;
     } catch (error) {
       attempts++;
       console.error(
@@ -105,16 +146,50 @@ export const launchGame = async (casino) => {
       }
     );
 
-    ;
     // Check the response status
-    if (response &&  response.status === 200) {
-      alert("..")
-      console.log(response.data.data.url)
+    if (response && response.status === 200) {
       // Extract the URL and token
       const gameUrl = response.data.data.url;
       // window.location.replace(gameUrl);
 
-      return {code: 1,gameUrl}
+      return { code: 1, gameUrl };
+    }
+  } catch (error) {
+    console.error("Error launching casino game:", error);
+  }
+};
+export const launchGame2 = async (casino) => {
+  try {
+    // Get the user's token
+    const token = localStorage.getItem("tk");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
+    // Fetch the client's IP address with retry
+    const ip = await getip();
+
+    // Make the API call to launch the game
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/casino/launchCasino`,
+      {
+        game_code: casino.game_code,
+        game_id: casino.game_id,
+        game_name: casino.game_name,
+        sub_provider_name: casino.sub_provider_name,
+        category: casino.category,
+        provider_name: casino.provider_name,
+        clientIp: ip,
+      }
+    );
+
+    // Check the response status
+    if (response && response.status === 200) {
+      // Extract the URL and token
+      const gameUrl = response.data.data.url;
+      // window.location.replace(gameUrl);
+
+      return { code: 1, gameUrl };
     }
   } catch (error) {
     console.error("Error launching casino game:", error);

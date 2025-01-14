@@ -13,7 +13,7 @@ import MobileFooter from "src/app/components/MobileFooter";
 import MobileBottom from "src/app/components/Navbar/MobileBottom";
 import MobileBottomNav from "src/app/components/Navbar/MobileBottomNav";
 import InPlayCenter from "./components/events/InplayComponent";
-import SlidingText from "../ads/SlidingText";
+import SlidingText from "../components/betslip/ads/SlidingText";
 import { useSearchParams } from "next/navigation";
 import { NAVProvider } from "@/app/context/NavContext";
 

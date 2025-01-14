@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
-import { styling2 } from 'src/app/custom_styling/styling';
+import { styling2 } from '@/app/exchange/(e)/custom_styling/styling';
 import { isAuthenticated } from 'src/app/components/funcStore/authenticate';
 import { AuthContext } from 'src/app/context/AuthContext';
 import { fetchUserData } from 'src/app/api/exchange';

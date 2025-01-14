@@ -5,7 +5,7 @@ import Loading from '../Loading';
 import { formatGMTDateTime1, hasDatePassed } from '../../utils/competitionCollase';
 import { EmptyOddCell, NoSelection, OddsComponent } from './OddsComponent';
 import { formatNumber, getIcon, separateTeams, updateProfit } from '../../utils/utils';
-import { styling1 } from 'src/app/custom_styling/styling';
+import { styling1 } from '@/app/exchange/(e)/custom_styling/styling';
 import { isAuthenticated } from 'src/app/components/funcStore/authenticate';
 import { AuthContext } from 'src/app/context/AuthContext';
 import { placeBet } from 'src/app/api/exchange/bets';

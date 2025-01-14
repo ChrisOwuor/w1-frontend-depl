@@ -6,6 +6,7 @@ export const NAVProvider = ({ children }) => {
     const [currentCenter, setCurrentCenter] = useState("home")
     const [activeCasino, setActiveCasino] = useState({})
     const [goToLogin, setGoToLogin] = useState(false)
+    const [currentGame, setCurrentGame] = useState({url: "", source: ""})   
     const [view, setView] = useState({
         currentView: "",
         sideBarShow: true,
@@ -22,7 +23,7 @@ export const NAVProvider = ({ children }) => {
 
     return (
         <NAVContext.Provider
-            value={{ currentCenter, setCurrentCenter, view, setView, goToLogin, setGoToLogin, activeCasino, setActiveCasino }}
+            value={{ currentCenter, setCurrentCenter, view, setView, goToLogin, setGoToLogin, activeCasino, setActiveCasino, currentGame, setCurrentGame }}
         >
             {children}
         </NAVContext.Provider>

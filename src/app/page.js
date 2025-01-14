@@ -10,37 +10,34 @@ import Exchange from "./exchange/components/Exchange";
 import { MarketsProvider } from "./context/exchange/MarketsContext";
 import { MyBetsProvider } from "./context/MybetsContext";
 import { CasinoProvider } from "./context/CasinoContext";
+import { Suspense } from "react";
 
 export default function page() {
-
   return (
     <AuthProvider>
-
       <OpenExchangeEventProvider>
         <UserExchangeBetslipProvider>
           <CompetitionProvider>
             <MarketBookProvider>
               <MarketsProvider>
-
                 <MyBetsProvider>
                   <MantineProvider>
                     <NAVProvider>
                       <CasinoProvider>
                         {/* <SocketProvider> */}
+                        <Suspense fallback={<div>Loading...</div>}>
                           <Exchange />
+                        </Suspense>
                         {/* </SocketProvider> */}
                       </CasinoProvider>
-
                     </NAVProvider>
                   </MantineProvider>
                 </MyBetsProvider>
-
               </MarketsProvider>
             </MarketBookProvider>
           </CompetitionProvider>
         </UserExchangeBetslipProvider>
       </OpenExchangeEventProvider>
-    </AuthProvider >
-
+    </AuthProvider>
   );
 }

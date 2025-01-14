@@ -5,7 +5,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LockIcon from '@mui/icons-material/Lock';
 import Loading from '../inplay/components/Loading';
-import { styling1 } from 'src/app/custom_styling/styling';
+import { styling1 } from '@/app/exchange/(e)/custom_styling/styling';
 import { formatGMTDateTime, hasDatePassed } from 'src/app/exchange/utils/competitionCollase';
 import { formatNumber, getIcon, separateTeams, updateProfit } from 'src/app/exchange/utils/utils';
 import { EmptyOddCell, NoSelection, OddsComponent } from 'src/app/exchange/components/events/OddsComponent';
