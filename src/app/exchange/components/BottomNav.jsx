@@ -10,42 +10,84 @@ import Create from "@/app/components/Modal/Create";
 import Login from "@/app/components/Modal/Login";
 
 import { fetchUserData } from "src/app/api/exchange";
-import { NAVContext } from "../../context/NavContext"; 
+import { NAVContext } from "../../context/NavContext";
 import LoginPageTopBar from "@/app/components/auth/LoginTopBar";
 import { useRouter } from "next/navigation";
-
+import { launchGame } from "@/app/api/casino/casino";
 const IconLink = ({
   name,
   currentPage,
   setCurrentPage,
   setView,
   setCurrentCenter,
-  router
+  router,
 }) => (
   <div
     onClick={() => {
-      router.push('/?')
-      setView((prev) => ({
-        currentView: "home",
-        from: "/",
-        sportName: "",
-        sportId: "",
-        competitionName: "",
-        competitionId: "",
-        eventName: "",
-        eventId: "",
-        showCompetition: false,
-      }));
-      setCurrentPage(name);
-      setCurrentCenter(name.toLowerCase().replace(" ", ""));
-      localStorage.setItem("current_pg", JSON.stringify(name));
+      if (name === "Aviator") {
+        (async (game) => {
+          const loggedIN = isAuthenticated();
+          if (!loggedIN) {
+            setCurrentCenter("userconsent");
+            return;
+          }
+
+          const gamelink = await launchGame({
+            game_code: "spribe_aviator",
+            game_id: "860001",
+            game_name: "Aviator",
+            sub_provider_name: "SPRIBE",
+            category: "Others",
+            provider_name: "SPRIBE",
+          });
+          if (gamelink && gamelink.code == 1) {
+            localStorage.setItem("qq", gamelink.gameUrl);
+            setTimeout(() => {
+              router.push(`/casino?v=v`);
+            }, 100);
+          }
+        })();
+      } else {
+        router.push("/?");
+        setTimeout(()=>{
+          setView((prev) => ({
+            currentView: "home",
+            from: "/",
+            sportName: "",
+            sportId: "",
+            competitionName: "",
+            competitionId: "",
+            eventName: "",
+            eventId: "",
+            showCompetition: false,
+          }));
+          setCurrentPage(name);
+          setCurrentCenter(name.toLowerCase().replace(" ", ""));
+          localStorage.setItem("current_pg", JSON.stringify(name));
+        },300)
+      }
     }}
     className={`${
       currentPage === name ? "text-black" : "text-white"
     } flex justify-center items-center max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer border-r-2 border-black text-sm`}
   >
+    <p className="font-bold text-sm w-full">
+      {name === "Aviator" && <img src="/aviator.png" className="h-6" />}
+    </p>
     <p className="font-bold text-sm w-full" style={{ whiteSpace: "nowrap" }}>
-      {name}
+      {name === "Aviator" ? (
+        <span
+        className="text-sm font-bold"
+        style={{
+          animation: "colorChange 2s infinite",
+          color: "red",
+        }}
+      >
+        Aviator
+      </span>
+      ) : (
+        name
+      )}
     </p>
   </div>
 );
@@ -55,9 +97,13 @@ const AccountDropdownLink = ({
   setView,
   setToggle,
   setCurrentCenter,
+  router
 }) => (
+
+
   <div
     onClick={() => {
+      router.push("/?")
       setView((prev) => ({
         currentView: "home",
         from: "/",
@@ -71,8 +117,9 @@ const AccountDropdownLink = ({
       }));
       setToggle((prev) => !prev);
       setCurrentCenter(link.code);
+      
     }}
-    className="flex items-center border-b border-darkstroke p-1.5 hover:bg-green-500/[0.2] cursor-pointer"
+    className="flex items-center border-b border-darkstroke p-1.5 hover:bg-yellow-500/[0.5] cursor-pointer"
   >
     <p
       className="font-medium text-md text-black"
@@ -89,6 +136,7 @@ const topLinks = [
   { name: "Cricket" },
   { name: "Football" },
   { name: "Tennis" },
+  { name: "Aviator" },
   { name: "Basketball" },
   { name: "Virtual Sports" },
   { name: "All Casinos" },
@@ -112,6 +160,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
   const [userBal, setUserBal] = useState("");
   const [userExposure, setUserExposure] = useState("");
   const [currentPage, setCurrentPage] = useState("Home");
+  const router = useRouter();
 
   const [opened, setOpened] = useState(false);
   const [openedCreate, setOpenedCreate] = useState(false);
@@ -219,7 +268,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
 
   const [toggle, setToggle] = useState(false);
 
-  const router = useRouter()
+ 
 
   useEffect(() => {
     if (userData != "") {
@@ -242,7 +291,6 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
         className="flex w-full justify-between items-center text-center px-2"
       >
         <div
-        
           onClick={() => window.location.reload()}
           className="cursor-pointer w-auto h-26 flex items-center justify-center"
         >
@@ -266,26 +314,26 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
           ) : (
             <div className="relative ml-1 space-x-2 flex items-center w-full">
               <div
-                className={`flex items-center justify-end gap-x-4 px-1 rounded font-bold max-mk:hidden w-full border-none py-2 cursor-pointer hover:bg-green-500/[0.2]`}
+                className={`flex items-center justify-end gap-x-4 px-1 rounded font-bold max-mk:hidden w-full border-none py-2`}
                 onClick={() => setToggle((prev) => !prev)}
               >
                 <div className="flex flex-col">
-                  <div className="text-sm flex items-center gap-x-1">
-                    <p className="text-white">Main PTI</p>
-                    <p className="text-white">
+                  <div className="text-md flex items-center gap-x-1 justify-end">
+                    <p className="text-white">Main PTI:</p>
+                    <p className="text-success leading-loose font-bold">
                       {userBal != "" ? parseFloat(userBal).toFixed(2) : "--"}
                     </p>
                   </div>
-                  <div className="text-sm flex items-center gap-x-1">
-                    <p className="text-gray-200">Exposure</p>
+                  <div className="text-md flex items-center gap-x-1 justify-end">
+                    <p className="text-white">Exposure:</p>
                     <p className="text-red-500">
                       {userExposure != ""
                         ? `${parseFloat(userExposure).toFixed(2)}`
-                        : "--"}
+                        : "0.00"}
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center cursor-pointer">
                   <img
                     src="https://img.icons8.com/material-outlined/24/user-male-circle.png"
                     alt="profile"
@@ -296,9 +344,15 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
               {toggle && (
                 <div className="bg-white rounded shadow-lg shadow-black min-w-[12vw] w-full right-0 top-16 absolute z-999">
                   <div className="flex flex-col w-full">
-                    <div className="flex items-center bg-[#E5E7EB] p-1.5 rounded-t">
+                    <div className="flex items-center bg-[#E5E7EB] p-1.5 rounded-t justify-between">
                       <p className="text-black font-bold text-sm tracking-small">
-                        exchange
+                        MENU
+                      </p>
+                      <p
+                        className="text-danger font-bold text-sm tracking-small cursor-pointer"
+                        onClick={() => setToggle((prev) => !prev)}
+                      >
+                        X
                       </p>
                     </div>
                     {accountDropDownLink.map((link, i) => (
@@ -308,6 +362,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                         setView={setView}
                         setToggle={setToggle}
                         setCurrentCenter={setCurrentCenter}
+                        router={router}
                       />
                     ))}
                     <div className="flex justify-center items-center p-2">

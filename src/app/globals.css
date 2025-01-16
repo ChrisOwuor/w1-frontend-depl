@@ -366,3 +366,19 @@ html {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* WebKit browsers */
 }
+
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  33% {
+    color: rgba(39, 55, 197, 0.953);
+  }
+  66% {
+    color: rgb(105, 238, 2);
+  }
+  100% {
+    color: rgb(34, 0, 0);
+  }
+}

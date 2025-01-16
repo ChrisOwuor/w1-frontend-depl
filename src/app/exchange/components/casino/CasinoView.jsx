@@ -1,6 +1,6 @@
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
 import { NAVContext } from "@/app/context/NavContext";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { casinoGames } from "../../constants";
 import {
   getCategories,
@@ -9,8 +9,13 @@ import {
   launchGame,
 } from "@/app/api/casino/casino";
 import { useRouter } from "next/navigation";
+import CategoryScroll from "./Scroll";
+import ProviderScroll from "./Scroll2";
 
 const CasinoHome = ({ globalSettings }) => {
+  const providerRef = useRef(null);
+  const gamesRef = useRef(null);
+  const categoriesRef = useRef(null);
   const router = useRouter();
   const { setCurrentCenter, setActiveCasino, setCurrentGame } =
     useContext(NAVContext);
@@ -84,9 +89,6 @@ const CasinoHome = ({ globalSettings }) => {
       return;
     }
 
-    // setCurrentCenter("supplycasino");
-    // setActiveGame(game);
-    // setActiveCasino(game);
     const gamelink = await launchGame(game);
     if (gamelink && gamelink.code == 1) {
       // setCurrentGame({ url: gamelink.gameUrl, source: "gap" });
@@ -99,21 +101,56 @@ const CasinoHome = ({ globalSettings }) => {
 
   const GameList = () => (
     <>
-      <div className="flex items-center bg-black overflow-x-auto scrollbar-hide">
-        {casinoGames.map((game, index) => (
-          <p
-            key={index}
-            className={`font-bold uppercase px-4 py-4 text-xs rounded-[40px] whitespace-nowrap  ${
-              activeGame?.name === game.name
-                ? "bg-warning text-black"
-                : "border-r border-gray-100 text-white"
-            }`}
-            onClick={() => handleClick(game)}
+      <div className="relative">
+        {/* Scroll Buttons */}
+        <div className="absolute inset-y-0 left-0 flex items-center">
+          <button
+            className="bg-black text-white px-2 py-1 rounded-full"
+            onClick={() => {
+              if (gamesRef.current) {
+                gamesRef.current.scrollBy({ left: -150, behavior: "smooth" });
+              }
+            }}
           >
-            {game.name}
-          </p>
-        ))}
+            &#8592;
+          </button>
+        </div>
+        <div className="absolute inset-y-0 right-0 flex items-center">
+          <button
+            className="bg-black text-white px-2 py-1 rounded-full"
+            onClick={() => {
+              if (gamesRef.current) {
+                gamesRef.current.scrollBy({ left: 150, behavior: "smooth" });
+              }
+            }}
+          >
+            &#8594;
+          </button>
+        </div>
+
+        {/* Games List */}
+        <div
+          ref={gamesRef}
+          className="flex items-center bg-black overflow-x-auto scrollbar-hide"
+        >
+          {casinoGames.map((game, index) => (
+            <p
+              key={index}
+              className={`font-bold uppercase px-4 py-4 text-xs rounded-[40px] whitespace-nowrap ${
+                activeGame?.name === game.name
+                  ? "bg-warning text-black"
+                  : "border-r border-gray-100 text-white"
+              }`}
+              onClick={() => handleClick(game)}
+            >
+              {game.name}
+            </p>
+          ))}
+        </div>
       </div>
+
+      
+    
       <div className="grid md:grid-cols-4 grid-cols-3 gap-6 pt-4">
         {casinoGames.map((game, index) => (
           <div
@@ -156,29 +193,16 @@ const CasinoHome = ({ globalSettings }) => {
 
   const GapList = () => (
     <>
-      {/* {currentTab !== 0 && (
-        
-      )} */}
+   
 
-      <div className="flex items-center bg-black gap-x-2 overflow-x-auto px-4 py-2 scrollbar-hide">
-        {currentTab === 0 ? (
-          ""
-        ) : categories.length > 0 ? (
-          categories.map((categoryItem, index) => (
-            <p
-              key={index}
-              className={`font-medium uppercase hover:border-b  text-xs px-4 py-1 rounded-[20px] whitespace-nowrap cursor-pointer transition-all duration-700 ease-in-out  text-white ${
-                category === categoryItem.category
-                  ? "border-yellow-400 border"
-                  : "border-r border-gray-100"
-              } `}
-              onClick={() => setCategory(categoryItem.category)}
-            >
-              {categoryItem.category}
-            </p>
-          ))
-        ) : ""}
-      </div>
+      <CategoryScroll
+        currentTab={currentTab}
+        categories={categories}
+        category={category}
+        setCategory={setCategory}
+      />
+
+   
 
       <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 px-4 gap-6 mt-4">
         {gapcasinoGames.map((game, index) => (
@@ -215,60 +239,13 @@ const CasinoHome = ({ globalSettings }) => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex items-center w-full gap-x-4 bg-primary text-white overflow-x-auto scrollbar-hide">
-        <div
-          className={`text-sm whitespace-nowrap sm:text-md font-bold cursor-pointer py-3 px-2 sm:px-4 ${
-            currentTab === 0 ? "bg-warning text-black" : ""
-          }`}
-          onClick={() => {
-            setCurrentTab(0);
-            setCategory("");
-          }}
-        >
-          POPULAR CASINO
-        </div>
-        <div
-          className={`text-sm whitespace-nowrap sm:text-md font-bold cursor-pointer py-3 px-2 sm:px-4 ${
-            currentTab === 1 ? "bg-warning text-black" : ""
-          }`}
-          onClick={() => {
-            setCurrentTab(1);
-            setCategory("");
-          }}
-        >
-          ALL CASINO
-        </div>
-        <div
-          className={`text-sm whitespace-nowrap sm:text-md font-bold cursor-pointer py-3 px-2 sm:px-4 ${
-            currentTab === 2 ? "bg-warning text-black" : ""
-          }`}
-          onClick={() => {
-            setCurrentTab(2);
-            setCategory("");
-          }}
-        >
-          OTHER CASINO
-        </div>
-        {providers &&
-          providers.map((provider) => {
-            return (
-              <div
-                key={provider.provider_name}
-                className={`uppercase text-sm whitespace-nowrap sm:text-md font-bold cursor-pointer py-3 px-2 sm:px-4 ${
-                  currentTab === provider.provider_name
-                    ? "bg-warning text-black"
-                    : ""
-                }`}
-                onClick={() => {
-                  setCurrentTab(provider.provider_name);
-                  setCategory("");
-                }}
-              >
-                {provider.provider_name}
-              </div>
-            );
-          })}
-      </div>
+
+      <ProviderScroll
+        currentTab={currentTab}
+        setCategory={setCategory}
+        setCurrentTab={setCurrentTab}
+        providers={providers}
+      />
 
       {currentTab == 2 ? (
         <>
