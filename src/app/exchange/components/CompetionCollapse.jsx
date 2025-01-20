@@ -290,7 +290,7 @@ const CompetionCollapse = ({ competitionTitle, flicker, matches, sportName, even
                                         <span className={`${styling1.teamNames} mr-2`}>{team1} {" v "} {team2}</span>
                                         {
                                           pass ?
-                                            <span className={`text-sm sm:text-md  tracking-wide font-bold ${flicker ? "text-danger" : "text-success"}`}>In Play</span> :
+                                            <span className={`text-xs sm:text-md  tracking-wide font-bold ${flicker ? "text-danger" : "text-success"}`}>In Play</span> :
                                             <p className='text-sm sm:text-md  tracking-wide text-black font-bold'>{date_.date}{" "} {date_.time}</p>
                                         }
                                       </div>

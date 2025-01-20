@@ -100,7 +100,7 @@ export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalS
                 </div>
                 <div
                     onClick={() => {
-                        setCurrentCenter("inplay")
+                        setCurrentCenter("in-play")
                     }}
                 >
                     <p className="flex flex-col items-center tracking-wide ">

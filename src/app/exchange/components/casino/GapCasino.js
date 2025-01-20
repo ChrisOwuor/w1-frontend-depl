@@ -9,11 +9,12 @@ import { launchGame2 } from "@/app/api/casino/casino";
 import Bottom from "../BottomNav";
 import { getGlobalSetings } from "@/app/api/exchange";
 import CasinoTopbar from "../CasinoTopbar";
+import Mobilebottom from "../Mobilebottom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const GapView = () => {
-  const {currentCenter, setCurrentCenter } = useContext(NAVContext);
+  const { currentCenter, setCurrentCenter } = useContext(NAVContext);
   const searchParams = useSearchParams();
 
   const [loading, setLoading] = useState(true); // Track loading state
@@ -50,17 +51,15 @@ const GapView = () => {
       console.error(error);
     }
   };
-  
 
   return (
     <div className="flex flex-col  w-full h-[100vh] text-black">
-      <Bottom
-        // toggleSideBar={toggleSideBar}
+      {/* <Bottom
         setCurrentCenter={setCurrentCenter}
         globalSettings={globalSettings}
-      />
+      /> */}
       {loading ? (
-        <div className="text-xl font-bold">Loading...</div> // Display loading message
+        <div className="text-xl font-bold">Loading...</div>
       ) : qq ? (
         <iframe
           src={qq}
@@ -72,6 +71,10 @@ const GapView = () => {
       ) : (
         <div className="text-xl font-bold">Game data not available.</div>
       )}
+      <Mobilebottom
+        setCurrentCenter={setCurrentCenter}
+        globalSettings={globalSettings}
+      />
     </div>
   );
 };

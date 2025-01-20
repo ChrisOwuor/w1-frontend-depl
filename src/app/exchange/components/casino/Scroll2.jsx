@@ -63,7 +63,7 @@ const ProviderScroll = ({  currentTab, setCategory, setCurrentTab, providers }) 
         >
           ALL CASINO
         </div>
-        <div
+        {/* <div
           className={`text-sm whitespace-nowrap sm:text-md font-bold cursor-pointer py-3 px-2 sm:px-4 ${
             currentTab === 2 ? "bg-warning text-black" : ""
           }`}
@@ -73,7 +73,7 @@ const ProviderScroll = ({  currentTab, setCategory, setCurrentTab, providers }) 
           }}
         >
           OTHER CASINO
-        </div>
+        </div> */}
         {providers &&
           providers.map((provider) => (
             <div

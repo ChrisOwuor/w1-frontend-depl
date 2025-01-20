@@ -49,7 +49,7 @@ const IconLink = ({
         })();
       } else {
         router.push("/?");
-        setTimeout(()=>{
+        setTimeout(() => {
           setView((prev) => ({
             currentView: "home",
             from: "/",
@@ -64,7 +64,7 @@ const IconLink = ({
           setCurrentPage(name);
           setCurrentCenter(name.toLowerCase().replace(" ", ""));
           localStorage.setItem("current_pg", JSON.stringify(name));
-        },300)
+        }, 300);
       }
     }}
     className={`${
@@ -77,14 +77,14 @@ const IconLink = ({
     <p className="font-bold text-sm w-full" style={{ whiteSpace: "nowrap" }}>
       {name === "Aviator" ? (
         <span
-        className="text-sm font-bold"
-        style={{
-          animation: "colorChange 2s infinite",
-          color: "red",
-        }}
-      >
-        Aviator
-      </span>
+          className="text-sm font-bold"
+          style={{
+            animation: "colorChange 2s infinite",
+            color: "red",
+          }}
+        >
+          Aviator
+        </span>
       ) : (
         name
       )}
@@ -97,13 +97,11 @@ const AccountDropdownLink = ({
   setView,
   setToggle,
   setCurrentCenter,
-  router
+  router,
 }) => (
-
-
   <div
     onClick={() => {
-      router.push("/?")
+      router.push("/?");
       setView((prev) => ({
         currentView: "home",
         from: "/",
@@ -117,7 +115,6 @@ const AccountDropdownLink = ({
       }));
       setToggle((prev) => !prev);
       setCurrentCenter(link.code);
-      
     }}
     className="flex items-center border-b border-darkstroke p-1.5 hover:bg-yellow-500/[0.5] cursor-pointer"
   >
@@ -153,7 +150,7 @@ const accountDropDownLink = [
     url: "/profile/accounts-statements",
     code: "ac_statements",
   },
-  { name: "Profit & Loss", url: "#" },
+  { name: "Profit & Loss", url: "/?", code: "p&l" },
 ];
 
 export default function Bottom({ toggleSideBar, globalSettings }) {
@@ -268,8 +265,6 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
 
   const [toggle, setToggle] = useState(false);
 
- 
-
   useEffect(() => {
     if (userData != "") {
       const bal = parseFloat(userData.availableBalance);
@@ -291,8 +286,8 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
         className="flex w-full justify-between items-center text-center px-2"
       >
         <div
-          onClick={() => window.location.reload()}
-          className="cursor-pointer w-auto h-26 flex items-center justify-center"
+            onClick={() => window.location.replace("/")}
+          className="cursor-pointer w-auto h-10 sm:h-26 flex items-center justify-center"
         >
           {globalSettings && globalSettings.businessLogo && (
             <img
@@ -389,7 +384,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
         }}
         className={`bg-[${
           (globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB"
-        }] px-1 w-full flex justify-between gap-x-1 items-center`}
+        }] px-1 w-full flex justify-between gap-x-1 items-center max-sm:hidden`}
       >
         <div
           onClick={toggleSideBar}
