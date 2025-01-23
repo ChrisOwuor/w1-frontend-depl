@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import axios from "axios";
-
+import MenuIcon from '@mui/icons-material/Menu';
 import { isAuthenticated } from "../funcStore/authenticate";
 import { AuthContext } from "src/app/context/AuthContext";
 
@@ -13,14 +13,15 @@ import Login from "../Modal/Login";
 import { fetchUserData } from "src/app/api/exchange";
 import UserConsentWizard from "../Modal/UserConsentWizard";
 import { NAVContext } from "@/app/context/NavContext";
+import { Menu } from "@mui/icons-material";
 
-export default function MobileBottom({ toggleSideBar, globalSettings }) {
+export default function MobileBottom ({ toggleSideBar, globalSettings }) {
   const [currentPage, setCurrentPage] = useState("");
   const [opened, setOpened] = useState(false);
   const [openedCreate, setOpenedCreate] = useState(false);
   const [loggedIN, setLoggedIN] = useState(false);
   const [disable, setDisable] = useState(false);
-  const { currentCenter, setCurrentCenter } = useContext(NAVContext);
+  const { currentCenter, setCurrentCenter, setNewMobileNavOpen, newMobileNavOpen } = useContext(NAVContext);
   const {
     openUserconsentwizard,
     setOpenUserconsentwizard,
@@ -167,11 +168,14 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
     >
       <div className="w-full flex justify-start items-center">
         <div
-          onClick={() => window.location.reload()}
-          className="cursor-pointer w-auto h-14 flex items-center justify-center"
+
+          className={` ${loggedIN ? "h-12" : "h-14"} cursor-pointer w-auto h-12 flex items-center justify-start gap-0`}
         >
+          <MenuIcon fontSize={`${loggedIN ? "large" : "large"}`} onClick={() => { setNewMobileNavOpen (!newMobileNavOpen) }} />
+
           {globalSettings && globalSettings.businessLogo && (
             <img
+              // onClick={() => window.location.reload()}
               src={
                 globalSettings?.businessLogo &&
                 `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
@@ -198,43 +202,41 @@ export default function MobileBottom({ toggleSideBar, globalSettings }) {
           </div>
         ) : (
           <div
-            className={`flex items-center gap-x-4 px-1 rounded font-bold py-2 cursor-pointer text-white  text-[0.8rem]`}
+            className={`inline-flex items-center  px-1 rounded font-bold py-2 cursor-pointer text-white  text-[0.8rem]`}
             onClick={() =>
               isScreenSmall === "false" && setToggle((prev) => !prev)
             }
           >
             <div className="flex flex-col ">
-              <div className="flex items-center gap-x-2 text-sm">
-                <p>Balance</p>
+                <div className="flex items-center gap-x-2  ">
+                  <p className="text-[11px] font-[900] text-[#feff00] uppercase">Balance :</p>
                 {userData != {} && userData.availableBalance ? (
-                  <p className="text-green-400">
+                  <p className="white">
                     {parseInt(userData.availableBalance).toFixed(2)}
                   </p>
                 ) : (
-                  <p className="text-green-400">{`--`}</p>
+                  <p className="white">0</p>
                 )}
               </div>
-              <div className="flex items-center gap-x-2 text-sm">
-                <p>Exposure</p>
+              <div className="flex items-center gap-x-2  ">
+                  <p className="text-[11px] font-[900] text-[#feff00] uppercase">Exposure :</p>
 
                 {userData != {} && userData.exposure ? (
-                  <p className="text-red-500">
+                  <p className="text-white">
                     {parseInt(userData.exposure).toFixed(2)}
                   </p>
                 ) : (
                   <p className="text-white">
-                    (<span className="text-red-500">0.00</span>)
+                    (<span className="text-white">0</span>)
                   </p>
                 )}
               </div>
             </div>
-            <Button
-              disabled={disable}
-              onClick={handleLogout}
-              className="inline-block rounded-md border-none bg-gray-700  px-3 py-1 hover:bg-orange-500/[0.2] text-gray-200 text-sm"
-            >
-              Logout
-            </Button>
+             
+                <div className="text-[#feff00] rounded-[2px] text-[600] uppercase px-[5px] py-[2px] ml-[10px] text-[11px] border-[#feff00] border-[1px]">
+                  Demo123
+                </div>
+           
           </div>
         )}
       </div>

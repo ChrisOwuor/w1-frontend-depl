@@ -4,48 +4,89 @@ import axios from "axios";
 
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
 import { AuthContext } from "src/app/context/AuthContext";
-
+import MenuIcon from '@mui/icons-material/Menu';
 import { Modal } from "@mantine/core";
 import Create from "@/app/components/Modal/Create";
 import Login from "@/app/components/Modal/Login";
 
 import { fetchUserData } from "src/app/api/exchange";
-import { NAVContext } from "../../context/NavContext"; 
+import { NAVContext } from "../../context/NavContext";
 import LoginPageTopBar from "@/app/components/auth/LoginTopBar";
 import { useRouter } from "next/navigation";
-
+import { launchGame } from "@/app/api/casino/casino";
 const IconLink = ({
   name,
   currentPage,
   setCurrentPage,
   setView,
   setCurrentCenter,
-  router
+  router,
 }) => (
   <div
     onClick={() => {
-      router.push('/?')
-      setView((prev) => ({
-        currentView: "home",
-        from: "/",
-        sportName: "",
-        sportId: "",
-        competitionName: "",
-        competitionId: "",
-        eventName: "",
-        eventId: "",
-        showCompetition: false,
-      }));
-      setCurrentPage(name);
-      setCurrentCenter(name.toLowerCase().replace(" ", ""));
-      localStorage.setItem("current_pg", JSON.stringify(name));
+      if (name === "Aviator") {
+        (async (game) => {
+          const loggedIN = isAuthenticated();
+          if (!loggedIN) {
+            setCurrentCenter("userconsent");
+            return;
+          }
+
+          const gamelink = await launchGame({
+            game_code: "spribe_aviator",
+            game_id: "860001",
+            game_name: "Aviator",
+            sub_provider_name: "SPRIBE",
+            category: "Others",
+            provider_name: "SPRIBE",
+          });
+          if (gamelink && gamelink.code == 1) {
+            localStorage.setItem("qq", gamelink.gameUrl);
+            setTimeout(() => {
+              router.push(`/casino?v=v`);
+            }, 100);
+          }
+        })();
+      } else {
+        router.push("/?");
+        setTimeout(() => {
+          setView((prev) => ({
+            currentView: "home",
+            from: "/",
+            sportName: "",
+            sportId: "",
+            competitionName: "",
+            competitionId: "",
+            eventName: "",
+            eventId: "",
+            showCompetition: false,
+          }));
+          setCurrentPage(name);
+          setCurrentCenter(name.toLowerCase().replace(" ", ""));
+          localStorage.setItem("current_pg", JSON.stringify(name));
+        }, 300)
+      }
     }}
-    className={`${
-      currentPage === name ? "text-black" : "text-white"
-    } flex justify-center items-center max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer border-r-2 border-black text-sm`}
+    className={`${currentPage === name ? "text-black" : "text-white"
+      } flex justify-center items-center max-mk:px-3 py-2 px-6 gap-x-1 cursor-pointer border-r-2 border-black text-sm`}
   >
+    <p className="font-bold text-sm w-full">
+      {name === "Aviator" && <img src="/aviator.png" className="h-6" />}
+    </p>
     <p className="font-bold text-sm w-full" style={{ whiteSpace: "nowrap" }}>
-      {name}
+      {name === "Aviator" ? (
+        <span
+          className="text-sm font-bold"
+          style={{
+            animation: "colorChange 2s infinite",
+            color: "red",
+          }}
+        >
+          Aviator
+        </span>
+      ) : (
+        name
+      )}
     </p>
   </div>
 );
@@ -55,9 +96,13 @@ const AccountDropdownLink = ({
   setView,
   setToggle,
   setCurrentCenter,
+  router
 }) => (
+
+
   <div
     onClick={() => {
+      router.push("/?")
       setView((prev) => ({
         currentView: "home",
         from: "/",
@@ -71,8 +116,9 @@ const AccountDropdownLink = ({
       }));
       setToggle((prev) => !prev);
       setCurrentCenter(link.code);
+
     }}
-    className="flex items-center border-b border-darkstroke p-1.5 hover:bg-green-500/[0.2] cursor-pointer"
+    className="flex items-center border-b border-darkstroke p-1.5 hover:bg-yellow-500/[0.5] cursor-pointer"
   >
     <p
       className="font-medium text-md text-black"
@@ -89,6 +135,7 @@ const topLinks = [
   { name: "Cricket" },
   { name: "Football" },
   { name: "Tennis" },
+  { name: "Aviator" },
   { name: "Basketball" },
   { name: "Virtual Sports" },
   { name: "All Casinos" },
@@ -108,10 +155,11 @@ const accountDropDownLink = [
   { name: "Profit & Loss", url: "#" },
 ];
 
-export default function Bottom({ toggleSideBar, globalSettings }) {
+export default function Bottom ({ toggleSideBar, globalSettings }) {
   const [userBal, setUserBal] = useState("");
   const [userExposure, setUserExposure] = useState("");
   const [currentPage, setCurrentPage] = useState("Home");
+  const router = useRouter();
 
   const [opened, setOpened] = useState(false);
   const [openedCreate, setOpenedCreate] = useState(false);
@@ -219,7 +267,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
 
   const [toggle, setToggle] = useState(false);
 
-  const router = useRouter()
+
 
   useEffect(() => {
     if (userData != "") {
@@ -234,6 +282,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
 
   return (
     <div className="w-full flex flex-col max-h-35">
+      
       <div
         style={{
           backgroundColor:
@@ -241,22 +290,25 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
         }}
         className="flex w-full justify-between items-center text-center px-2"
       >
+       
         <div
-        
           onClick={() => window.location.reload()}
-          className="cursor-pointer w-auto h-26 flex items-center justify-center"
+          className="cursor-pointer outline-1 sm:h-14 lg:h-14 h-8 flex items-center justify-start"
         >
           {globalSettings && globalSettings.businessLogo && (
-            <img
-              src={
-                globalSettings?.businessLogo &&
-                `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
-              }
-              alt=""
-              className="h-full w-full object-cover"
-            />
+            <>
+              <img
+                src={
+                  globalSettings?.businessLogo &&
+                  `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
+                }
+                alt=""
+                className="h-full w-full object-cover"
+              /></>
           )}
         </div>
+
+        
 
         <div className="flex gap-1 items-center justify-end min-w-[15vw]">
           {!loggedIN ? (
@@ -266,39 +318,53 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
           ) : (
             <div className="relative ml-1 space-x-2 flex items-center w-full">
               <div
-                className={`flex items-center justify-end gap-x-4 px-1 rounded font-bold max-mk:hidden w-full border-none py-2 cursor-pointer hover:bg-green-500/[0.2]`}
-                onClick={() => setToggle((prev) => !prev)}
+                className={`flex items-center justify-end gap-x-1 rounded font-bold max-mk:hidden w-full border-none py-2`}
               >
-                <div className="flex flex-col">
-                  <div className="text-sm flex items-center gap-x-1">
-                    <p className="text-white">Main PTI</p>
-                    <p className="text-white">
-                      {userBal != "" ? parseFloat(userBal).toFixed(2) : "--"}
+                <div className="flex items-center align-middle gap-x-4">
+                <div className=" hidden md2:block" >                 
+                      <input
+                        onChange={(e) => { e.value }}
+                        id=""
+                        name=""
+                        type="text"
+                        placeholder="Search Events"
+                        className="block rounded-md focus:border-gray border-gray w-72 text-sm  py-1 pl-3 pr-3 text-black placeholder:text-black font-thin  "
+                      />
+                    
+                  </div>
+
+                  <div className=" flex items-center gap-x-1 justify-end">
+                      <p className="text-[#feff00] uppercase text-[16px] font-[900] text-center "> Balance:</p>
+                      <p className="text-white text-[16px] font-[900]">
+                      {userBal != "" ? parseFloat(userBal).toFixed(2) : "0"}
                     </p>
                   </div>
-                  <div className="text-sm flex items-center gap-x-1">
-                    <p className="text-gray-200">Exposure</p>
-                    <p className="text-red-500">
+                  <div className=" flex items-center gap-x-1 justify-end">
+                      <p className="text-[#feff00] uppercase text-[16px] font-[900]">Exposure:</p>
+                      <p className="text-white text-[16px] font-[900]">
                       {userExposure != ""
                         ? `${parseFloat(userExposure).toFixed(2)}`
-                        : "--"}
+                        : "0"}
                     </p>
                   </div>
+
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://img.icons8.com/material-outlined/24/user-male-circle.png"
-                    alt="profile"
-                    className="w-[28px] h-[28px] bg-white rounded-full"
-                  />
+                <div className="flex flex-col justify-center items-center cursor-pointer">
+                  <div className="text-accent  border border-accent rounded text-xs px-2 py-1 font-bold leading-tight" onClick={() => setToggle((prev) => !prev)}>DEMO-22</div>
                 </div>
               </div>
               {toggle && (
                 <div className="bg-white rounded shadow-lg shadow-black min-w-[12vw] w-full right-0 top-16 absolute z-999">
                   <div className="flex flex-col w-full">
-                    <div className="flex items-center bg-[#E5E7EB] p-1.5 rounded-t">
+                    <div className="flex items-center bg-[#E5E7EB] p-1.5 rounded-t justify-between">
                       <p className="text-black font-bold text-sm tracking-small">
-                        exchange
+                        MENU
+                      </p>
+                      <p
+                        className="text-danger font-bold text-sm tracking-small cursor-pointer"
+                        onClick={() => setToggle((prev) => !prev)}
+                      >
+                        X
                       </p>
                     </div>
                     {accountDropDownLink.map((link, i) => (
@@ -308,6 +374,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                         setView={setView}
                         setToggle={setToggle}
                         setCurrentCenter={setCurrentCenter}
+                        router={router}
                       />
                     ))}
                     <div className="flex justify-center items-center p-2">
@@ -332,48 +399,9 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
           backgroundColor:
             (globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB",
         }}
-        className={`bg-[${
-          (globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB"
-        }] px-1 w-full flex justify-between gap-x-1 items-center`}
-      >
-        <div
-          onClick={toggleSideBar}
-          className={`min-w-[40px] md:hidden flex items-center justify-center gap-1 rounded px-2 hover:text-white cursor-pointer`}
-          style={{
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          <img
-            src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-menu-100-most-used-icons-flaticons-lineal-color-flat-icons.png"
-            alt="external-menu-100-most-used-icons-flaticons-lineal-color-flat-icons"
-            className="bg-white rounded-full h-[24px] w-[24px]"
-          />
-        </div>
-        {currentPage && (
-          <div
-            className="flex items-center w-full gap-x-1 text-white text-sm overflow"
-            ref={containerRef}
-            style={{
-              msOverflowStyle: "none",
-              scrollbarWidth: "none",
-              overflow: "auto",
-            }}
-          >
-            {topLinks.map((modes, index) => (
-              <IconLink
-                key={index}
-                name={modes.name}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                setView={setView}
-                setCurrentCenter={setCurrentCenter}
-                router={router}
-              />
-            ))}
-          </div>
-        )}
+        className={`bg-[${(globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB"
+          }] px-1 w-full flex justify-between gap-x-1 items-center`}
+      >     
         <Modal
           opened={openUserconsentwizard}
           onClose={() => handleCloseLogin()}

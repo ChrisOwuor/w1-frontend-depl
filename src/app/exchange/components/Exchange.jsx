@@ -38,6 +38,13 @@ import CricketHome from "./events/CricketHome";
 import RaceMarkets from "@/app/components/markets/RaceMarkets";
 import GapView from "./casino/GapCasino";
 import { useSearchParams } from "next/navigation";
+import Sidebar2 from "./Sidebar2";
+import TopCasinoGames from "./events/TopCasinoGames";
+import Populars2 from "./events/Populars2";
+import CasinoProvider from "./events/CasinoProvider";
+import CasinoPopulars from "./events/CasinoPopulars";
+import FooterKhiladi from "@/app/components/FooterKhiladi";
+import MobileBottomNavKhiladi from "@/app/components/Navbar/MobileBottomNavKhiladi";
 
 const Exchange = () => {
   const {
@@ -47,6 +54,7 @@ const Exchange = () => {
     goToLogin,
     activeCasino,
     setGoToLogin,
+    newMobileNavOpen,
   } = useContext(NAVContext);
   const { openBetForm, message } = useContext(CasinoContext);
   const [globalSettings, setGlobalSettings] = useState({});
@@ -147,29 +155,27 @@ const Exchange = () => {
               {message !== "" && (
                 <div className="fixed top-0 left-0 right-0 z-99999 overflow-hidden">
                   <div
-                    className={`w-full flex items-start justify-center transition-transform duration-500 ${
-                      visible ? "slide-in" : "slide-out"
-                    }`}
+                    className={`w-full flex items-start justify-center transition-transform duration-500 ${visible ? "slide-in" : "slide-out"
+                      }`}
                   >
                     <CasinoNotifications />
                   </div>
                 </div>
               )}
-              <div className=" text-white grid grid-cols-12 bg-white">
+              <div className=" text-white grid grid-cols-12 bg-gray">
                 {/* <Navbar /> */}
                 <div
-                  className={`col-span-12 ${
-                    showCasino ? "" : "sticky"
-                  } top-0 z-9999`}
+                  className={`col-span-12 ${showCasino ? "" : "sticky"
+                    } top-0 z-9999`}
                 >
-                  <div className="max-sm:hidden">
+                  <div className="max-kh:hidden">
                     <Bottom
                       toggleSideBar={toggleSideBar}
                       setCurrentCenter={setCurrentCenter}
                       globalSettings={globalSettings}
                     />
                   </div>
-                  <div className="sm:hidden">
+                  <div className="kh:hidden">
                     <MobileBottom
                       toggleSideBar={toggleSideBar}
                       globalSettings={globalSettings}
@@ -184,13 +190,21 @@ const Exchange = () => {
                 </div>
 
                 {/* exchange */}
+
                 <div
-                  className={`col-span-12 grid grid-cols-12 sm:mx-2 ${
-                    showCasino && "hidden"
-                  }`}
+                  className={`col-span-12 flex sm:mx-2 ${showCasino && "idden"
+                    }`}
                 >
+                  {/* <div
+                  className={`col-span-12 grid grid-cols-12 sm:mx-2 ${showCasino && "hidden"
+                    }`}
+                > */}
                   {/* side section */}
-                  <div className="col-span-2 bg-white max-md:hidden">
+                    <div className={` ${newMobileNavOpen ? "block bg-white absolute z-30 w-[240px] " : "hidden bg-white fixed"} shadow-md  kh:block h-screen  kh:w-[240px] w-0 `}  >
+                    <Sidebar2 setSelectedLink={setSelectedLink}
+                      activeLink={selectedLink} />
+                  </div>
+                  {/* <div className="col-span-2 bg-white max-md:hidden">
                     {currentCenter === "event_markets" ? (
                       ["7", "4339"].includes(view.sportId) ? (
                         <MarketsSidebar />
@@ -203,9 +217,14 @@ const Exchange = () => {
                         activeLink={selectedLink}
                       />
                     )}
-                  </div>
+                  </div> */}
                   {/* center section */}
-                  <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar">
+                  {/* <div className="  bg-green-200  overflow-y-scroll hide-scrollbar ml-[256px] h-screen w-[calc(100%-256px)]">
+                    hello from center
+                    </div> */}
+                    <div className="bg-[#f6f9ff]  overflow-y-scroll hide-scrollbar w-full  kh:ml-[256px]  ml:0 h-screen kh:w-[calc(100%-240px)] ">
+
+                    {/* <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar"> */}
                     <div className="col-span-1 max-sm:hidden">
                       <div className="w-full">
                         {view != "" && currentCenter == "home" && (
@@ -227,8 +246,10 @@ const Exchange = () => {
                                   <HorizontalSlides
                                     globalSettings={globalSettings}
                                   />
-                                  <Populars />
-                                  <CasinoView globalSettings={globalSettings} />
+                                  <TopCasinoGames />
+                                  <Populars2 />
+                                  {/* <CasinoView globalSettings={globalSettings} /> */}
+                                  <CasinoProvider />
                                 </div>
                               );
                             case "cricket":
@@ -260,10 +281,11 @@ const Exchange = () => {
                             case "allcasinos":
                               return (
                                 <div className="w-full">
-                                  <HorizontalSlides
+                                  {/* <HorizontalSlides
                                     globalSettings={globalSettings}
-                                  />
-                                  <CasinoView globalSettings={globalSettings} />
+                                  /> */}
+                                  {/* <CasinoView globalSettings={globalSettings} /> */}
+                                  <CasinoPopulars/>
                                 </div>
                               );
                             case "event_markets":
@@ -296,12 +318,21 @@ const Exchange = () => {
                               return <AccountHome />;
                             case "sports":
                               return (
-                                <MobileSideBar
-                                  setSelectedLink={setSelectedLink}
-                                  activeLink={selectedLink}
-                                  toggleSideBar={toggleSideBar}
-                                />
+                                <div className="w-full">
+                                  <HorizontalSlides
+                                    globalSettings={globalSettings}
+                                  />
+                                  <Populars2 />
+                                  {/* <CasinoView globalSettings={globalSettings} /> */}
+                                </div>
                               );
+                            // return (
+                            //   <MobileSideBar
+                            //     setSelectedLink={setSelectedLink}
+                            //     activeLink={selectedLink}
+                            //     toggleSideBar={toggleSideBar}
+                            //   />
+                            // );
                             case "userconsent":
                               return (
                                 <div className="fixed top-0 z-999 bottom-0 right-0 left-0 flex justify-center items-center bg-black/[0.85]">
@@ -322,23 +353,32 @@ const Exchange = () => {
                         })()}
                     </div>
 
-                    <div className="max-mk:hidden py-10 ">
-                      <Footer />
+                    <div className="max-mk:hidden  ">
+                        {/* <Footer /> */}
+                        <FooterKhiladi globalSettings={globalSettings}/>
                     </div>
-                    <div className="mk:hidden w-full p-2">
-                      <MobileFooter globalSettings={globalSettings} />
+                    <div className="mk:hidden w-full pb-[70px]">
+                        {/* <MobileFooter globalSettings={globalSettings} /> */}
+                        <FooterKhiladi globalSettings={globalSettings} />
                     </div>
-                    <div className="mk:hidden fixed bottom-0 right-0 left-0 z-99999">
-                      <MobileBottomNav
+                    <div className="mk:hidden ">
+                      {/* <MobileBottomNav
                         setCurrentCenter={setCurrentCenter}
                         toggleSideBar={toggleSideBar}
                         setHideSideBar={setHideSideBar}
                         globalSettings={globalSettings}
-                      />
+                        /> */}
+                         <MobileBottomNavKhiladi
+                        setCurrentCenter={setCurrentCenter}
+                        toggleSideBar={toggleSideBar}
+                        setHideSideBar={setHideSideBar}
+                        globalSettings={globalSettings} />
                     </div>
+                     
+                    {/* </div> */}
                   </div>
                   {/* right section */}
-                  <div className="col-span-3 bg-white max-sm:hidden">
+                  {/* <div className="col-span-3 bg-white max-sm:hidden">
                     {activeCasino && currentCenter == "khasino" ? (
                       <>
                         <PlaceBetCasino />
@@ -347,7 +387,7 @@ const Exchange = () => {
                     ) : (
                       <ExBetslip />
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

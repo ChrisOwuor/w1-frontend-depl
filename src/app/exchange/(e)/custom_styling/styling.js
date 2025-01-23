@@ -1,4 +1,20 @@
 const styling1 = {
+  teamNames: ``,
+  oddsStyle: ``,
+  backOdd: ``,
+  backOdd2: ``,
+  backOddTie: ``,
+  layOdd: ``,
+
+  layOdd2: ``,
+  layOddTie: ``,
+  oddsT1: ``,
+  oddsP: ``,
+  oddsText2: "",
+  oddsText1: "",
+  sidebyside: ""
+};
+const styling1s = {
   teamNames: `md:text-md text-md font-bold tracking-wider text-blue-500`,
   oddsStyle: ` flex flex-col justify-center items-center py-1 rounded-sm w-full  cursor-pointer`,
   backOdd: `bg-[#78B5EA]/[0.9] col-span-1 w-full hover:border border-gray-200  shadow-lg`,
@@ -14,7 +30,6 @@ const styling1 = {
   oddsText1: "text-[0.8rem] text-gray-50 tracking-wider font-bold ",
   sidebyside: "bg-gray-100/[0.5] items-center border border-gray-600 rounded"
 };
-
 const styling4 = {
   teamNames: `p_2 tracking-wider text-gray-200 `,
   oddsStyle: `md:max-h-[35px] flex flex-col justify-center items-center py-1 rounded-sm w-full  cursor-pointer`,

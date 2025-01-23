@@ -4,7 +4,7 @@
   "private": true,
   "author": "raptor",
   "scripts": {
-    "dev": "next dev -p 3336",
+    "dev": "next dev -p 3339",
     "build": "next build",
     "start": "next start -p 3336",
     "lint": "next lint"

@@ -100,7 +100,7 @@ export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalS
                 </div>
                 <div
                     onClick={() => {
-                        setCurrentCenter("inplay")
+                        setCurrentCenter("in-play")
                     }}
                 >
                     <p className="flex flex-col items-center tracking-wide ">
@@ -136,7 +136,9 @@ export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalS
                     //     ...prev,
                     //     currentView: ""
                     // }))
+                    setCurrentCenter("allcasinos")
                     toggleSideBar()
+            
                 }} className={`flex items-center justify-center gap-1  rounded  px-2 hover:text-white cursor-pointer`} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
 
                     <p className="flex flex-col items-center tracking-wide ">
@@ -147,7 +149,7 @@ export default function MobileBottomNav({ toggleSideBar, setHideSideBar, globalS
                         />
 
 
-                        <span className="text-sm font-medium text-gray-300">Multi M..</span>
+                        <span className="text-sm font-medium text-gray-300">Casino</span>
                     </p>
 
                 </div>

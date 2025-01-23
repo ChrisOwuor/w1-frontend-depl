@@ -153,7 +153,7 @@ export default function MobileSideBar({ setSelectedLink, activeLink, toggleSideB
                                     return (
                                       <p
                                         key={index}
-                                        className={`text-md font-bold cursor-pointer truncate flex w-full px-2 py-1 tracking-wide font-bold border-b border-primary/[0.1] text-primary hover:bg-gray-400 ${competition_.series_id == view.competitionId && "bg-orange-500/[0.1]"}`}
+                                        className={`text-md cursor-pointer truncate flex w-full px-2 py-1 tracking-wide font-bold border-b border-primary/[0.1] text-primary hover:bg-gray-400 ${competition_.series_id == view.competitionId && "bg-orange-500/[0.1]"}`}
                                         onClick={() => {
                                           toggleSideBar()
                                           setCurrentCenter("events")

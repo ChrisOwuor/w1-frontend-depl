@@ -7,7 +7,7 @@ const Loading = ({ stylings, globalSettings }) => {
       <Loader color="text-white" type="dots" size={20} />
       {
         globalSettings ?     <p className="text-2xl md:text-xl font-bold">
-        <span className="text-white">LOADING ...</span>
+        <span className="text-black">LOADING ...</span>
       </p> :
       ""
       }

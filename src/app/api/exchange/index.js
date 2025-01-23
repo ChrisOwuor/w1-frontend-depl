@@ -16,6 +16,21 @@ export const fetchPopularSportsEvents = async () => {
     return [];
   }
 };
+export const fetchHomeSportsEvents = async () => {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange/hightlights`;
+    const res = await axios.get(url);
+    if (res && res.data) {
+      // console.log(res.data)
+      return res.data.popular;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 
 
 export const getSportHomeMatch = async (sp) => {

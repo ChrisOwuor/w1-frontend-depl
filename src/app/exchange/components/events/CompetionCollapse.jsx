@@ -15,11 +15,6 @@ import { NAVContext } from '@/app/context/NavContext';
 import { CompetitionContext } from '@/app/context/exchange/CompetitonContext';
 
 
-
-
-
-
-
 const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName }) => {
   const [betObj, setBetObj] = useState({})
   const [selectedEventId, setSelectedEventId] = useState(null);
@@ -217,11 +212,11 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                         if (styling1) {
                           return (
                             <div key={i}>
-                              <div className="grid grid-cols-12 items-center md:grid-cols-12 border-b border-black/[0.2] gap-x-2 cursor-pointer">
+                              <div className="outline outline-1 rounded-sm  grid grid-cols-12 items-center md:grid-cols-12 border-b border-black/[0.2] gap-x-2 cursor-pointer">
 
-                                <div className="rounded col-span-12 mk:grid-cols-12 grid flex flex-col">
+                                <div className=" col-span-12 mk:grid-cols-12 grid  flex-col">
                                   {/* event name */}
-                                  <div className="max-sm: hidden col-span-4 mk:col-span-8 md:col-span-7 text-black hover:bg-gray-900 cursor-pointer   items-center rounded py-1" onClick={() => handleEventClick(match)} >
+                                  <div className="max-sm: hidden outline outline-1 col-span-4 mk:col-span-8 md:col-span text-[#4f0a9b] hover:bg-gray-900 cursor-pointer  items-center rounded py-1" onClick={() => handleEventClick(match)} >
                                     <div className='flex items-center p-1 justify-between '>
                                       <div className="flex items-center gap-1">
                                         <p className={`${styling1.teamNames}`}>{team1}</p>
@@ -344,7 +339,7 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                                             />}
                                           </div>
                                           <div>
-                                            {prices && prices.runners && prices.runners[0].ex.availableToLay && prices.runners[0].ex.availableToLay.length > 0 ? (
+                                            {prices && prices.runners && prices.runners[0].ex.availableToBack && prices.runners[0].ex.availableToBack.length > 0 ? (
                                               <OddsComponent
                                                 styling1={styling1}
                                                 eventName={match.match_name}
@@ -352,15 +347,16 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                                                 marketName={match.market_name}
                                                 team={team1}
                                                 selectionId={prices.runners[0].selectionId}
-                                                price={prices.runners[0].ex.availableToLay[0].price}
-                                                size={formatNumber(prices.runners[0].ex.availableToLay[0].size)}
+                                                price={prices.runners[0].ex.availableToBack[0].price}
+                                                size={formatNumber(prices.runners[0].ex.availableToBack[0].size)}
                                                 handlePlaceBet={handleEventPlaceBet}
                                                 dontShowSize={true}
                                                 setSelectedOdd={setSelectedEventId}
                                                 eventId={eId}
-                                                type="lay"
+                                                type="back"
 
                                               />
+
                                             ) : prices && prices.runners && prices.runners[0] && prices.runners[0].selectionId ? (
                                               <EmptyOddCell
                                                 styling1={styling1}
@@ -373,11 +369,11 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                                                 dontShowSize={true}
                                                 setSelectedOdd={setSelectedEventId}
                                                 eventId={eId}
-                                                type="lay"
+                                                type="back"
 
                                               />
                                             ) : <NoSelection dontShowSize={true}
-                                              type="lay"
+                                              type="back"
                                             />}
                                           </div>
                                         </div>
@@ -690,11 +686,11 @@ const CompetionCollapse = ({ matches, opened, marketsBook, sportId, sportName })
                                               </div>
                                             )
                                       }
-                                      <div className="col-span-1 flex items-center justify-center">
+                                      {/* <div className="col-span-1 flex items-center justify-center">
                                         <div className="ms:hidden flex items-center justify-center">
                                           <PushPinIcon fontSize='medium' className='border rounded-full text-black/[0.5]' />
                                         </div>
-                                      </div>
+                                      </div> */}
                                     </div>
                                   </div>
                                 </div>

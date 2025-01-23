@@ -23,7 +23,7 @@ const HorizontalSlides = ({ globalSettings }) => {
       
       <div
         id="center_main_top_flag"
-        className={`relative w-full sm:h-[250px] h-[15vh] ${banners.length === 0 ? 'bg-gray-800' : ''}`}
+        className={`relative mb-4 w-full sm:h-[40vh] h-[15vh] ${banners.length === 0 ? 'bg-gray-800' : ''}`}
         style={{ backgroundColor: banners.length === 0 ? '#333' : '' }}
       >
         {banners.length === 0 ? (
@@ -37,7 +37,7 @@ const HorizontalSlides = ({ globalSettings }) => {
               src={`${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${ad}`}
               alt={`Banner ${i + 1}`}
               style={{ display: i === current ? 'block' : 'none' }}
-              className="w-full sm:h-[250px] h-full object-cover ease-in-out duration-500"
+              className="w-full h-full object-cover ease-in-out duration-500"
             />
           ))
         )}

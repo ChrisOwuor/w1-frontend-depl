@@ -16,9 +16,10 @@ export const theme = {
     screens: {
       sm: "576px",
       // => @media (min-width: 576px) { ... }
-      mk: "700px",
+      mk: "768px",
       mm: "870px",
       md: "1300px",
+      
       // => @media (min-width: 960px) { ... }
       md1: "1000px",
       // => @media (min-width: 1000px) { ... }
@@ -30,6 +31,9 @@ export const theme = {
       // => @media (min-width: 1400px) { ... }
       lg: "1440px",
       // => @media (min-width: 1440px) { ... }
+      kh: '768px',
+      // => @media (min-width: 768px) { ... }
+
     },
     colors: {
       current: 'currentColor',
@@ -45,6 +49,7 @@ export const theme = {
       primary: '#002C5C',
       primary2: "#42C8B7",
       primary3: "#0A5BAB",
+      accent: "#FEFF01",
       accent1: '#DAA520',
       secondary: '#1A73E8',
       'secondary-dark': '#0D4F8C',
@@ -265,6 +270,12 @@ export const theme = {
         '0%, 100%': { transform: 'rotate(360deg)' },
         '50%': { transform: 'rotate(0deg)' },
       },
+      colorChange: {
+        '0%': { color: 'red' },
+        '33%': { color: 'white' },
+        '66%': { color: 'yellow' },
+        '100%': { color: 'red' },
+      },
     },
     animation: {
       'ping-once': 'ping 5s cubic-bezier(0, 0, 0.2, 1)',
@@ -272,6 +283,7 @@ export const theme = {
       'spin-1.5': 'spin 1.5s linear infinite',
       'spin-2': 'spin 2s linear infinite',
       'spin-3': 'spin 3s linear infinite',
+      'color-change': 'colorChange 3s infinite',
     },
     darkMode: "class",
     keyframes: {
