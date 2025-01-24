@@ -206,7 +206,7 @@ const CompetionCollapseTwo = ({ competitionTitle, matches, opened, marketsBook, 
               </div>
             </Group>
 
-            <Collapse in={openedd} className="text-white py-1 w-full">
+            <Collapse in={openedd} className="text-white py-1 w-full px-2">
               {/* LEAGUES */}
               <div className='flex gap-x-4 w-full'>
                 <div className="w-full">

@@ -78,7 +78,7 @@ const ProfitLoss = () => {
             <tbody className="">
               {userData != {} && pl && pl.length > 0 && pl.reverse().map((item, index) => (
                 <tr key={index} className="border-b border-l border-r border-black/[0.3] hover:bg-gray-900/[0.5]">
-                  <td className={`${stylings.body}`}>{item.sportName}</td>
+                  <td className={`${stylings.body}`}>{item.sportName || item.gameName}</td>
                   <td className={`${stylings.body}`}>{item.profitLoss < 0 ? <span className="text-red-500">{parseFloat(item.profitLoss).toFixed(2)}</span> : <span className="text-green-400">{parseFloat(item.profitLoss).toFixed(2)}</span>}</td>
                 </tr>
               ))}

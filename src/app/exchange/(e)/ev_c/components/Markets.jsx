@@ -4,6 +4,7 @@ import DoneOutlineTwoToneIcon from "@mui/icons-material/DoneOutlineTwoTone";
 import MarketComponent from "./MarketComponent";
 import { CompetitionContext } from "src/app/context/exchange/CompetitonContext";
 import { separateTeams } from "src/app/exchange/utils/utils";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import {
   fetchEventInnings,
   fetchEventIncidents,
@@ -29,6 +30,7 @@ import SoccerScores2 from "@/app/exchange/components/scoreboard/Soccer2";
 import TennisScoreboard from "@/app/exchange/components/scoreboard/TennisScoreboard";
 import ScoreboardCricket from "@/app/exchange/components/scoreboard/ScoreboardCricket";
 import MarketComponentKheladi from "./MarketComponentKheladi";
+import { BarChart, Info } from "@mui/icons-material";
 
 const Markets = ({
   toggleMarketSideBar,
@@ -282,6 +284,11 @@ const Markets = ({
   const event_ = localStorage.getItem("2kts");
   const event = JSON.parse(event_);
   targetTime = event?.event?.openDate;
+  console.log({ premiumMkts })
+  console.log({ otherMarkets })
+  console.log({ premiumCategories })
+  console.log(teamNames);
+  
 
   return (
     <div className="">
@@ -289,7 +296,7 @@ const Markets = ({
       {teamNames.length === 2 ? (
         <>
           {/* scores */}
-          <div className="flex flex-col w-full">
+          {/* <div className="flex flex-col w-full">
             {!loadin && scores != {} ? (
               <>
                 {spName === "Soccer" && (
@@ -345,10 +352,194 @@ const Markets = ({
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
           {/* end scores */}
+          <div className="main-markets-section">
+            <div
+              _ngcontent-xck-c91=""
+              class="market-details"
+              bis_skin_checked="1"
+            >
+              <div
+                class="event-title flex justify-between"
+                bis_skin_checked="1"
+              >
+                <div
+                  _ngcontent-xck-c91=""
+                  class="p-0 pl-[0.25rem]"
+                  bis_skin_checked="1"
+                >
+                  <p _ngcontent-xck-c91="" class="m-0 ">
+                    {teamNames[0]} vs {teamNames[1]}
+                    <br _ngcontent-xck-c91="" />
+                  </p>
+                </div>
+                <div
+                  _ngcontent-xck-c91=""
+                  class="tv-icon-div d-flex align-items-center"
+                  bis_skin_checked="1"
+                ></div>
+              </div>
+              <div
+                class="tv-icon-div flex justify-center"
+                bis_skin_checked="1"
+              ></div>
+            </div>
 
-          <div className="md:hidden flex items-center bg-[#E0E6E6] p-2 gap-x-2 w-full overflow-x-auto scrollbar-hidden">
+            <div className="mkt-cont ">
+              <div className="tab-top tabs_theme nav-justified tab-container">
+                {otherMarkets === "premium" && (
+                  <ul
+                    style={{
+                      msOverflowStyle: "none",
+                      scrollbarWidth: "none",
+                      overflow: "auto",
+                      maxWidth: "100%",
+                    }}
+                    className=" nav nav-pills"
+                  >
+                    {premiumCategories.length > 0 && (
+                      <>
+                        {/* <li
+                          style={{ whiteSpace: "nowrap" }}
+                          onClick={() => {
+                            setCurrentMkt({
+                              mkt_name: "All",
+                              mkt_id: "",
+                            });
+                            toggleMarketSideBar();
+                          }}
+                        >
+                          <a
+                            _ngcontent-xck-c40=""
+                            href="javascript:void(0);"
+                            role="tab"
+                            className={`${
+                              currentMkt.mkt_name === "Popular"
+                                ? "bg-[#4f0a9b] text-[#ff0] "
+                                : "bg-gray-500"
+                            } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                            aria-controls="tab1"
+                            aria-selected="true"
+                            id="tab1-link"
+                          >
+                            <span _ngcontent-xck-c40="">all</span>
+                          </a>
+                        </li> */}
+                        <li
+                          style={{ whiteSpace: "nowrap" }}
+                          onClick={() => {
+                            setCurrentMkt({
+                              mkt_name: "Popular",
+                              mkt_id: "",
+                            });
+                          }}
+                        >
+                          <a
+                            _ngcontent-xck-c40=""
+                            href="javascript:void(0);"
+                            role="tab"
+                            className={`${
+                              currentMkt.mkt_name === "Popular"
+                                ? "bg-[#4f0a9b] text-[#ff0] "
+                                : "bg-gray-500"
+                            } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                            aria-controls="tab1"
+                            aria-selected="true"
+                            id="tab1-link"
+                          >
+                            <span _ngcontent-xck-c40="">All</span>
+                          </a>
+                        </li>
+                      </>
+                    )}
+                    <>
+                      {premiumCategories.length > 0 &&
+                        premiumCategories.map((mkts, i) => (
+                          <li
+                            key={i}
+                            style={{ whiteSpace: "nowrap" }}
+                            onClick={() => {
+                              setCurrentMkt({
+                                mkt_name: mkts.marketName,
+                                mkt_id: mkts.marketId,
+                              });
+                              // toggleMarketSideBar()
+                            }}
+                          >
+                            <a
+                              _ngcontent-xck-c40=""
+                              href="javascript:void(0);"
+                              role="tab"
+                              className={`${
+                                currentMkt.mkt_name === mkts.marketName
+                                  ? "bg-[#4f0a9b] text-[#ff0] "
+                                  : "bg-gray-500"
+                              } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                              aria-controls="tab1"
+                              aria-selected="true"
+                              id="tab1-link"
+                            >
+                              <span _ngcontent-xck-c40="">
+                                {mkts.marketName}{" "}
+                              </span>
+                            </a>
+                          </li>
+                        ))}
+                    </>
+                  </ul>
+                )}
+                {/* <ul class="nav nav-pills">
+                  <li _ngcontent-xck-c40="" class="active nav-item">
+                    <a
+                      _ngcontent-xck-c40=""
+                      href="javascript:void(0);"
+                      role="tab"
+                      class="nav-link active"
+                      aria-controls="tab1"
+                      aria-selected="true"
+                      id="tab1-link"
+                    >
+                      <span _ngcontent-xck-c40="">all</span>
+                    </a>
+                  </li>
+
+                  <li _ngcontent-xck-c40="" class="active nav-item">
+                    <a
+                      _ngcontent-xck-c40=""
+                      href="javascript:void(0);"
+                      role="tab"
+                      class="nav-link active"
+                      aria-controls="tab1"
+                      aria-selected="true"
+                      id="tab1-link"
+                    >
+                      <span _ngcontent-xck-c40="">Match Odds</span>
+                    </a>
+                  </li>
+                  <li _ngcontent-xck-c40="" class="active nav-item">
+                    <a
+                      _ngcontent-xck-c40=""
+                      href="javascript:void(0);"
+                      role="tab"
+                      class="nav-link active"
+                      aria-controls="tab1"
+                      aria-selected="true"
+                      id="tab1-link"
+                    >
+                      <span _ngcontent-xck-c40="">BookMaker</span>
+                    </a>
+                  </li>
+                </ul> */}
+                <div className="tab-content">
+                  <div className="tab-pane"></div>
+                </div>
+              </div>
+              <div className="tab-bottom"></div>
+            </div>
+          </div>
+          {/* below navbar */}
+          {/* <div className="md:hidden flex items-center bg-[#E0E6E6] p-2 gap-x-2 w-full overflow-x-auto scrollbar-hidden">
             <div
               className={`p-2 flex items-center justify-center rounded-full text-black ${
                 currentMkt.mkt_name === "All"
@@ -412,9 +603,9 @@ const Markets = ({
                   </div>
                 ))}
             </div>
-          </div>
+          </div> */}
 
-          <div className="flex flex-col  items-center gap-1">
+          <div className="">
             {mkts != undefined &&
               mkts.map((market, i) => {
                 if (currentMkt.mkt_name === "Popular") {
@@ -454,7 +645,7 @@ const Markets = ({
               })}
           </div>
 
-          <div className="flex flex-col  items-center gap-1">
+          <div className="">
             {mkts != undefined &&
               mkts.map((market, i) => {
                 if (currentMkt.mkt_name === "Popular") {
@@ -493,7 +684,7 @@ const Markets = ({
                 return null;
               })}
           </div>
-          <div className="flex flex-col  items-center gap-1">
+          <div className="">
             {mkts != undefined &&
               mkts.map((market, i) => {
                 if (market.marketName === currentMkt.mkt_name) {
@@ -572,7 +763,7 @@ const Markets = ({
           </div>
 
           {currentMkt.mkt_name === "Popular" && (
-            <div className="flex flex-col w-full bg-red-200  items-center gap-1 p-1 mt-4">
+            <div className=" w-full bg-red-200   ">
               {evId != "" && (
                 <div className="w-full">
                   <BookmakerMarketComponent
@@ -586,14 +777,14 @@ const Markets = ({
             </div>
           )}
 
-          <div className="flex flex-col">
-            <div
-              className={`${
-                otherMarkets === "premium" ? "bg-[#087887]" : "bg-[#DB4E08]"
-              } w-full`}
-            >
-              {/* market heading */}
-              <div className="flex text-white items-center gap-x-2 w-full border-b border-gray-900/[0.5] ">
+          {/* <div className="flex flex-col"> */}
+          <div
+            className={`${
+              otherMarkets === "premium" ? "bg-[#087887]" : "bg-[#DB4E08]"
+            } w-full`}
+          >
+            {/* market heading */}
+            {/* <div className="flex text-white items-center gap-x-2 w-full border-b border-gray-900/[0.5] ">
                 <p
                   className={`mk:text-[1rem] text-[0.833rem] ${
                     otherMarkets === "premium" ? "bg-[#087887]" : "bg-[#087887]"
@@ -621,10 +812,10 @@ const Markets = ({
                 >
                   Fancy Markets
                 </p>
-              </div>
+              </div> */}
 
-              {/* fancy market navbar */}
-              {otherMarkets === "fancy" && (
+            {/* fancy market navbar */}
+            {/* {otherMarkets === "fancy" && (
                 <div
                   className="flex flex-nowrap overflow-x-auto mt-1 gap-x-2 bg-[#087887]/[0.5]"
                   style={{
@@ -663,9 +854,9 @@ const Markets = ({
                       </p>
                     ))}
                 </div>
-              )}
-              {/* premium market navbar */}
-              {otherMarkets === "premium" && (
+              )} */}
+            {/* premium market navbar */}
+            {/* {otherMarkets === "premium" && (
                 <div
                   className="flex flex-nowrap overflow-x-auto mt-1 gap-x-2"
                   style={{
@@ -704,11 +895,11 @@ const Markets = ({
                       </p>
                     ))}
                 </div>
-              )}
-            </div>
+              )} */}
+          </div>
 
-            {/* fancy market component */}
-            {evId != "" && otherMarkets === "fancy" && (
+          {/* fancy market component */}
+          {/* {evId != "" && otherMarkets === "fancy" && (
               <div className="w-full">
                 <FancyMarketComponent
                   setRefresh={setRefresh}
@@ -718,10 +909,10 @@ const Markets = ({
                   openedd={false}
                 />
               </div>
-            )}
+            )} */}
 
-            {/* premium market component */}
-            {otherMarkets === "premium" && (
+          {/* premium market component */}
+          {/* {otherMarkets === "premium" && (
               <MarketGrid
                 otherMarkets={otherMarkets}
                 mkts={premiumMkts}
@@ -734,8 +925,8 @@ const Markets = ({
                 spName={spName}
                 evName={evName}
               />
-            )}
-          </div>
+            )} */}
+          {/* </div> */}
         </>
       ) : (
         <Loading stylings={"min-h-[70vh]"} />

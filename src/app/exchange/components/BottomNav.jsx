@@ -64,7 +64,11 @@ const IconLink = ({
           setCurrentPage(name);
           setCurrentCenter(name.toLowerCase().replace(" ", ""));
           localStorage.setItem("current_pg", JSON.stringify(name));
+<<<<<<< HEAD
         }, 300)
+=======
+        }, 300);
+>>>>>>> 5a09635a94bcf9f060dc291f992939aab1e38388
       }
     }}
     className={`${currentPage === name ? "text-black" : "text-white"
@@ -96,13 +100,11 @@ const AccountDropdownLink = ({
   setView,
   setToggle,
   setCurrentCenter,
-  router
+  router,
 }) => (
-
-
   <div
     onClick={() => {
-      router.push("/?")
+      router.push("/?");
       setView((prev) => ({
         currentView: "home",
         from: "/",
@@ -116,7 +118,10 @@ const AccountDropdownLink = ({
       }));
       setToggle((prev) => !prev);
       setCurrentCenter(link.code);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5a09635a94bcf9f060dc291f992939aab1e38388
     }}
     className="flex items-center border-b border-darkstroke p-1.5 hover:bg-yellow-500/[0.5] cursor-pointer"
   >
@@ -152,7 +157,7 @@ const accountDropDownLink = [
     url: "/profile/accounts-statements",
     code: "ac_statements",
   },
-  { name: "Profit & Loss", url: "#" },
+  { name: "Profit & Loss", url: "/?", code: "p&l" },
 ];
 
 export default function Bottom ({ toggleSideBar, globalSettings }) {
@@ -267,8 +272,11 @@ export default function Bottom ({ toggleSideBar, globalSettings }) {
 
   const [toggle, setToggle] = useState(false);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5a09635a94bcf9f060dc291f992939aab1e38388
   useEffect(() => {
     if (userData != "") {
       const bal = parseFloat(userData.availableBalance);
@@ -292,8 +300,13 @@ export default function Bottom ({ toggleSideBar, globalSettings }) {
       >
        
         <div
+<<<<<<< HEAD
           onClick={() => window.location.reload()}
           className="cursor-pointer outline-1 sm:h-14 lg:h-14 h-8 flex items-center justify-start"
+=======
+            onClick={() => window.location.replace("/")}
+          className="cursor-pointer w-auto h-10 sm:h-26 flex items-center justify-center"
+>>>>>>> 5a09635a94bcf9f060dc291f992939aab1e38388
         >
           {globalSettings && globalSettings.businessLogo && (
             <>
@@ -399,9 +412,54 @@ export default function Bottom ({ toggleSideBar, globalSettings }) {
           backgroundColor:
             (globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB",
         }}
+<<<<<<< HEAD
         className={`bg-[${(globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB"
           }] px-1 w-full flex justify-between gap-x-1 items-center`}
       >     
+=======
+        className={`bg-[${
+          (globalSettings && globalSettings.topMenuBgColor) || "#0A5BAB"
+        }] px-1 w-full flex justify-between gap-x-1 items-center max-sm:hidden`}
+      >
+        <div
+          onClick={toggleSideBar}
+          className={`min-w-[40px] md:hidden flex items-center justify-center gap-1 rounded px-2 hover:text-white cursor-pointer`}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          <img
+            src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-menu-100-most-used-icons-flaticons-lineal-color-flat-icons.png"
+            alt="external-menu-100-most-used-icons-flaticons-lineal-color-flat-icons"
+            className="bg-white rounded-full h-[24px] w-[24px]"
+          />
+        </div>
+        {currentPage && (
+          <div
+            className="flex items-center w-full gap-x-1 text-white text-sm overflow"
+            ref={containerRef}
+            style={{
+              msOverflowStyle: "none",
+              scrollbarWidth: "none",
+              overflow: "auto",
+            }}
+          >
+            {topLinks.map((modes, index) => (
+              <IconLink
+                key={index}
+                name={modes.name}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                setView={setView}
+                setCurrentCenter={setCurrentCenter}
+                router={router}
+              />
+            ))}
+          </div>
+        )}
+>>>>>>> 5a09635a94bcf9f060dc291f992939aab1e38388
         <Modal
           opened={openUserconsentwizard}
           onClose={() => handleCloseLogin()}

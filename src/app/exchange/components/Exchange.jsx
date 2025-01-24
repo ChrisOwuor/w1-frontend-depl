@@ -45,6 +45,7 @@ import CasinoProvider from "./events/CasinoProvider";
 import CasinoPopulars from "./events/CasinoPopulars";
 import FooterKhiladi from "@/app/components/FooterKhiladi";
 import MobileBottomNavKhiladi from "@/app/components/Navbar/MobileBottomNavKhiladi";
+import MarketsKheladi from "../(e)/ev_c/components/MarketsKheladi";
 
 const Exchange = () => {
   const {
@@ -304,7 +305,13 @@ const Exchange = () => {
                                       refresh={refresh}
                                       setRefresh={setRefresh}
                                       globalSettings={globalSettings}
-                                    />
+                                      />
+                                      // <MarketsKheladi
+                                      // toggleMarketSideBar={toggleMarketSideBar}
+                                      // refresh={refresh}
+                                      // setRefresh={setRefresh}
+                                      // globalSettings={globalSettings}
+                                      // />
                                   )}
                                 </div>
                               );
