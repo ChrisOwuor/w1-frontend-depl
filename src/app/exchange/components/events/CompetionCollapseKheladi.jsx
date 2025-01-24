@@ -23,7 +23,6 @@ import { NAVContext } from "@/app/context/NavContext";
 import { CompetitionContext } from "@/app/context/exchange/CompetitonContext";
 
 const CompetionCollapseKheladi = ({
-  isLive,
   matches,
   opened,
   marketsBook,

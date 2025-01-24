@@ -8,9 +8,10 @@ import CompetionCollapseKheladi from "./CompetionCollapseKheladi";
 import { Add } from "@mui/icons-material";
 import { FaCheck } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import { FaSearch } from "react-icons/fa";
 import { hasDatePassed } from "../../utils/competitionCollase";
 
-const Populars2 = () => {
+const Inplay = () => {
   const { currentCompetition } = useContext(CompetitionContext);
   const [opened, setOpened] = useState(true);
   const [marketsBook, setMarketsBook] = useState([]);
@@ -20,6 +21,7 @@ const Populars2 = () => {
   const [isLive, setisLive] = useState(false);
   const [activeComp, setActiveComp] = useState("All");
   const [activeSport, setActiveSport] = useState("4");
+  const [activeTime, setActiveTime] = useState("LIVE BETTING");
   const [activeSportName, setActiveSportName] = useState("Cricket");
   const [popular, setPopular] = useState([]);
   const [fetched, setFetched] = useState(false);
@@ -135,21 +137,65 @@ const Populars2 = () => {
     }
   };
   return (
-    <div className="mx-[1%]">
+    <div className="mx-[10px]">
       {/* mobile */}
 
       {/* kheladi mobile view */}
       <div className="flex flex-col w-full sm:hidden">
-        <h5 className="text-[#4f0a9b] text-[13px] font-bold leading-normal mb-2 py-[7px_0_5px_0] relative">
-          Highlights
-        </h5>
-        <div className=" overflow-y-hidden overflow-x-hidden">
-          <ul className=" block whitespace-nowrap overflow-x-auto scrollbar-hidden">
+        <div className="flex items-center gap-x-2 justify-between mb-0.5">
+          <h1 className="text-[#4f0a9b] text-sm whitespace-nowrap">
+            Online Sports Betting Exchange{" "}
+          </h1>
+          <div className="flex gap-x-2">
+            <a
+              onClick={() => {
+                setisLive((prev) => !prev);
+              }}
+              className={`${
+                isLive
+                  ? "bg-[#2ea353] text-white border-0 font-[700] "
+                  : "bg-[#f6f9ff] text-[#4f0a9b] border-[#4f0a9b] "
+              } flex justify-center items-center text-xs px-2 py-1  border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+            >
+              {isLive ? (
+                <FaCheck fontSize="small" />
+              ) : (
+                <FaPlus fontSize="small" />
+              )}{" "}
+              Live
+            </a>
+            <a
+              className={`${
+                !2 === 2
+                  ? "bg-[#0d6efd] text-[#ff0] font-[700] "
+                  : "bg-[#f6f9ff] text-[#4f0a9b] "
+              } flex justify-center items-center text-xs px-1.5 py-0.5 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+            >
+              <Add fontSize="small" /> Virtual
+            </a>
+          </div>
+        </div>
+
+        <div className="flex rounded border border-[#5700A3] rounded">
+          <input
+            type="text"
+            name="search_inplay"
+            id="search_inplay"
+            className="w-full h-full px-2 py-2 border-none rounded-l text-black"
+            placeholder="Search Games"
+          />
+          <div className="flex justify-center items-center bg-[#5700A3] px-3">
+            <FaSearch fontSize="large" className="text-white" />
+          </div>
+        </div>
+
+        <div className="overflow-y-hidden overflow-x-hidden mt-0.5">
+          <ul className="block whitespace-nowrap overflow-x-auto scrollbar-hidden">
             {activeSportsWithLogo?.map((t, i) => {
               return (
                 <li
                   key={i}
-                  className={`mb-4  inline-block min-w-max mx-0.5 relative align-middle overflow-x-auto overflow-y-hidden whitespace-nowrap`}
+                  className={`mb-1  inline-block min-w-max mx-0.5 relative align-middle overflow-x-auto overflow-y-hidden whitespace-nowrap`}
                   onClick={() => {
                     setActiveSport(t.sportId);
                     setActiveSportName(t.sportName);
@@ -160,7 +206,7 @@ const Populars2 = () => {
                       activeSport == t.sportId
                         ? "bg-[#0d6efd] text-[#ff0] font-[700] "
                         : "bg-[#f6f9ff] text-[#4f0a9b] "
-                    } flex justify-center items-center text-xs px-3 py-2 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+                    } flex justify-center items-center text-xs px-3 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
                   >
                     {<img src={t.logo} className="h-[21px] w-auto mr-[2px]" />}
                     {t.sportName}
@@ -170,32 +216,33 @@ const Populars2 = () => {
             })}
           </ul>
         </div>
-        <div className="flex items-center gap-x-4 mb-2">
-          <h1 className="text-[#4f0a9b] text-[13px] font-bold leading-normal  py-2 relative">
-            Online Sports Betting Exchange{" "}
-          </h1>
-          <a
-            onClick={() => {
-              setisLive((prev) => !prev);
-            }}
-            className={`${
-              isLive
-                ? "bg-[#2ea353] text-white border-0 font-[700] "
-                : "bg-[#f6f9ff] text-[#4f0a9b] border-[#4f0a9b] "
-            } flex justify-center items-center text-xs px-3 py-2 border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
-          >
-            <Add fontSize="small" /> Live
-          </a>
-          <a
-            className={`${
-              !2 === 2
-                ? "bg-[#0d6efd] text-[#ff0] font-[700] "
-                : "bg-[#f6f9ff] text-[#4f0a9b] "
-            } flex justify-center items-center text-xs px-3 py-2 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
-          >
-            <Add fontSize="small" /> Virtual
-          </a>
+        <div className="overflow-y-hidden overflow-x-hidden">
+          <ul className="block whitespace-nowrap overflow-x-auto scrollbar-hidden">
+            {["LIVE BETTING", "TODAY", "TOMORROW"]?.map((t, i) => {
+              return (
+                <li
+                  key={i}
+                  className={`mb-4  inline-block min-w-max mx-0.5 relative align-middle overflow-x-auto overflow-y-hidden whitespace-nowrap`}
+                  onClick={() => {
+                    setActiveTime(t);
+                    // setActiveSportName(t);
+                  }}
+                >
+                  <a
+                    className={`${
+                      activeTime == t
+                        ? "bg-[#0d6efd] text-[#ff0] font-[700] "
+                        : "bg-[#f6f9ff] text-[#4f0a9b] "
+                    } flex justify-center items-center text-xs px-3 py-2 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+                  >
+                    {t}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
+
         <div className="bg-gray ">
           <div className="bg-gray ">
             {/* <CompetionCollapse
@@ -268,9 +315,9 @@ const Populars2 = () => {
             }}
             className={`${
               isLive
-                ? "bg-[#2ea353] text-white border-[#2ea353] font-[700] "
-                : "bg-[#f6f9ff] text-[#4f0a9b] border-[#4f0a9b] font-[700] "
-            } flex justify-center gap-x-2 items-center px-3 py-2 border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+                ? "bg-[#2ea353] text-white border-0 font-[700] "
+                : "bg-[#f6f9ff] text-[#4f0a9b] border-[#4f0a9b] "
+            } flex justify-center items-center text-xs px-3 py-2 border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
           >
             {isLive ? (
               <FaCheck fontSize="small" />
@@ -321,4 +368,4 @@ const Populars2 = () => {
   );
 };
 
-export default Populars2;
+export default Inplay;
