@@ -6,10 +6,10 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
 import { useSearchParams } from "next/navigation";
 import { launchGame2 } from "@/app/api/casino/casino";
-import Bottom from "../BottomNav";
+import Bottom from "../../exchange/components/BottomNav";
 import { getGlobalSetings } from "@/app/api/exchange";
-import CasinoTopbar from "../CasinoTopbar";
-import Mobilebottom from "../Mobilebottom";
+import CasinoTopbar from "../../exchange/components/CasinoTopbar";
+import Mobilebottom from "../../exchange/components/Mobilebottom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

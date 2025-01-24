@@ -1,6 +1,6 @@
 import { CasinoContext } from '@/app/context/CasinoContext';
 import React, { useContext } from 'react';
-import { placeCasinoBet } from '../casino/casino';
+import { placeCasinoBet } from '../../../auth/casino/casino';
 
 const PlaceBetCasino = () => {
   const { bet, setBet, setOpenBetForm, openBetForm, profit, setMessage } = useContext(CasinoContext)

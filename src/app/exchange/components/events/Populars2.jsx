@@ -67,24 +67,35 @@ const Populars2 = () => {
     fetchPopularEvents();
   }, []);
   const logos = {
-    4: "https://khiladi.in/assets/img/icons/4.png", // Cricket
-    1: "https://khiladi.in/assets/img/icons/1.png", // Football
-    2: "https://khiladi.in/assets/img/icons/2.png", // Tennis
-    7522: "https://khiladi.in/assets/img/icons/7522.png", // Basketball
-    27454571: "https://khiladi.in/assets/img/icons/20.png", // Esports
-    3503: "https://khiladi.in/assets/img/icons/3503.png", // Darts
-    998917: "https://khiladi.in/assets/img/icons/998917.png", // Volleyball
-    2152880: "https://khiladi.in/assets/img/icons/99994.png", // Gaelic Games
-    26420387: "https://khiladi.in/assets/img/icons/26420387.png", // Mixed Martial Arts
-    7: "https://khiladi.in/assets/img/icons/7.png", // Horse Racing
+    4: "/sports/Cricket.webp", // Cricket
+    1: "/sports/football.webp", // Football
+    2: "/sports/tennis.webp", // Tennis
+    7522: "/sports/basketball.png", // Basketball
+    27454571: "/sports/esports.jpg", // Esports
+    3503: "/sports/DARTS.png", // Darts
+    998917: "/sports/volleyball.png", // Volleyball
+    2152880: "/sports/gaelicgames.png", // Gaelic Games
+    26420387: "/sports/mixedmartialarts.png", // Mixed Martial Arts
+    7: "/sports/horseracing.webp", // Horse Racing
+    "str_11": "/sports/horseracing_today.webp", // Horse Racing - Today's Card
+    4339: "/sports/greyhoundracing.webp", // Greyhound Racing
+    "str_10": "/sports/greyhoundracing.webp", // Greyhounds - Today's Card
+    2378961: "/sports/politics.webp", // Politics
+    5: "/sports/rugbyunion.png", // Rugby Union
+    1477: "/sports/rugbyleague.png", // Rugby League
+    6: "/sports/boxing.png", // Boxing
+    7511: "/sports/baseball.webp", // Baseball
+    3: "/sports/golf.webp", // Golf
+    8: "/sports/motorsport.png", // Motor Sport
   };
+  
   const activeSportsWithLogo =
     activeSports &&
     activeSports.map((sport) => ({
       ...sport,
       logo:
         logos[String(sport.sportId)] ||
-        "https://khiladi.in/assets/img/icons/7.png",
+        "/sports/horseracing.webp",
     }));
 
   useEffect(() => {

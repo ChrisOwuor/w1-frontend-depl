@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
 import { NAVContext } from "@/app/context/NavContext";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { casinoGames } from "../../constants";
+import { casinoGames } from "../../exchange/constants";
 import {
   getCategories,
   getGapCasinos,
@@ -11,7 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import CategoryScroll from "./Scroll";
 import ProviderScroll from "./Scroll2";
-import CasinoProvider from "../events/CasinoProvider";
+import CasinoProvider from "../../exchange/components/events/CasinoProvider";
 
 const CasinoHome = ({ globalSettings }) => {
   const providerRef = useRef(null);

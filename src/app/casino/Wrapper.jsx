@@ -1,7 +1,7 @@
 "use client";
 
 import { NAVProvider } from "../context/NavContext";
-import GapView from "../exchange/components/casino/GapCasino";
+import GapView from "../auth/casino/GapCasino";
 import { MantineProvider } from "@mantine/core";
 import { AuthProvider } from "../context/AuthContext";
 import { CompetitionProvider } from "../context/exchange/CompetitonContext";

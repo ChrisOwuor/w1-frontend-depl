@@ -1,42 +1,28 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import Footer from "src/app/components/Footer";
 import Bottom from "./BottomNav";
-import Sidebar from "./SideBar";
 import HorizontalSlides from "./betslip/ads/Slider";
 import jwt_decode from "jwt-decode";
 import Loading from "./Loading";
-import MobileSideBar from "./MobileSidebar";
-import MobileFooter from "src/app/components/MobileFooter";
 import MobileBottom from "src/app/components/Navbar/MobileBottom";
-import MobileBottomNav from "src/app/components/Navbar/MobileBottomNav";
 import SlidingText from "./betslip/ads/SlidingText";
 import MainSectionCenter from "./events/Cricket";
-import Populars from "./events/Popular";
 import ProfitLoss from "./ProfitLoss";
 import { NAVContext } from "@/app/context/NavContext";
 import AccountStatements from "./AccountStatements";
 import BetHistory from "./BetHistory";
 import MyProfile from "./Profile";
-import InPlay from "./Inplay";
 import Markets from "../(e)/ev_c/components/Markets";
-import ExBetslip from "./betslip/Betslip";
-import MarketsSidebar from "./MarketsSideBar";
-import MobileMarketsSideBar from "../mobile/components/MobileMarketsSidebar";
 import { getGlobalSetings } from "@/app/api/exchange";
-import CasinoView from "./casino/CasinoView";
 import AccountHome from "./Account";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import UserConsentWizard from "@/app/components/Modal/UserConsentWizard";
 import LoginPage from "@/app/components/auth/LoginPage";
-import CasinoWindow from "./casino/CasinWindow";
 import PlaceBetCasino from "./betslip/PlaceBetCasino";
 import { CasinoContext } from "@/app/context/CasinoContext";
-import CasinoBets from "./betslip/CasinoBets";
 import CasinoNotifications from "@/app/components/casino_uis/modals/CasinoNotifications";
 import CricketHome from "./events/CricketHome";
 import RaceMarkets from "@/app/components/markets/RaceMarkets";
-import GapView from "./casino/GapCasino";
 import { useSearchParams } from "next/navigation";
 import Sidebar2 from "./Sidebar2";
 import TopCasinoGames from "./events/TopCasinoGames";
@@ -45,11 +31,7 @@ import CasinoProvider from "./events/CasinoProvider";
 import CasinoPopulars from "./events/CasinoPopulars";
 import FooterKhiladi from "@/app/components/FooterKhiladi";
 import MobileBottomNavKhiladi from "@/app/components/Navbar/MobileBottomNavKhiladi";
-<<<<<<< HEAD
-import MarketsKheladi from "../(e)/ev_c/components/MarketsKheladi";
-=======
 import Inplay from "./events/Inplay";
->>>>>>> cf8751313a47e7dfa5db0d9c007c32129a3f9f45
 
 const Exchange = () => {
   const {
@@ -203,10 +185,7 @@ const Exchange = () => {
                     showCasino && "idden"
                   }`}
                 >
-                  {/* <div
-                  className={`col-span-12 grid grid-cols-12 sm:mx-2 ${showCasino && "hidden"
-                    }`}
-                > */}
+             
                   {/* side section */}
                   <div
                     className={` ${
@@ -238,7 +217,7 @@ const Exchange = () => {
                   {/* <div className="  bg-green-200  overflow-y-scroll hide-scrollbar ml-[256px] h-screen w-[calc(100%-256px)]">
                     hello from center
                     </div> */}
-                  <div className="bg-[#f6f9ff]  overflow-y-scroll hide-scrollbar w-full  kh:ml-[256px]  ml:0 h-screen kh:w-[calc(100%-240px)] ">
+                  <div className="bg-[#f6f9ff]  h-full w-full  kh:ml-[256px]  ml:0 kh:w-[calc(100%-240px)] ">
                     {/* <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar"> */}
                     <div className="col-span-1 max-sm:hidden">
                       <div className="w-full">
@@ -248,7 +227,7 @@ const Exchange = () => {
                       </div>
                     </div>
 
-                    <div className="  min-h-[80vh]">
+                    <div className="">
                       {view != "" &&
                         currentCenter &&
                         (() => {

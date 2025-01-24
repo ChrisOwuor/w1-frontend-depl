@@ -23,19 +23,19 @@ import Markets from "../(e)/ev_c/components/Markets";
 import ExBetslip from "./betslip/Betslip";
 import MarketsSidebar from "./MarketsSideBar";
 import { getGlobalSetings } from "@/app/api/exchange";
-import CasinoView from "./casino/CasinoView";
+import CasinoView from "../../auth/casino/CasinoView";
 import AccountHome from "./Account";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import UserConsentWizard from "@/app/components/Modal/UserConsentWizard";
 import LoginPage from "@/app/components/auth/LoginPage";
-import CasinoWindow from "./casino/CasinWindow";
+import CasinoWindow from "../../auth/casino/CasinWindow";
 import PlaceBetCasino from "./betslip/PlaceBetCasino";
 import { CasinoContext } from "@/app/context/CasinoContext";
 import CasinoBets from "./betslip/CasinoBets";
 import CasinoNotifications from "@/app/components/casino_uis/modals/CasinoNotifications";
 import CricketHome from "./events/CricketHome";
 import RaceMarkets from "@/app/components/markets/RaceMarkets";
-import GapView from "./casino/GapCasino";
+import GapView from "../../auth/casino/GapCasino";
 import { useSearchParams } from "next/navigation";
 
 const Casinomain = () => {

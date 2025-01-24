@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { getUserBets } from '../casino/casino';
+import { getUserBets } from '../../../auth/casino/casino';
 import { NAVContext } from '@/app/context/NavContext';
 import { CasinoContext } from '@/app/context/CasinoContext';
 
