@@ -217,7 +217,7 @@ const Exchange = () => {
                   {/* <div className="  bg-green-200  overflow-y-scroll hide-scrollbar ml-[256px] h-screen w-[calc(100%-256px)]">
                     hello from center
                     </div> */}
-                  <div className="bg-[#f6f9ff]  h-full w-full  kh:ml-[256px]  ml:0 kh:w-[calc(100%-240px)] ">
+                  <div className="bg-[#f6f9ff]  h-full w-full  kh:ml-[240px]  ml:0 kh:w-[calc(100%-240px)] ">
                     {/* <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar"> */}
                     <div className="col-span-1 max-sm:hidden">
                       <div className="w-full">

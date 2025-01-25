@@ -25,7 +25,7 @@ const AccountHome = () => {
           <div
             onClick={() => {
               setCurrentCenter("ac_statements");
-              setToggle((prev) => !prev);
+              // setToggle((prev) => !prev);
             }}
             className="cursor-pointer px-4 py-2 text-black text-md font-bold transition duration-300 border-b border-black/[0.2]"
           >
@@ -34,7 +34,7 @@ const AccountHome = () => {
           <div
             onClick={() => {
               setCurrentCenter("p&l");
-              setToggle((prev) => !prev);
+              // setToggle((prev) => !prev);
             }}
             className="cursor-pointer px-4 py-2 text-black text-md font-bold transition duration-300 border-b border-black/[0.2]"
           >
@@ -43,7 +43,7 @@ const AccountHome = () => {
           <div
             onClick={() => {
               setCurrentCenter("bet_history");
-              setToggle((prev) => !prev);
+              // setToggle((prev) => !prev);
             }}
             className="cursor-pointer px-4 py-2 text-black text-md font-bold transition duration-300 border-b border-black/[0.2]"
           >
@@ -52,7 +52,7 @@ const AccountHome = () => {
           <div
             onClick={() => {
               setCurrentCenter("profile");
-              setToggle((prev) => !prev);
+              // setToggle((prev) => !prev);
             }}
             className="cursor-pointer px-4 py-2 text-black text-md font-bold transition duration-300 border-b border-black/[0.2]"
           >

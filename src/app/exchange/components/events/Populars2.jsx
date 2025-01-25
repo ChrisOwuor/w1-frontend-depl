@@ -279,9 +279,9 @@ const Populars2 = () => {
             }}
             className={`${
               isLive
-                ? "bg-[#2ea353] text-white border-[#2ea353] font-[700] "
-                : "bg-[#f6f9ff] text-[#4f0a9b] border-[#4f0a9b] font-[700] "
-            } flex justify-center gap-x-2 items-center px-3 py-2 border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+                ? "bg-[#2ea353] text-white border-[#2ea353]  "
+                : "bg-[#f6f9ff] text-[#4f0a9b] border-[#4f0a9b]  "
+            } flex justify-center gap-x-1 items-center px-3 py-1 border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
           >
             {isLive ? (
               <FaCheck fontSize="small" />
@@ -293,9 +293,9 @@ const Populars2 = () => {
           <a
             className={`${
               !2 === 2
-                ? "bg-[#0d6efd] text-[#ff0] font-[700] "
+                ? "bg-[#0d6efd] text-[#ff0]  "
                 : "bg-[#f6f9ff] text-[#4f0a9b] "
-            } flex justify-center items-center text-xs px-3 py-2 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
+            }  flex justify-center gap-x-1 items-center px-3 py-1 border  rounded-full text-[#4f0a9b] uppercase cursor-pointer`}
           >
             <FaPlus fontSize="small" /> Virtual
           </a>
