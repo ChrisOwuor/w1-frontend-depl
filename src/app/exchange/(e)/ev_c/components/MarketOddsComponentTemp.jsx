@@ -1,6 +1,6 @@
 import React from "react";
 
-const MarketOddsComponent = ({
+const MarketOddsComponentTemp = ({
   mktBk,
   styling2,
   ii,
@@ -14,14 +14,10 @@ const MarketOddsComponent = ({
 }) => {
   const defaultStake = 50;
   return (
-    <div className="w-full">
+    <div class="col-4 kh:w-[58.33333333%] w-[41.66666667%]  change flex justify-content-end ">
       {eventData && (
         <>
-          <div
-            className={`max-sm:hidden relative grid max-mk:grid-cols-4 ${
-              otherMarkets === true ? "mk:grid-cols-4" : "mk:grid-cols-6"
-            } gap-x-1`}
-          >
+          <div className={`bl-buttons mobile-hide hidden kh:flex`}>
             {mktBk && mktBk.status === "CLOSED" ? (
               mktBk.inplay === true ? (
                 <div
@@ -50,14 +46,14 @@ const MarketOddsComponent = ({
             ) : (
               ""
             )}
-           
+
             {mktBk && mktBk.runners && mktBk.runners.length > 0 ? (
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToBack &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToBack.length > 2 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside}  ${
+                <button
+                  className={`back-3 bet-sec bl-btn eon1 spark  ${
                     otherMarkets === true && "hidden"
                   } bg-back/[0.2]`}
                   onClick={() =>
@@ -74,20 +70,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT1}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToBack[2].price}
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
+                  {" "}
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToBack[2].price}
+                  <span className="size2">
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToBack[2].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside}  ${
+                <button
+                  className={`back-3 bet-sec bl-btn eon1 spark  ${
                     otherMarkets === true && "hidden"
                   } `}
                   onClick={() =>
@@ -103,17 +98,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.sidebyside}  ${
+              <button
+                className={`back-3 bet-sec bl-btn eon1 spark ${
                   otherMarkets === true && "hidden"
                 } `}
                 onClick={() =>
@@ -129,13 +119,8 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0<span className="size2">0</span>
+              </button>
             )}
             {/* 2 */}
             {mktBk && mktBk.runners && mktBk.runners.length > 0 ? (
@@ -143,10 +128,10 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToBack &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToBack.length > 1 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${
-                    styling2.sidebyside2
-                  } bg-back/[0.5] ${otherMarkets === true && "min-md:hidden"}`}
+                <button
+                  className={`$back-2 bet-sec bl-btn eon2  ${
+                    otherMarkets === true && "min-md:hidden"
+                  }`}
                   onClick={() =>
                     handleEventPlaceBet(
                       `back`,
@@ -161,20 +146,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT1}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToBack[1].price}
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToBack[1].price}
+
+                  <span className={`size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToBack[1].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside2}`}
+                <button
+                  className={`back-2 bet-sec bl-btn eon2`}
                   onClick={() =>
                     handleEventPlaceBet(
                       `back`,
@@ -188,17 +172,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.sidebyside2} ${
+              <button
+                className={`back-2 bet-sec bl-btn eon2 ${
                   otherMarkets === true && "hidden"
                 }`}
                 onClick={() =>
@@ -214,13 +193,8 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0<span className="size2">0</span>
+              </button>
             )}
 
             {/* 1 */}
@@ -229,8 +203,8 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToBack &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToBack.length > 0 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.backOdd} `}
+                <button
+                  className={`back back-1 bet-sec bl-btn waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `back`,
@@ -245,20 +219,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT2}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToBack[0].price}
-                  </p>
-                  <p className={` ${styling2.oddsP2}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToBack[0].price}
+
+                  <span className={` size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToBack[0].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.backOdd} `}
+                <button
+                  className={`back back-1 bet-sec bl-btn waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `back`,
@@ -272,17 +245,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.backOdd} `}
+              <button
+                className={`back back-1 bet-sec bl-btn waves-effect waves-light `}
                 onClick={() =>
                   handleEventPlaceBet(
                     `back`,
@@ -296,13 +264,11 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0
+                <span _ngcontent-xck-c85="" class="size2">
+                  0
+                </span>
+              </button>
             )}
 
             {/* lay */}
@@ -311,8 +277,8 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToLay &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToLay.length > 0 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.layOdd} `}
+                <button
+                  className={`bet-sec bl-btn lay lay-1 waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -327,20 +293,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT2}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToLay[0].price}
-                  </p>
-                  <p className={` ${styling2.oddsP2}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToLay[0].price}
+
+                  <span className={` size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToLay[0].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.layOdd} `}
+                <button
+                  className={`bet-sec bl-btn lay lay-1 waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -354,17 +319,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT1}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.layOdd} `}
+              <button
+                className={`bet-sec bl-btn lay lay-1 waves-effect waves-light `}
                 onClick={() =>
                   handleEventPlaceBet(
                     `lay`,
@@ -378,13 +338,8 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsT1}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0<span className="size2">0</span>
+              </button>
             )}
             {/* 2 */}
             {mktBk && mktBk.runners && mktBk.runners.length > 0 ? (
@@ -392,8 +347,8 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToLay &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToLay.length > 1 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside2} bg-lay/[0.5]`}
+                <button
+                  className={`bet-sec bl-btn eon3 lay-2`}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -408,20 +363,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT1}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToLay[1].price}
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToLay[1].price}
+
+                  <span className={` size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToLay[1].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside2} `}
+                <button
+                  className={`bet-sec bl-btn eon3 lay-2 `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -435,17 +389,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.sidebyside2} ${
+              <button
+                className={`bet-sec bl-btn eon3 lay-2} ${
                   otherMarkets === true && "hidden"
                 }`}
                 onClick={() =>
@@ -461,13 +410,8 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0<span className="size2">0</span>
+              </button>
             )}
             {/* 3 */}
             {mktBk && mktBk.runners && mktBk.runners.length > 0 ? (
@@ -475,10 +419,10 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToLay &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToLay.length > 2 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside}  ${
+                <button
+                  className={`bet-sec bl-btn eon4 lay-3  ${
                     otherMarkets === true && "hidden"
-                  } bg-lay/[0.2]`}
+                  } `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -493,20 +437,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT1}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToLay[2].price}
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToLay[2].price}
+
+                  <span className={` size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToLay[2].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.sidebyside}  ${
+                <button
+                  className={`bet-sec bl-btn eon4 lay-3}  ${
                     otherMarkets === true && "hidden"
                   } `}
                   onClick={() =>
@@ -522,17 +465,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.sidebyside}  ${
+              <button
+                className={`bet-sec bl-btn eon4 lay-3  ${
                   otherMarkets === true && "hidden"
                 } `}
                 onClick={() =>
@@ -548,21 +486,12 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0<span className="size2">0</span>
+              </button>
             )}
           </div>
           {/* mobile view */}
-          <div
-            className={`sm:hidden relative grid max-mk:grid-cols-2 ${
-              otherMarkets === true ? "mk:grid-cols-2" : "mk:grid-cols-2"
-            }`}
-          >
+          <div className={`bl-buttons desktop-hide  flex kh:hidden`}>
             {mktBk && mktBk.status === "CLOSED" ? (
               mktBk.inplay === true ? (
                 <div
@@ -598,8 +527,8 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToBack &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToBack.length > 0 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.backOdd} `}
+                <button
+                  className={`back back-1 bet-sec bl-btn waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `back`,
@@ -614,20 +543,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT2}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToBack[0].price}
-                  </p>
-                  <p className={` ${styling2.oddsP2}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToBack[0].price}
+
+                  <span className={` size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToBack[0].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.backOdd} `}
+                <button
+                  className={`back back-1 bet-sec bl-btn waves-effect waves-light`}
                   onClick={() =>
                     handleEventPlaceBet(
                       `back`,
@@ -641,17 +569,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
               <div
-                className={`${styling2.oddsStyle} ${styling2.backOdd} `}
+                className={`back back-1 bet-sec bl-btn waves-effect waves-light `}
                 onClick={() =>
                   handleEventPlaceBet(
                     `back`,
@@ -665,12 +588,7 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
+                0<span className="size2">0</span>
               </div>
             )}
 
@@ -680,8 +598,8 @@ const MarketOddsComponent = ({
               mktBk.runners[ii].ex.availableToLay &&
               mktBk.runners[ii] &&
               mktBk.runners[ii].ex.availableToLay.length > 0 ? (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.layOdd} `}
+                <button
+                  className={`bet-sec bl-btn lay lay-1 waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -696,20 +614,19 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT2}`}>
-                    {mktBk.runners[ii] &&
-                      mktBk.runners[ii].ex.availableToLay[0].price}
-                  </p>
-                  <p className={` ${styling2.oddsP2}`}>
+                  {mktBk.runners[ii] &&
+                    mktBk.runners[ii].ex.availableToLay[0].price}
+
+                  <span className={` size2`}>
                     {formatNumber(
                       mktBk.runners[ii] &&
                         mktBk.runners[ii].ex.availableToLay[0].size
                     )}
-                  </p>
-                </div>
+                  </span>
+                </button>
               ) : (
-                <div
-                  className={`${styling2.oddsStyle} ${styling2.layOdd} `}
+                <button
+                  className={`bet-sec bl-btn lay lay-1 waves-effect waves-light `}
                   onClick={() =>
                     handleEventPlaceBet(
                       `lay`,
@@ -723,17 +640,12 @@ const MarketOddsComponent = ({
                     )
                   }
                 >
-                  <p className={` ${styling2.oddsT1}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                  <p className={` ${styling2.oddsP}`}>
-                    <span className="text-transparent">0</span>
-                  </p>
-                </div>
+                  0<span className="size2">0</span>
+                </button>
               )
             ) : (
-              <div
-                className={`${styling2.oddsStyle} ${styling2.layOdd} `}
+              <button
+                className={`bet-sec bl-btn lay lay-1 waves-effect waves-light `}
                 onClick={() =>
                   handleEventPlaceBet(
                     `lay`,
@@ -747,13 +659,8 @@ const MarketOddsComponent = ({
                   )
                 }
               >
-                <p className={` ${styling2.oddsT1}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-                <p className={` ${styling2.oddsP}`}>
-                  <span className="text-transparent">0</span>
-                </p>
-              </div>
+                0<span className="size2">0</span>
+              </button>
             )}
           </div>
         </>
@@ -762,4 +669,4 @@ const MarketOddsComponent = ({
   );
 };
 
-export default MarketOddsComponent;
+export default MarketOddsComponentTemp;
