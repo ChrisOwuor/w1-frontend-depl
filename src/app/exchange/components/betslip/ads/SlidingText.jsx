@@ -49,7 +49,7 @@ const SlidingText = () => {
       <div className="flex items-center text-black">
         
       </div>
-      <div className="absolute top-0 bottom-0 left-0 right-0 overflow-hidden z-[99] flex items-center to-orange-500/[0.1] h-[4vh]">
+      <div className="absolute top-0 bottom-0 left-0 right-0 overflow-hidden kh:z-[99] z-1 flex items-center to-orange-500/[0.1] h-[4vh]">
       <HiSpeakerWave size={20} color="#080403" />
         <div
           className={`flex justify-end items-center overflow-hidden  animate-slidindAds min-w-[1300px]`}

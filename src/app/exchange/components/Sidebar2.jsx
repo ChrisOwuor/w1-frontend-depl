@@ -381,7 +381,7 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
         </svg>
       ),
     },
-    
+    // { name: 'Live Sports', case: 'in-play' },
     {
       name: "LiveCasino",
       case: "allcasinos",
@@ -480,8 +480,8 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
   return (
     <ul
       className={`${
-        newMobileNavOpen ? "fixed" : "relative"
-      } text-black font-semibold bg-white sidebar-nav`}
+        newMobileNavOpen ? "fixed h-screen w-[240px] " : "relative"
+      } text-black font-semibold bg-white sidebar-nav `}
     >
       {menuItems.map((item, index) => (
         <li key={index} className="nav-item">

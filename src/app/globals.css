@@ -1227,22 +1227,67 @@ b, strong {
     }
 }
 
-.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
+.headerLine h6::before, .headerLine h6::after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 50%;
+    height: 1px;
+    content: "alien";
+    background-color: #5700a3;
+}
+
+.headerLine h6::before {
+    margin-left: -52%;
+    text-align: right;
+}
+
+.login-page-label {
+    text-transform: capitalize;
+    color: #3a3a3a;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 5px;
+}
+
+label {
+    display: inline-block;
+}
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.loginpage .input-group {
+    position: relative;
+    display: flex
+;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    
+}
+
+
+.loginpage .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.loginpage .input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
     position: relative;
     flex: 1 1 auto;
     width: 1%;
     min-width: 0;
 }
-.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
-    min-width: 0;
+
+.loginpage input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+    border-color: #c7cace;
 }
-.input-group input {
-    /* border: none; */
-}
-.form-control {
+.loginpage .form-control {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
@@ -1253,7 +1298,44 @@ b, strong {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+     border-left-color:  #c7cace;
+     border-top-color:  #c7cace; 
+     border-bottom-color:  #c7cace;
     border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out;
+}
+.loginpage .login-eye {
+   border-left: none;
+    border-right: 1px solid #c7cace;
+     border-top: 1px solid #c7cace; 
+     border-bottom: 1px solid #c7cace;
+    background: #fff;
+    border-radius: 0 5px 5px 0;
+    padding: 2px 15px;
+    color: #360a43;
+    height: 38px;
+}
+.form-control:focus {
+     border-left: 1px solid #86b7fe;
+     border-top: 1px solid #86b7fe; 
+     border-bottom: 1px solid #86b7fe;
+     border-left-color: #86b7fe;
+     
+}
+
+
+.loginpage .submit-button, .submit-button:hover, .submit-button:active {
+    border: none;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #b884d0 !important;
+    background: #5700a3 !important;
+    color: #fff !important;
+    height: 40px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }

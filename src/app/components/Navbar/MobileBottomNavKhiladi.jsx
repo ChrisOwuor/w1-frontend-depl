@@ -14,7 +14,8 @@ export default function MobileBottomNavKhiladi({
   setHideSideBar,
   globalSettings,
 }) {
-  const { setView, setCurrentCenter } = useContext(NAVContext);
+  const { setView, setCurrentCenter, setAccountViewOpen } =
+    useContext(NAVContext);
 
   const searchParams = useSearchParams();
   const [toggle, setToggle] = useState(false);
@@ -58,9 +59,8 @@ export default function MobileBottomNavKhiladi({
                   fill="#4F0A9B"
                 ></path>
               </svg>
-
-                          {/* <span className="text-sm font-medium text-gray-300">In-play</span> */}
-                          In-play
+              {/* <span className="text-sm font-medium text-gray-300">In-play</span> */}
+              In-play
             </a>
           </li>
           <li
@@ -103,21 +103,24 @@ export default function MobileBottomNavKhiladi({
                   </clipPath>
                 </defs>
               </svg>
-                          {/* <span className="text-sm font-medium text-gray-300">Wallet</span> */}
-                          Wallet
+              {/* <span className="text-sm font-medium text-gray-300">Wallet</span> */}
+              Wallet
             </a>
           </li>
           <li className="truncate">
             <a href="#"></a>
           </li>
-                  <li onClick={() => {
-                      // setView(prev => ({
-                      //     ...prev,
-                      //     currentView: ""
-                      // }))
-                      setCurrentCenter("home")
-                      toggleSideBar()
-                  }} className="big">
+          <li
+            onClick={() => {
+              // setView(prev => ({
+              //     ...prev,
+              //     currentView: ""
+              // }))
+              setCurrentCenter("home");
+              toggleSideBar();
+            }}
+            className="big"
+          >
             <a
               _ngcontent-aru-c55=""
               routerlinkactive="f-active"
@@ -202,14 +205,13 @@ export default function MobileBottomNavKhiladi({
                   </g>
                 </g>
               </svg>
-                          Casino
+              Casino
             </a>
           </li>
           <li
             onClick={() => {
-              setCurrentCenter("account");
+              setAccountViewOpen((prev) => !prev);
             }}
-            
           >
             <a>
               <svg
@@ -227,7 +229,7 @@ export default function MobileBottomNavKhiladi({
                   fill="#4F0A9B"
                 ></path>
               </svg>
-                            Account
+              Account
             </a>
           </li>
           {/* <div className="flex flex-col justify-center items-center" onClick={() => {

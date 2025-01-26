@@ -5,6 +5,8 @@ export const NAVContext = createContext();
 export const NAVProvider = ({ children }) => {
     const [currentCenter, setCurrentCenter] = useState("home")
     const [newMobileNavOpen, setNewMobileNavOpen] = useState(false)
+    const [accountViewOpen, setAccountViewOpen] = useState(false)
+
     const [activeCasino, setActiveCasino] = useState({})
     const [goToLogin, setGoToLogin] = useState(false)
     const [currentGame, setCurrentGame] = useState({url: "", source: ""})   
@@ -24,7 +26,7 @@ export const NAVProvider = ({ children }) => {
 
     return (
         <NAVContext.Provider
-            value={{ newMobileNavOpen, setNewMobileNavOpen ,currentCenter, setCurrentCenter, view, setView, goToLogin, setGoToLogin, activeCasino, setActiveCasino, currentGame, setCurrentGame }}
+            value={{ accountViewOpen, setAccountViewOpen, newMobileNavOpen, setNewMobileNavOpen, currentCenter, setCurrentCenter, view, setView, goToLogin, setGoToLogin, activeCasino, setActiveCasino, currentGame, setCurrentGame }}
         >
             {children}
         </NAVContext.Provider>

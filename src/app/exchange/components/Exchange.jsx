@@ -32,6 +32,8 @@ import CasinoPopulars from "./events/CasinoPopulars";
 import FooterKhiladi from "@/app/components/FooterKhiladi";
 import MobileBottomNavKhiladi from "@/app/components/Navbar/MobileBottomNavKhiladi";
 import Inplay from "./events/Inplay";
+import AccountViewKheladi from "./AccountViewKheladi";
+import ProfileKheladi from "./ProfileKheladi";
 
 const Exchange = () => {
   const {
@@ -42,6 +44,8 @@ const Exchange = () => {
     activeCasino,
     setGoToLogin,
     newMobileNavOpen,
+    accountViewOpen,
+    setAccountViewOpen,
   } = useContext(NAVContext);
   const { openBetForm, message } = useContext(CasinoContext);
   const [globalSettings, setGlobalSettings] = useState({});
@@ -185,7 +189,6 @@ const Exchange = () => {
                     showCasino && "idden"
                   }`}
                 >
-             
                   {/* side section */}
                   <div
                     className={` ${
@@ -219,8 +222,8 @@ const Exchange = () => {
                     </div> */}
                   <div className="bg-[#f6f9ff]  h-full w-full  kh:ml-[240px]  ml:0 kh:w-[calc(100%-240px)] ">
                     {/* <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar"> */}
-                    <div className="col-span-1 max-sm:hidden">
-                      <div className="w-full">
+                    <div className="col-span-1 max-sm:hidden ">
+                      <div className="w-full ">
                         {view != "" && currentCenter == "home" && (
                           <SlidingText />
                         )}
@@ -298,13 +301,13 @@ const Exchange = () => {
                                       refresh={refresh}
                                       setRefresh={setRefresh}
                                       globalSettings={globalSettings}
-                                      />
-                                      // <MarketsKheladi
-                                      // toggleMarketSideBar={toggleMarketSideBar}
-                                      // refresh={refresh}
-                                      // setRefresh={setRefresh}
-                                      // globalSettings={globalSettings}
-                                      // />
+                                    />
+                                    // <MarketsKheladi
+                                    // toggleMarketSideBar={toggleMarketSideBar}
+                                    // refresh={refresh}
+                                    // setRefresh={setRefresh}
+                                    // globalSettings={globalSettings}
+                                    // />
                                   )}
                                 </div>
                               );
@@ -343,8 +346,10 @@ const Exchange = () => {
                               return <AccountStatements />;
                             case "bet_history":
                               return <BetHistory />;
+                            // case "profile":
+                            //   return <MyProfile />;
                             case "profile":
-                              return <MyProfile />;
+                              return < ProfileKheladi/>;
                             case "in-play":
                               // return <InPlay />;
                               return (
@@ -397,6 +402,20 @@ const Exchange = () => {
                       <ExBetslip />
                     )}
                   </div> */}
+                  <div
+                    className={` ${
+                      accountViewOpen
+                        ? "block  absolute right-0 z-30 w-[240px] "
+                        : "hidden w-0"
+                    } shadow-md h-screen `}
+                  >
+                    <div className="text fixed bg-white  h-screen w-[240px]">
+                      <AccountViewKheladi
+                        setSelectedLink={setSelectedLink}
+                        activeLink={selectedLink}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
