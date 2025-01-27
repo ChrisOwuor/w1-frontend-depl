@@ -1,5 +1,6 @@
 import React from "react";
 import MarketComponent from "./MarketComponent";
+import MarketComponentKheladi from "./MarketComponentKheladi";
 
 const MarketGrid = ({
   otherMarkets,
@@ -27,7 +28,7 @@ const MarketGrid = ({
         if (market.marketName !== currentMkt.mkt_name && market.marketName !== "Match Odds") {
           return (
             <div className="break-inside-avoid" key={i}>
-              <MarketComponent
+              <MarketComponentKheladi
                 marketBookOdds={mktBks}
                 eventId={evId}
                 setRefresh={setRefresh}

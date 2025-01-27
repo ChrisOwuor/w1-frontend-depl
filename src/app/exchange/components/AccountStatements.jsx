@@ -64,6 +64,29 @@ export default function AccountStatements() {
     getAcStatements()
   }, [])
 
+   let eventOptions = [
+      { value: "ALL", label: "All Sports" },
+      { value: "4", label: "Cricket" },
+      { value: "1", label: "Football" },
+      { value: "2", label: "Tennis" },
+      { value: "99998", label: "Int Casino" },
+      { value: "99991", label: "Sports book" },
+      { value: "7", label: "Horse Racing" },
+      { value: "4339", label: "Greyhound Racing" },
+      { value: "99990", label: "Binary" },
+      { value: "99994", label: "Kabaddi" },
+      { value: "2378961", label: "Politics" },
+      { value: "7522", label: "Basketball" },
+      { value: "7511", label: "Baseball" },
+      { value: "20", label: "Table Tennis" },
+      { value: "998917", label: "Volleyball" },
+      { value: "7524", label: "Ice Hockey" },
+      { value: "5", label: "Rugby" },
+      { value: "26420387", label: "Mixed Martial Arts" },
+      { value: "3503", label: "Darts" },
+      { value: "29", label: "Futsal" },
+    ];
+
 
   const delAcStatements = async () => {
     try {
@@ -84,92 +107,202 @@ export default function AccountStatements() {
     }
   }
   return (
-    <div className="relative overflow-x-auto shadow-md bg-white p-4">
-      <div className="flex justify-between items-center p-2">
-        <p className='font-bold text-black text-'>Account Statements</p>
-        <div className="flex justify-end items-center cursor-pointer" onClick={() => setCurrentCenter("home")}>
-          <KeyboardDoubleArrowLeftIcon className="text-orange-400" fontSize="small" />
-          <p className="text-black font-bold text-sm">Home</p>
-        </div>
-      </div>
-      {/* time filter */}
-      <div className="mb-5 bg-blue-600/[0.8] rounded pt-8 pb-4 px-2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 items-center">
-        <div className='flex flex-col col-span-1'>
-          <label htmlFor="start_date" className='font-bold text-sm'>Start Date</label>
-          <input type="date" id="start_date" onChange={(e) => setStartDate(e.target.value)} value={startDate} placeholder='Start Date' className='t_c_1 p_1_sm rounded bg-white p-1' />
-        </div>
-        <div className='flex flex-col col-span-1'>
-          <label htmlFor="end_date" className='font-bold text-sm'>End Date</label>
-          <input type="date" id="end_date" onChange={(e) => setEndDate(e.target.value)} value={endDate} placeholder='End Date' className='t_c_1 p_1_sm rounded bg-white p-1' />
-        </div>
-        <div className='flex flex-col col-span-1'>
-          <label htmlFor="actions" className='font-bold text-sm'>Actions</label>
-          <div className="p-1 flex items-center ">
-            <Tooltip.Group>
-              <Group justify="center">
-                <Tooltip openDelay={500} closeDelay={100} position="bottom" offset={2} arrowOffset={15} arrowSize={5} arrowRadius={2} withArrow label="Delete Selected Bet History">
-                  <div className="flex items-center bg-danger cursor-pointer rounded px-2 py-1"
-                    onClick={() => {
-                      delAcStatements()
-                    }}>
-                    <DeleteTwoToneIcon className='text-orange-100  p-1' fontSize='medium' />
-                    <p className="p_2 font-bold ">Delete</p>
+    <div className="px-[12px] ">
+      <div className="loginpage">
+        <div className="rw  ">
+          <div className="kh:px-[12px]">
+            <div className="header-password -px-[12px] mt-[1rem] flex-flex-wrap">
+              <div className="px-[0.5rem] w-full">
+                <div className="headerLine">
+                  <h6 className="text-[#5700a3] overflow-hidden uppercase text-center font-[700] z-[1] relative">
+                    Account Statements
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div className=" my-[15px] mx-0" id="filter">
+              <form action="">
+                <div className="filter-contents flex flex-wrap w-full ">
+                  <div className="filter-1 px-1 w-[25%] kh:w-[16.66666667%] shrink-0 grow-1 basis">
+                    <select
+                      name=""
+                      id=""
+                      class="form-control  w-full block ng-pristine ng-valid ng-touched"
+                    >
+                      {eventOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
+                  <div className="filter-1 px-1 w-[25%] kh:w-[16.66666667%]">
+                    <input
+                      _ngcontent-mow-c83=""
+                      type="date"
+                      id="start_date"
+                      onChange={(e) => setStartDate(e.target.value)}
+                      value={startDate}
+                      placeholder="Start Date"
+                      formcontrolname="start_date"
+                      class="form-control w-full  ng-untouched ng-pristine ng-valid"
+                    />
+                  </div>
+                  <div className="filter-1 px-1 w-[25%] kh:w-[16.66666667%]">
+                    <input
+                      _ngcontent-mow-c83=""
+                      type="date"
+                      id="end_date"
+                      onChange={(e) => setEndDate(e.target.value)}
+                      value={endDate}
+                      placeholder="End Date"
+                      formcontrolname="end_date"
+                      class="form-control w-full block  ng-untouched ng-pristine ng-valid"
+                    />
+                  </div>
+                  <div className="filter-1 px-1 w-[25%] kh:w-[16.66666667%]">
+                    <button _ngcontent-mow-c83="" type="submit" class="btn-get">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {/* <div className="mb-5 bg-blue-600/[0.8] rounded pt-8 pb-4 px-2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 items-center">
+              <div className="flex flex-col col-span-1">
+                <label htmlFor="start_date" className="font-bold text-sm">
+                  Start Date
+                </label>
+                <input
+                  type="date"
+                  id="start_date"
+                  onChange={(e) => setStartDate(e.target.value)}
+                  value={startDate}
+                  placeholder="Start Date"
+                  className="t_c_1 p_1_sm rounded bg-white p-1"
+                />
+              </div>
+              <div className="flex flex-col col-span-1">
+                <label htmlFor="end_date" className="font-bold text-sm">
+                  End Date
+                </label>
+                <input
+                  type="date"
+                  id="end_date"
+                  onChange={(e) => setEndDate(e.target.value)}
+                  value={endDate}
+                  placeholder="End Date"
+                  className="t_c_1 p_1_sm rounded bg-white p-1"
+                />
+              </div>
+              <div className="flex flex-col col-span-1">
+                <label htmlFor="actions" className="font-bold text-sm">
+                  Actions
+                </label>
+                <div className="p-1 flex items-center ">
+                  <Tooltip.Group>
+                    <Group justify="center">
+                      <Tooltip
+                        openDelay={500}
+                        closeDelay={100}
+                        position="bottom"
+                        offset={2}
+                        arrowOffset={15}
+                        arrowSize={5}
+                        arrowRadius={2}
+                        withArrow
+                        label="Delete Selected Bet History"
+                      >
+                        <div
+                          className="flex items-center bg-danger cursor-pointer rounded px-2 py-1"
+                          onClick={() => {
+                            delAcStatements();
+                          }}
+                        >
+                          <DeleteTwoToneIcon
+                            className="text-orange-100  p-1"
+                            fontSize="medium"
+                          />
+                          <p className="p_2 font-bold ">Delete</p>
+                        </div>
+                      </Tooltip>
+                    </Group>
+                  </Tooltip.Group>
+                </div>
+              </div>
+            </div> */}
 
-                </Tooltip>
-              </Group>
-            </Tooltip.Group>
+            <div className="overflow-x-auto w-full ">
+              <table style={{borderCollapse:"collapse"}} className="w-full bg-white text-sm mb-[1rem]  text-left rtl:text-right text-black">
+                <thead className="">
+                  <tr className="">
+                    <th scope="col" >
+                     No
+                    </th>
+                    <th scope="col" >
+                      Date
+                    </th>
+                    <th scope="col" >
+                      Total
+                    </th>
+                    <th scope="col" >
+                     Balance
+                    </th>
+                    <th scope="col" >
+                      D/C
+                    </th>
+                    <th scope="col" >
+                      Description
+                    </th>
+                    <th scope="col" >
+                      Details
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="">
+                  {userData != {} &&
+                    acStatements &&
+                    acStatements.length > 0 &&
+                    acStatements.map((item, index) => (
+                      <tr
+                        key={index}
+                        className={``}
+                      >
+                        <td >
+                          #-{item._id.slice(-6)}
+                        </td>
+                        <td >{item.marketId}</td>
+                        <td >
+                          {parseDateTime(item.settledDate)}
+                        </td>
+                        <td
+                          className={` whitespace-nowrap overflow-x-auto`}
+                        >
+                          {item.narration}
+                        </td>
+                        <td className={` text-danger`}>
+                          {item.debit.toFixed(2)}
+                        </td>
+                        <td className={` text-success`}>
+                          {item.credit.toFixed(2)}
+                        </td>
+                        <td className={` text-success`}>
+                          {item.runningBalance.toFixed(2)}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            {acStatements.length === 0 && (
+              <p className="px-3 py-2 text-sm text-gray-500 font-bold tracking-wide">
+                No data at the moment
+              </p>
+            )}
           </div>
         </div>
       </div>
-
-
-      <div className="overflow-x-auto m-4 pb-10">
-        <table className="w-full text-sm text-left rtl:text-right text-black">
-          <thead className="text-xs text-black tracking-wider bg-gray border border-black/[0.3]">
-            <tr className="">
-              <th scope="col" className={`${stylings.header}`}>
-                Voucher ID
-              </th>
-              <th scope="col" className={`${stylings.header}`}>
-                Market ID
-              </th>
-              <th scope="col" className={`${stylings.header}`}>
-                Settled Date
-              </th>
-              <th scope="col" className={`${stylings.header}`}>
-                Narration
-              </th>
-              <th scope="col" className={`${stylings.header}`}>
-                Debit
-              </th>
-              <th scope="col" className={`${stylings.header}`}>
-                Credit
-              </th>
-              <th scope="col" className={`${stylings.header}`}>
-                Running balance
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-blue-500/[0.3]">
-            {userData != {} && acStatements && acStatements.length > 0 && acStatements.map((item, index) => (
-              <tr key={index} className={` whitespace-nowrap overflow-x-auto border-b border-gray-700 hover:bg-gray-900/[0.5]`}>
-                <td className={`${stylings.body}`}>#-{item._id.slice(-6)}</td>
-                <td className={`${stylings.body}`}>{item.marketId}</td>
-                <td className={`${stylings.body}`}>{parseDateTime(item.settledDate)}</td>
-                <td className={`${stylings.body} whitespace-nowrap overflow-x-auto`}>{item.narration}</td>
-                <td className={`${stylings.body} text-danger`}>{(item.debit).toFixed(2)}</td>
-                <td className={`${stylings.body} text-success`}>{(item.credit).toFixed(2)}</td>
-                <td className={`${stylings.body} text-success`}>{(item.runningBalance).toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {acStatements.length === 0 && (
-        <p className="px-3 py-2 text-sm text-gray-500 font-bold tracking-wide">No data at the moment</p>
-      )}
     </div>
-
   );
 }

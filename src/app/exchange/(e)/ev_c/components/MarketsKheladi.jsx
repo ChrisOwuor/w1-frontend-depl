@@ -288,7 +288,6 @@ const MarketsKheladi = ({
   console.log({ otherMarkets });
   console.log({ premiumCategories });
   console.log(teamNames);
-  console.log({ currentMkt });
 
   return (
     <div className="">
@@ -415,7 +414,7 @@ const MarketsKheladi = ({
                             href="javascript:void(0);"
                             role="tab"
                             className={`${
-                              currentMkt.mkt_name === "All"
+                              currentMkt.mkt_name === "Popular"
                                 ? "bg-[#4f0a9b] text-[#ff0] "
                                 : "bg-gray-500"
                             } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
@@ -448,13 +447,38 @@ const MarketsKheladi = ({
                             aria-selected="true"
                             id="tab1-link"
                           >
-                            <span _ngcontent-xck-c40="">Popular</span>
+                            <span _ngcontent-xck-c40="">Bookmaker</span>
+                          </a>
+                        </li>
+                        <li
+                          style={{ whiteSpace: "nowrap" }}
+                          onClick={() => {
+                            setCurrentMkt({
+                              mkt_name: "Popular",
+                              mkt_id: "",
+                            });
+                          }}
+                        >
+                          <a
+                            _ngcontent-xck-c40=""
+                            href="javascript:void(0);"
+                            role="tab"
+                            className={`${
+                              currentMkt.mkt_name === "Popular"
+                                ? "bg-[#4f0a9b] text-[#ff0] "
+                                : "bg-gray-500"
+                            } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                            aria-controls="tab1"
+                            aria-selected="true"
+                            id="tab1-link"
+                          >
+                            <span _ngcontent-xck-c40="">Match Odds</span>
                           </a>
                         </li>
                       </>
                     )}
                     <>
-                      {premiumCategories.length > 0 &&
+                      {/* {premiumCategories.length > 0 &&
                         premiumCategories.map((mkts, i) => (
                           <li
                             key={i}
@@ -485,82 +509,474 @@ const MarketsKheladi = ({
                               </span>
                             </a>
                           </li>
-                        ))}
+                        ))} */}
                     </>
                   </ul>
                 )}
+                {/* <ul class="nav nav-pills">
+                  <li _ngcontent-xck-c40="" class="active nav-item">
+                    <a
+                      _ngcontent-xck-c40=""
+                      href="javascript:void(0);"
+                      role="tab"
+                      class="nav-link active"
+                      aria-controls="tab1"
+                      aria-selected="true"
+                      id="tab1-link"
+                    >
+                      <span _ngcontent-xck-c40="">all</span>
+                    </a>
+                  </li>
 
+                  <li _ngcontent-xck-c40="" class="active nav-item">
+                    <a
+                      _ngcontent-xck-c40=""
+                      href="javascript:void(0);"
+                      role="tab"
+                      class="nav-link active"
+                      aria-controls="tab1"
+                      aria-selected="true"
+                      id="tab1-link"
+                    >
+                      <span _ngcontent-xck-c40="">Match Odds</span>
+                    </a>
+                  </li>
+                  <li _ngcontent-xck-c40="" class="active nav-item">
+                    <a
+                      _ngcontent-xck-c40=""
+                      href="javascript:void(0);"
+                      role="tab"
+                      class="nav-link active"
+                      aria-controls="tab1"
+                      aria-selected="true"
+                      id="tab1-link"
+                    >
+                      <span _ngcontent-xck-c40="">BookMaker</span>
+                    </a>
+                  </li>
+                </ul> */}
                 <div className="tab-content">
-                  <div className="tab-pane">
-                    {mkts != undefined &&
-                      mkts.map((market, i) => {
-                        if (market.marketName === currentMkt.mkt_name) {
-                          return (
-                            <MarketComponentKheladi
-                              marketBookOdds={mktBks}
-                              globalSettings={globalSettings}
-                              key={i}
-                              eventId={evId}
-                              setRefresh={setRefresh}
-                              market={market}
-                              openedd={true}
-                              eventData={cricketEvent}
-                              eventTypeId={view.sportId}
-                              sportName={spName}
-                              eventName={evName}
-                            />
-                          );
-                        }
-
-                        if (currentMkt.mkt_name === "Popular") {
-                          if (
-                            market.marketName === "Moneyline" ||
-                            market.marketName === "Draw no Bet" ||
-                            market.marketName === "Overtime Played" ||
-                            market.marketName === "Half Time" ||
-                            market.marketName === "Head To Head" ||
-                            market.marketName === "Both teams to Score?"
-                          ) {
-                            return (
-                              <MarketComponentKheladi
-                                marketBookOdds={mktBks}
-                                globalSettings={globalSettings}
-                                key={i}
-                                eventId={evId}
-                                setRefresh={setRefresh}
-                                market={market}
-                                openedd={true}
-                                eventData={cricketEvent}
-                                eventTypeId={view.sportId}
-                                sportName={spName}
-                                eventName={evName}
-                              />
-                            );
-                          }
-                        }
-                        return null;
-                      })}
-                    {currentMkt.mkt_name === "Popular" && (
-                      <div className="flex flex-col w-full bg-red-200  items-center gap-1 p-1 mt-4">
-                        {evId != "" && (
-                          <div className="w-full">
-                            <BookmakerMarketComponent
-                              setRefresh={setRefresh}
-                              matchId={evId}
-                              openedd={false}
-                              bookmakerMarkets={bookmakerMarkets}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                  <div className="tab-pane"></div>
                 </div>
               </div>
               <div className="tab-bottom"></div>
             </div>
           </div>
-         
+          {/* below navbar */}
+          {/* <div className="flex items-center bg-[#E0E6E6] p-2 gap-x-2 w-full overflow-x-auto scrollbar-hidden">
+            <div
+              className={`p-2 flex items-center justify-center rounded-full text-black ${
+                currentMkt.mkt_name === "All"
+                  ? "bg-warning border border-black text-black"
+                  : "bg-black text-gray"
+              }`}
+            >
+              <p
+                onClick={() => {
+                  setCurrentMkt({
+                    mkt_name: "All",
+                    mkt_id: "",
+                  });
+                  toggleMarketSideBar();
+                }}
+                className="text-sm font-bold cursor-pointer whitespace-nowrap"
+              >
+                All
+              </p>
+            </div>
+            <div className="flex items-center gap-x-2">
+              <div
+                className={`p-2 flex items-center justify-center rounded-full text-black ${
+                  currentMkt.mkt_name === "Popular"
+                    ? "bg-warning border border-black"
+                    : "bg-black text-gray"
+                }`}
+                onClick={() => {
+                  setCurrentMkt({
+                    mkt_name: "Popular",
+                    mkt_id: "",
+                  });
+                  // toggleMarketSideBar()
+                }}
+              >
+                <p className="flex text-sm cursor-pointer tracking-wide font-bold whitespace-nowrap">
+                  Popular
+                </p>
+              </div>
+              {mkts &&
+                mkts.length > 0 &&
+                mkts.map((market, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center p-2 hover:bg-gray-400 rounded-full ${
+                      currentMkt.mkt_name === market.marketName
+                        ? "bg-warning border border-black text-primary"
+                        : "bg-black text-gray"
+                    }`}
+                    onClick={() => {
+                      setCurrentMkt({
+                        mkt_name: market.marketName,
+                        mkt_id: market.marketId,
+                      });
+                      // toggleMarketSideBar()
+                    }}
+                  >
+                    <p className="flex justify-center text-sm cursor-pointer tracking-wide font-bold whitespace-nowrap">
+                      {market.marketName}
+                    </p>
+                  </div>
+                ))}
+            </div>
+          </div> */}
+
+          <div className="">
+            {mkts != undefined &&
+              mkts.map((market, i) => {
+                if (currentMkt.mkt_name === "Popular") {
+                  if (market.marketName === "Match Odds") {
+                    return (
+                      // <MarketComponent
+                      //   marketBookOdds={mktBks}
+                      //   globalSettings={globalSettings}
+                      //   key={i}
+                      //   eventId={evId}
+                      //   setRefresh={setRefresh}
+                      //   market={market}
+                      //   openedd={true}
+                      //   eventData={cricketEvent}
+                      //   eventTypeId={view.sportId}
+                      //   sportName={spName}
+                      //   eventName={evName}
+                      // />
+                      <MarketComponentKheladi
+                        marketBookOdds={mktBks}
+                        globalSettings={globalSettings}
+                        key={i}
+                        eventId={evId}
+                        setRefresh={setRefresh}
+                        market={market}
+                        openedd={true}
+                        eventData={cricketEvent}
+                        eventTypeId={view.sportId}
+                        sportName={spName}
+                        eventName={evName}
+                      />
+                    );
+                  }
+                }
+
+                return null;
+              })}
+          </div>
+
+          <div className="">
+            {mkts != undefined &&
+              mkts.map((market, i) => {
+                if (currentMkt.mkt_name === "Popular") {
+                  if (market.marketName === "Tied Match") {
+                    return (
+                      // <MarketComponent
+                      //   marketBookOdds={mktBks}
+                      //   globalSettings={globalSettings}
+                      //   key={i}
+                      //   eventId={evId}
+                      //   setRefresh={setRefresh}
+                      //   market={market}
+                      //   openedd={true}
+                      //   eventData={cricketEvent}
+                      //   eventTypeId={view.sportId}
+                      //   sportName={spName}
+                      //   eventName={evName}
+                      // />
+                      <MarketComponentKheladi
+                        marketBookOdds={mktBks}
+                        globalSettings={globalSettings}
+                        key={i}
+                        eventId={evId}
+                        setRefresh={setRefresh}
+                        market={market}
+                        openedd={true}
+                        eventData={cricketEvent}
+                        eventTypeId={view.sportId}
+                        sportName={spName}
+                        eventName={evName}
+                      />
+                    );
+                  }
+                }
+
+                return null;
+              })}
+          </div>
+          <div className="">
+            {mkts != undefined &&
+              mkts.map((market, i) => {
+                if (market.marketName === currentMkt.mkt_name) {
+                  return (
+                    // <MarketComponent
+                    //   marketBookOdds={mktBks}
+                    //   key={i}
+                    //   eventId={evId}
+                    //   setRefresh={setRefresh}
+                    //   market={market}
+                    //   refresh={refresh}
+                    //   openedd={true}
+                    //   eventData={cricketEvent}
+                    //   eventTypeId={view.sportId}
+                    //   sportName={spName}
+                    //   eventName={evName}
+                    // />
+                    <MarketComponentKheladi
+                      marketBookOdds={mktBks}
+                      globalSettings={globalSettings}
+                      key={i}
+                      eventId={evId}
+                      setRefresh={setRefresh}
+                      market={market}
+                      openedd={true}
+                      eventData={cricketEvent}
+                      eventTypeId={view.sportId}
+                      sportName={spName}
+                      eventName={evName}
+                    />
+                  );
+                }
+
+                if (currentMkt.mkt_name === "Popular") {
+                  if (
+                    market.marketName === "Moneyline" ||
+                    market.marketName === "Draw no Bet" ||
+                    market.marketName === "Overtime Played" ||
+                    market.marketName === "Half Time" ||
+                    market.marketName === "Head To Head" ||
+                    market.marketName === "Both teams to Score?"
+                  ) {
+                    return (
+                      // <MarketComponent
+                      //   marketBookOdds={mktBks}
+                      //   globalSettings={globalSettings}
+                      //   key={i}
+                      //   eventId={evId}
+                      //   setRefresh={setRefresh}
+                      //   refresh={refresh}
+                      //   market={market}
+                      //   openedd={true}
+                      //   eventData={cricketEvent}
+                      //   eventTypeId={view.sportId}
+                      //   sportName={spName}
+                      //   eventName={evName}
+                      // />
+                      <MarketComponentKheladi
+                        marketBookOdds={mktBks}
+                        globalSettings={globalSettings}
+                        key={i}
+                        eventId={evId}
+                        setRefresh={setRefresh}
+                        market={market}
+                        openedd={true}
+                        eventData={cricketEvent}
+                        eventTypeId={view.sportId}
+                        sportName={spName}
+                        eventName={evName}
+                      />
+                    );
+                  }
+                }
+                return null;
+              })}
+          </div>
+
+          {currentMkt.mkt_name === "Popular" && (
+            <div className=" w-full bg-red-200   ">
+              {evId != "" && (
+                <div className="w-full">
+                  <BookmakerMarketComponent
+                    setRefresh={setRefresh}
+                    matchId={evId}
+                    openedd={false}
+                    bookmakerMarkets={bookmakerMarkets}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* <div className="flex flex-col"> */}
+          <div className={` w-full mt-3`}>
+            {/* market heading */}
+            <ul className="flex text-white mt-3 mb-3 items-center gap-x-2 w-full ">
+              <li
+                style={{ whiteSpace: "nowrap" }}
+                onClick={() => setOtherMarkets("premium")}
+              >
+                <a
+                  _ngcontent-xck-c40=""
+                  href="javascript:void(0);"
+                  role="tab"
+                  className={`${
+                    otherMarkets === "premium"
+                      ? "bg-[#4f0a9b] text-[#ff0] "
+                      : "bg-gray-500"
+                  } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                  aria-controls="tab1"
+                  aria-selected="true"
+                  id="tab1-link"
+                >
+                  <span _ngcontent-xck-c40="">Premium Markets</span>
+                </a>
+              </li>
+              <li
+                style={{ whiteSpace: "nowrap" }}
+                onClick={() => setOtherMarkets("fancy")}
+              >
+                <a
+                  _ngcontent-xck-c40=""
+                  href="javascript:void(0);"
+                  role="tab"
+                  className={`${
+                    otherMarkets === "fancy"
+                      ? "bg-[#4f0a9b] text-[#ff0] "
+                      : "bg-gray-500"
+                  } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                  aria-controls="tab1"
+                  aria-selected="true"
+                  id="tab1-link"
+                >
+                  <span _ngcontent-xck-c40="">Fancy Markets</span>
+                </a>
+              </li>
+            </ul>
+
+            {/* fancy market navbar */}
+            {otherMarkets === "fancy" && (
+              <div
+                className="flex flex-nowrap overflow-x-auto mt-1 gap-x-2 "
+                style={{
+                  msOverflowStyle: "none",
+                  scrollbarWidth: "none",
+                  overflow: "auto",
+                  maxWidth: "100%",
+                }}
+              >
+                {fancyMktCategories.length > 0 && (
+                  <p
+                    className={`${
+                      "all_markets" === category
+                        ? "bg-gradient-to-r from-blue-700 to-green-900"
+                        : "bg-gray-500"
+                    } w-full flex justify-center items-center px-3 py-1 cursor-pointer rounded text-[0.85rem] font-medium`}
+                    style={{ whiteSpace: "nowrap" }}
+                    onClick={() => setCategory("all_markets")}
+                  >
+                    All Markets
+                  </p>
+                )}
+                {fancyMktCategories.length > 0 &&
+                  fancyMktCategories.map((category_, i) => (
+                    <p
+                      key={i}
+                      className={`${
+                        category_ === category
+                          ? "bg-gradient-to-r from-blue-700 to-green-900"
+                          : "bg-gray-500"
+                      } w-full flex justify-center items-center px-2 py-1 cursor-pointer rounded text-[0.85rem] font-medium`}
+                      style={{ whiteSpace: "nowrap" }}
+                      onClick={() => setCategory(category_)}
+                    >
+                      {category_}
+                    </p>
+                  ))}
+              </div>
+            )}
+            {/* premium market navbar */}
+            {otherMarkets === "premium" && (
+              <ul
+                className="flex flex-nowrap overflow-x-auto mt-1 mb-2 gap-x-2"
+                style={{
+                  msOverflowStyle: "none",
+                  scrollbarWidth: "none",
+                  overflow: "auto",
+                  maxWidth: "100%",
+                }}
+              >
+                <li
+                  style={{ whiteSpace: "nowrap" }}
+                  onClick={() => setPremiumCategory("All Markets")}
+                >
+                  <a
+                    _ngcontent-xck-c40=""
+                    href="javascript:void(0);"
+                    role="tab"
+                    className={`${
+                      premiumCategory === "All Markets"
+                        ? "bg-[#4f0a9b] text-[#ff0] "
+                        : "bg-gray-500"
+                    } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                    aria-controls="tab1"
+                    aria-selected="true"
+                    id="tab1-link"
+                  >
+                    <span _ngcontent-xck-c40="">All Markets</span>
+                  </a>
+                </li>
+
+                {premiumCategories.length > 0 &&
+                  premiumCategories.map((mkts, i) => (
+                    <li
+                      key={i}
+                      style={{ whiteSpace: "nowrap" }}
+                      onClick={() => setPremiumCategory(mkts.marketName)}
+                    >
+                      <a
+                        _ngcontent-xck-c40=""
+                        href="javascript:void(0);"
+                        role="tab"
+                        className={`${
+                          mkts.marketName === premiumCategory
+                            ? "bg-[#4f0a9b] text-[#ff0] "
+                            : "bg-gray-500"
+                        } active nav-item flex justify-center items-center text-xs px-2 py-1 border border-[#4f0a9b] rounded-full text-[#4f0a9b] uppercase`}
+                        aria-controls="tab1"
+                        aria-selected="true"
+                        id="tab1-link"
+                      >
+                        <span _ngcontent-xck-c40="">{mkts.marketName} </span>
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            )}
+          </div>
+
+          {/* fancy market component */}
+          {evId != "" && otherMarkets === "fancy" && (
+            <div className="w-full">
+              <FancyMarketComponent
+                setRefresh={setRefresh}
+                matchId={evId}
+                sportName={spName}
+                fancyMkts={fancyMarkets}
+                openedd={false}
+              />
+            </div>
+          )}
+
+          {/* premium market component */}
+          {otherMarkets === "premium" && (
+            <MarketGrid
+              otherMarkets={otherMarkets}
+              mkts={premiumMkts}
+              currentMkt={currentMkt}
+              mktBks={mktBks}
+              evId={evId}
+              setRefresh={setRefresh}
+              cricketEvent={cricketEvent}
+              view={view}
+              spName={spName}
+              evName={evName}
+            />
+          )}
+          {/* </div> */}
         </>
       ) : (
         <Loading stylings={"min-h-[70vh]"} />

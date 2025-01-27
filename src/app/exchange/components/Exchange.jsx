@@ -34,6 +34,10 @@ import MobileBottomNavKhiladi from "@/app/components/Navbar/MobileBottomNavKhila
 import Inplay from "./events/Inplay";
 import AccountViewKheladi from "./AccountViewKheladi";
 import ProfileKheladi from "./ProfileKheladi";
+import StakeSettingsKheladi from "./StakeSettingsKheladi";
+import ProfitLossKheladi from "./ProfitLossKheladi";
+import BetHistoryKheladi from "./BetHistoryKheladi";
+import MarketsKheladi from "../(e)/ev_c/components/MarketsKheladi";
 
 const Exchange = () => {
   const {
@@ -220,7 +224,7 @@ const Exchange = () => {
                   {/* <div className="  bg-green-200  overflow-y-scroll hide-scrollbar ml-[256px] h-screen w-[calc(100%-256px)]">
                     hello from center
                     </div> */}
-                  <div className="bg-[#f6f9ff]  h-full w-full  kh:ml-[240px]  ml:0 kh:w-[calc(100%-240px)] ">
+                  <div className="bg-[#f6f9ff]  h-full w-full   kh:ml-[240px]  ml:0 kh:w-[calc(100%-240px)] ">
                     {/* <div className="col-span-12 sm:col-span-9 md:col-span-7 bg-gray  overflow-y-scroll hide-scrollbar"> */}
                     <div className="col-span-1 max-sm:hidden ">
                       <div className="w-full ">
@@ -296,18 +300,18 @@ const Exchange = () => {
                                       globalSettings={globalSettings}
                                     />
                                   ) : (
-                                    <Markets
+                                    // <Markets
+                                    //   toggleMarketSideBar={toggleMarketSideBar}
+                                    //   refresh={refresh}
+                                    //   setRefresh={setRefresh}
+                                    //   globalSettings={globalSettings}
+                                    // />
+                                    <MarketsKheladi
                                       toggleMarketSideBar={toggleMarketSideBar}
                                       refresh={refresh}
                                       setRefresh={setRefresh}
                                       globalSettings={globalSettings}
                                     />
-                                    // <MarketsKheladi
-                                    // toggleMarketSideBar={toggleMarketSideBar}
-                                    // refresh={refresh}
-                                    // setRefresh={setRefresh}
-                                    // globalSettings={globalSettings}
-                                    // />
                                   )}
                                 </div>
                               );
@@ -316,9 +320,11 @@ const Exchange = () => {
                             case "supplycasino":
                               return <GapView />;
                             case "p&l":
-                              return <ProfitLoss />;
+                              // return <ProfitLoss />;
+                              return <ProfitLossKheladi />;
                             case "account":
-                              return <AccountHome />;
+                              // return <AccountHome />;
+                              return <StakeSettingsKheladi />;
                             case "sports":
                               return (
                                 <div className="w-full">
@@ -345,11 +351,12 @@ const Exchange = () => {
                             case "ac_statements":
                               return <AccountStatements />;
                             case "bet_history":
-                              return <BetHistory />;
+                              // return <BetHistory />;
+                              return <BetHistoryKheladi />;
                             // case "profile":
                             //   return <MyProfile />;
                             case "profile":
-                              return < ProfileKheladi/>;
+                              return <ProfileKheladi />;
                             case "in-play":
                               // return <InPlay />;
                               return (

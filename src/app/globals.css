@@ -1339,3 +1339,91 @@ label {
     font-weight: 700;
     line-height: normal;
 }
+#filter .form-control {
+    border-radius: 5px;
+    border: 1px solid #ADADAD;
+    background: #F1F1F1;
+    color: #6d6d6d;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 32px;
+
+}
+
+#filter .btn-get {
+    border-radius: 5px;
+    background: #5700A3;
+    height: 32px;
+    color: #ebebeb;
+    font-size: 12px;
+    border: unset;
+    font-style: normal;
+    font-weight: 700;
+    width: 100%;
+    line-height: normal;
+    text-transform: uppercase;
+}
+tbody, td, tfoot, th, thead, tr {
+    border-color: #dee2e6;
+    border-style: solid;
+    border-bottom-width: 1px;
+}
+.casino th{
+  padding: 5px;
+}
+.other-sports th{
+  padding: 5px;
+}
+.table td {
+    vertical-align: middle;
+    font-size: 13px;
+    padding: 5px;
+    white-space: nowrap;
+}
+.table th {
+    vertical-align: middle;
+    padding: 5px;
+    white-space: nowrap;
+}
+.stake-settings .stakeinput {
+    color: #3a3a3a;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    opacity: .5;
+    border-radius: 5px;
+    border: 1px solid #ADADAD;
+    background: #F1F1F1;
+    padding: 0.375rem 0.95rem;
+    margin-top: 10px;
+}
+.stake-settings .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-primary {
+    width: 100%;
+    margin: 10px 0;
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 1px solid #B884D0;
+    background: #5700A3;
+    text-transform: uppercase;
+    padding: 7px;
+}
