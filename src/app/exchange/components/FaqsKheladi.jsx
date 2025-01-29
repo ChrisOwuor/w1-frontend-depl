@@ -1,11 +1,10 @@
-
-
 "use client";
 import React, { useEffect, useState, useContext } from "react";
 import { Visibility } from "@mui/icons-material";
 import axios from "axios";
 import { NAVContext } from "@/app/context/NavContext";
-export default function FaqsKheladi() {
+import AccordionKheladi from "./AccordionKheladi";
+export default function FaqsKheladi () {
   const [errorM, setErrorM] = useState("");
   const [successM, setSuccessM] = useState("");
   const [success, setSuccess] = useState(false);
@@ -45,29 +44,53 @@ export default function FaqsKheladi() {
     }
   }, []);
 
+  let rules = [
+   
+
+    {
+      heading: " 1. How do I make a deposit? ( 𝗗𝗲𝗽𝗼𝘀𝗶𝘁 )",
+      data: [
+        "Click “Deposit” from the top right corner on the homepage, this action will lead you to WhatsApp, where you can obtain the payment details. Proceed to make the payment using the provided account details. Once the payment is complete, kindly share the payment acknowledgement on WhatsApp."
+      ],
+    },
+    {
+      heading: " 2. What payment methods are accepted? ( 𝗗𝗲𝗽𝗼𝘀𝗶𝘁 ) ",
+      data: [
+
+        " We accept bank transfer, payment through Google Pay, Phone Pay and Payment. "
+      ],
+    },
+    {
+      heading: " 3. What is the minimum and maximum deposit amount? ( 𝗗𝗲𝗽𝗼𝘀𝗶𝘁 )  ",
+      data: [
+
+" The minimum deposit starts from 100 INR to unlimited. "      ],
+    },
+  ];
+
   return (
     <div className="relative mt-[5px]  px-[12px]">
-      {userData ? (
+      {!userData ? (
         <div className=" stake-settings py-[15px] ">
           <div className="header-password mt-[1rem] flex-flex-wrap">
             <div className="px-[0.5rem]">
               <div className="headerLine">
                 <h6 className="text-[#5700a3] overflow-hidden uppercase text-center font-[700] z-[1] relative">
-                  Rules
+                  FAQ
                 </h6>
               </div>
             </div>
           </div>
           <div className="text-center kh:w-[91.66666667%]">
             <div className="btn-top">
-              
-              <div className="text-center rw flex-flex-wrap my-[1.3rem]">
-                <div className="mb-[1rem] w-full max-w-full">
-                  <button className="btn-primary">
-                    {loading ? "Processing" : success ? "SUBMIT" : "SUBMIT"}
-                  </button>
-                </div>
-              </div>
+              {rules &&
+                rules.map((rule, index) => (
+                  <div key={index} className="text-center rw flex-flex-wrap my-[1.3rem]">
+                    <div className="mb-[1rem] w-full max-w-full">
+                      <AccordionKheladi heading={rule.heading} bg={"#dbcdeb"} text={rule.data} color={"#f1f1f1"} textColor={"black"}/>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -76,5 +99,4 @@ export default function FaqsKheladi() {
       )}
     </div>
   );
-};
-
+}

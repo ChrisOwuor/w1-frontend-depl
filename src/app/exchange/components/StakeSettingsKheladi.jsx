@@ -116,7 +116,7 @@ export default function StakeSettingsKheladi() {
                   />
                 </div>
               </div>
-              <div className="text-center rw flex-flex-wrap -mx-[12px] my-[1.3rem]">
+              <div className="text-center rw flex-flex-wrap  my-[1.3rem]">
                 <div className="mb-[1rem] w-full max-w-full">
                   <button className="btn-primary">
                     {loading ? "Processing" : success ? "SUBMIT" : "SUBMIT"}

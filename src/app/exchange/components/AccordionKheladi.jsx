@@ -1,29 +1,29 @@
 
-import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
 
-export default function AccordionKheladi() {
+"use client";
+
+import { Accordion } from "flowbite-react";
+
+export default function AccordionKheladi ({ heading,text,color,textColor,bg }) {
   return (
-    <div>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
-                  <Typography component="span">sam</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-         vv
-        </AccordionDetails>
-      </Accordion>
+    <Accordion collapseAll style={{borderStyle:"none"}} className="focus:border-b-0 ring-0 focus:ring-0 focus:border-none border-gray focus:border-b-gray-2">
+      <Accordion.Panel className="border-none focus:border-b-0 ring-none border-gray focus:ring-0 focus:border-b-gray-2 ">
+        <Accordion.Title className={`bg-[${color}] border-none border-gray focus:border-b-gray-2 focus:ring-0 py-2 focus:border-none`}><p className={`text-${textColor}`}>
+          {heading}</p></Accordion.Title>
+        <Accordion.Content className={`text-left text-black-2 p-[16px] focus:border-none`}>
+          <table className={`border border-gray bg-[${bg}]  `}>
+            <tbody className={` bg-[${bg}]  `}>
 
-    </div>
+              {text.map((txt, index) => (<tr key={index} className="text-[15px] ">
+                <td className="p-[5px]">{txt}</td>
+              </tr>))}
+            </tbody>
+
+          </table>
+
+        </Accordion.Content>
+      </Accordion.Panel>
+
+    </Accordion>
   );
 }
