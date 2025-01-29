@@ -84,33 +84,38 @@ export default function OurSponsorshipKheladi () {
 
   return (
     <div className="relative mt-[5px]  px-[12px]">
-      {!userData ? (
-        <div className=" stake-settings py-[15px] ">
-          <div className="header-password mt-[1rem] flex-flex-wrap">
-            <div className="px-[0.5rem]">
-              <div className="headerLine">
-                <h6 className="text-[#5700a3] overflow-hidden uppercase text-center font-[700] z-[1] relative">
-                  OUR SPONSORSHIPS
-                </h6>
-              </div>
-            </div>
-          </div>
-          <div className="text-center kh:w-[91.66666667%]">
-            <div className="btn-top">
-              {rules &&
-                rules.map((rule, index) => (
-                  <div key={index} className="text-center rw flex-flex-wrap my-[1.3rem]">
-                    <div className="mb-[1rem] w-full max-w-full">
-                      <OurSponsorshipAccodion heading={rule.heading} bg={"#dbcdeb"} text={rule.data} color={"#f1f1f1"} textColor={"black"} />
-                    </div>
-                  </div>
-                ))}
+      <div className=" stake-settings py-[15px] ">
+        <div className="header-password mt-[1rem] flex-flex-wrap">
+          <div className="px-[0.5rem]">
+            <div className="headerLine">
+              <h6 className="text-[#5700a3] overflow-hidden uppercase text-center font-[700] z-[1] relative">
+                OUR SPONSORSHIPS
+              </h6>
             </div>
           </div>
         </div>
-      ) : (
-        <p className="text-gray-800 p-5">loading</p>
-      )}
+        <div className="text-center kh:w-[91.66666667%]">
+          <div className="btn-top">
+            {rules &&
+              rules.map((rule, index) => (
+                <div
+                  key={index}
+                  className="text-center rw flex-flex-wrap my-[1.3rem]"
+                >
+                  <div className="mb-[1rem] w-full max-w-full">
+                    <OurSponsorshipAccodion
+                      heading={rule.heading}
+                      bg={"#f1f1f1"}
+                      text={rule.data}
+                      color={"#ededed"}
+                      textColor={"black"}
+                    />
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

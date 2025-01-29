@@ -49,7 +49,6 @@ export default function PomotionsKheladi () {
 
   return (
     <div className="relative mt-[5px]  px-[12px]">
-      {!userData ? (
         <div className=" stake-settings py-[15px] ">
           <div className="header-password mt-[1rem] flex-flex-wrap">
             <div className="px-[0.5rem]">
@@ -71,9 +70,7 @@ export default function PomotionsKheladi () {
             </div>
           </div>
         </div>
-      ) : (
-        <p className="text-gray-800 p-5">loading</p>
-      )}
+     
     </div>
   );
 }
