@@ -38,6 +38,11 @@ import StakeSettingsKheladi from "./StakeSettingsKheladi";
 import ProfitLossKheladi from "./ProfitLossKheladi";
 import BetHistoryKheladi from "./BetHistoryKheladi";
 import MarketsKheladi from "../(e)/ev_c/components/MarketsKheladi";
+import ExBetslip from "./betslip/Betslip";
+import RulesKheladi from "./RulesKheladi";
+import FaqsKheladi from "./FaqsKheladi";
+import PomotionsKheladi from "./PomotionsKheladi";
+import OurSponsorshipKheladi from "./OurSponsorshipKheladi";
 
 const Exchange = () => {
   const {
@@ -67,7 +72,7 @@ const Exchange = () => {
       setVisible(true);
       const timer = setTimeout(() => {
         setVisible(false);
-      }, 2000);
+      }, 0);
       return () => clearTimeout(timer);
     }
   }, [message]);
@@ -199,7 +204,7 @@ const Exchange = () => {
                       newMobileNavOpen
                         ? "block bg-white absolute z-30 w-[240px] "
                         : "hidden bg-white fixed"
-                    } shadow-md  kh:block h-screen  kh:w-[240px] w-0 `}
+                    } shadow-md  kh:block h-screen py-[5px] kh:w-[240px] w-0 `}
                   >
                     <Sidebar2
                       setSelectedLink={setSelectedLink}
@@ -317,6 +322,14 @@ const Exchange = () => {
                               );
                             case "khasino":
                               return <CasinoWindow />;
+                            case "rules":
+                              return <RulesKheladi />;
+                            case "faqs":
+                              return <FaqsKheladi />;
+                            case "promotions":
+                              return <PomotionsKheladi/>;
+                            case "our_sponsorship":
+                              return <OurSponsorshipKheladi />;
                             case "supplycasino":
                               return <GapView />;
                             case "p&l":
@@ -350,13 +363,15 @@ const Exchange = () => {
                               );
                             case "ac_statements":
                               return <AccountStatements />;
-                            case "bet_history":
+                            case "unsettled_bets":
                               // return <BetHistory />;
                               return <BetHistoryKheladi />;
                             // case "profile":
                             //   return <MyProfile />;
                             case "profile":
                               return <ProfileKheladi />;
+                            case "bet_history":
+                              return <ExBetslip />;
                             case "in-play":
                               // return <InPlay />;
                               return (

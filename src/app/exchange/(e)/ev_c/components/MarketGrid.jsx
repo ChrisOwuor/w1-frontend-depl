@@ -23,9 +23,13 @@ const MarketGrid = ({
 
 
   return (
-    <div className="columns-1 md:columns-2 gap-1 w-full">
+    // <div className="columns-1 md:columns-2 gap-1 w-full">
+    <div className="columns-1  gap-1 w-full">
       {sortedMkts.map((market, i) => {
-        if (market.marketName !== currentMkt.mkt_name && market.marketName !== "Match Odds") {
+        if (
+          market.marketName !== currentMkt.mkt_name &&
+          market.marketName !== "Match Odds"
+        ) {
           return (
             <div className="break-inside-avoid" key={i}>
               <MarketComponentKheladi

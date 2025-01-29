@@ -253,14 +253,12 @@ const CompetionCollapseKheladi = ({
                 {matches &&
                   matches.length > 0 &&
                   matches.map((match, i) => {
-                    console.log(match);
                     let eventID = "";
                     let eId = "";
                     if (match && match.match_id) {
                       eventID = match.match_id;
                       eId = match.match_id;
                     }
-                    console.log(match);
 
                     if (eventID != "") {
                       const [team1, team2] = separateTeams(match.match_name);

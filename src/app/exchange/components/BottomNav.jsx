@@ -350,7 +350,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
                 <div className="flex flex-col justify-center items-center cursor-pointer">
                   <div
                     className="text-accent  border border-accent rounded text-xs px-2 py-1 font-bold leading-tight"
-                    onClick={() => setToggle((prev) => !prev)}
+                    // onClick={() => setToggle((prev) => !prev)}
                   >
                     DEMO-22
                   </div>
