@@ -21,7 +21,6 @@ const PlaceBetKheladi = ({
   otherMarkets,
 }) => {
   const boxValues = [100, 200, 500, 5000, 10000, 25000, 50000, 100000];
-  console.log(betObj);
   return (
     <>
       {marketType === "bookmaker" && (

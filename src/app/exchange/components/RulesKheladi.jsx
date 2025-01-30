@@ -121,7 +121,7 @@ export default function RulesKheladi () {
               </div>
             </div>
           </div>
-          <div className="text-center kh:w-[91.66666667%]">
+          <div className="text-center w-full">
             <div className="btn-top">
               {rules &&
                 rules.map((rule, index) => (

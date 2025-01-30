@@ -64,7 +64,7 @@ let eventOptions = [
             <div className="header-password -px-[12px] mt-[1rem] flex-flex-wrap">
               <div className="px-[0.5rem] w-full">
                 <div className="headerLine">
-                  <h6 className="text-[#5700a3] overflow-hidden uppercase text-center font-[700] z-[1] relative">
+                  <h6 className="text-[#5700a3] text-[20px] overflow-hidden uppercase text-center font-[700] z-[1] relative">
                     Profit Loss (Total P/L : IR 0)
                   </h6>
                 </div>

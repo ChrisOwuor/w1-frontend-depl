@@ -59,7 +59,7 @@ export default function PomotionsKheladi () {
               </div>
             </div>
           </div>
-          <div className="text-center kh:w-[91.66666667%]">
+          <div className="text-center w-full">
             <div className="btn-top">
               <div className="text-center rw flex-flex-wrap   my-[1.3rem]">
                 <div className="mb-[1rem] w-full max-w-full flex justify-between py-[5px] rounded-b-lg px-[15px] items-center bg-[#ededed]">

@@ -372,6 +372,9 @@ const Exchange = () => {
                               return <ProfileKheladi />;
                             case "bet_history":
                               return <ExBetslip />;
+                              
+
+
                             case "in-play":
                               // return <InPlay />;
                               return (

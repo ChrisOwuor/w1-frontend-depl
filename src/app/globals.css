@@ -1233,15 +1233,19 @@ b, strong {
     overflow: hidden;
     width: 50%;
     height: 1px;
-    content: "alien";
+    content: "\a0";
     background-color: #5700a3;
 }
 
 .headerLine h6::before {
-    margin-left: -52%;
+    margin-left: -51%;
     text-align: right;
 }
 
+.headerLine h6::after {
+    margin-left: 10px;
+    text-align: left;
+}
 .login-page-label {
     text-transform: capitalize;
     color: #3a3a3a;

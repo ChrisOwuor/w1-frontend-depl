@@ -40,6 +40,7 @@ export default function BetHistoryKheladi() {
       const res = await sendHttpRequest("/bets/mybets", "get");
       if (res.data && res.data.bets) {
         setAllBets(res.data.bets);
+        
         setCasinoBets(res.data.gap_bets);
       } else {
         setAllBets([]);
@@ -93,35 +94,16 @@ export default function BetHistoryKheladi() {
 
       if (eventType && eventType !== "All") {
         filteredBets = filteredBets.filter(
-          (bet) => bet.sport_name === eventTypeAdjusted
+          (bet) => bet.sport_name === eventType
         );
       }
-
-      const parseDate = (dateStr) => new Date(dateStr).setHours(0, 0, 0, 0);
-      const startDateParsed = startDate ? parseDate(startDate) : null;
-      const endDateParsed = endDate ? parseDate(endDate) : null;
-
-      if (
-        startDateParsed &&
-        endDateParsed &&
-        startDateParsed === endDateParsed
-      ) {
-        filteredBets = filteredBets.filter((bet) => {
-          const betDate = parseDate(bet.createdAt);
-          return betDate === startDateParsed;
-        });
-      } else {
-        if (startDateParsed) {
-          filteredBets = filteredBets.filter(
-            (bet) => parseDate(bet.createdAt) >= startDateParsed
-          );
-        }
-        if (endDateParsed) {
-          filteredBets = filteredBets.filter(
-            (bet) => parseDate(bet.createdAt) <= endDateParsed
-          );
-        }
-      }
+      
+//  if (eventType && eventType !== "All") {
+//    filteredBets = filteredBets.filter(
+//      (bet) => bet.sport_name === eventTypeAdjusted
+//    );
+      //  }
+     
 
       setBets(filteredBets);
       setFilteredIds(filteredBets.map((bet) => bet._id));
