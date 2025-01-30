@@ -727,6 +727,7 @@ const Markets = ({
                     market.marketName === "Head To Head" ||
                     market.marketName === "Both teams to Score?"
                   ) {
+                    popularMarkets.push(market.marketName)
                     return (
                       // <MarketComponent
                       //   marketBookOdds={mktBks}

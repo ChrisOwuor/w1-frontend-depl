@@ -59,7 +59,10 @@ const MarketsKheladi = ({
   const [evId, setEvId] = useState("");
   const [evName, setEvName] = useState("");
   const [spName, setSpName] = useState("");
-  const popularMarkets = ["Match Odds", "Tied Match"];
+  const [popularMarkets, setPopularMarkets] = useState([
+    "Match Odds",
+    "Tied Match",
+  ]);
 
   const [category, setCategory] = useState("all_markets");
   const [premiumCategory, setPremiumCategory] = useState("All Markets");
@@ -285,8 +288,6 @@ const MarketsKheladi = ({
   const event = JSON.parse(event_);
   targetTime = event?.event?.openDate;
 
-  console.log({ mkts });
-
   return (
     <div className="p-2">
       {/* top bar navigation */}
@@ -448,9 +449,7 @@ const MarketsKheladi = ({
                                 aria-selected="true"
                                 id={`tab1-link-${i}`}
                               >
-                                <span _ngcontent-xck-c40="">
-                                  {market}
-                                </span>
+                                <span _ngcontent-xck-c40="">{market}</span>
                               </a>
                             </li>
                           ))}
@@ -500,7 +499,6 @@ const MarketsKheladi = ({
                 if (currentMkt.mkt_name === "Popular") {
                   if (market.marketName === "Tied Match") {
                     return (
-                 
                       <MarketComponentKheladi
                         marketBookOdds={mktBks}
                         globalSettings={globalSettings}
@@ -552,7 +550,6 @@ const MarketsKheladi = ({
                     market.marketName === "Both teams to Score?"
                   ) {
                     return (
-                     
                       <MarketComponentKheladi
                         marketBookOdds={mktBks}
                         globalSettings={globalSettings}
