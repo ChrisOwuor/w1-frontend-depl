@@ -75,7 +75,9 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
   }, [openLogin]);
 
   const handleLogout = async () => {
+    console.log("logging out")
     setDisable(true);
+
 
     try {
       const tk = localStorage.getItem("tk");

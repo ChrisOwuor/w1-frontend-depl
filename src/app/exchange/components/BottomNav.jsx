@@ -277,7 +277,7 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
   }, [userData]);
 
   return (
-    <div className="w-full flex flex-col max-h-35">
+    <div className="w-full flex flex-col max-h-35 ">
       <div
         style={{
           backgroundColor:
@@ -287,12 +287,12 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
       >
         <div
           onClick={() => window.location.replace("/")}
-          className="cursor-pointer w-auto h-10 sm:h-14 flex items-center justify-center sm:-ml-4"
+          className="cursor-pointer   flex items-center justify-center "
         >
           <img
             src={`/lognobg.png`}
             alt=""
-            className=" h-full w-full object-cover  "
+            className=" max-h-[50px] w-full object-cover  "
           />
         </div>
 
