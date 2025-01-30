@@ -172,21 +172,24 @@ export default function LoginPage({ globalSettings }) {
   }, [errorM]);
 
   return (
-    <div className="max-sm:w-screen min-w-[270px] flex flex-col justify-center">
+    <div className="max-sm:w-screen min-w-[270px] flex flex-col justify-center p-2">
       <div className="col-span-1 flex items-end justify-center mb-3">
         <img
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${globalSettings.businessLogo || "uploads/betlogo.png"}`}
-          alt="profile"
-          className="w-30 h-full object-contain"
+          src="/banner4.webp"
+          alt="banner"
+          className="w-full h-full object-contain"
         />
       </div>
-      <form className="col-span-1 w-full rounded-lg shadow-lg" onSubmit={handleLogin}>
+      <form className="col-span-1 w-full rounded-lg " onSubmit={handleLogin}>
         {errorM && (
           <div>
             <p className="text-red-700 font-bold">{errorM}</p>
           </div>
         )}
-        <div className="mb-7 flex items-center w-full">
+        <div className="mb-7 flex flex-col items-start justify-start w-full">
+          <label _ngcontent-jqf-c76="" for="password" class="login-page-label">
+            Username
+          </label>
           <div className="relative w-full flex items-center">
             <input
               type="text"
@@ -203,7 +206,10 @@ export default function LoginPage({ globalSettings }) {
             </div>
           </div>
         </div>
-        <div className="mb-7 flex items-center w-full">
+        <div className="mb-7 flex  flex-col items-start justify-start w-full">
+          <label _ngcontent-jqf-c76="" for="password" class="login-page-label">
+            Password
+          </label>
           <div className="relative w-full flex items-center">
             <input
               type={showPassword ? "text" : "password"}
@@ -220,14 +226,18 @@ export default function LoginPage({ globalSettings }) {
               className="absolute right-0 top-0 bottom-0 text-black text-sm font-bold border-l-2 border-gray/[0.5] px-2"
               onClick={() => setShowPassword((prev) => !prev)}
             >
-              {showPassword ? <VisibilityOffIcon fontSize="small" /> : <VisibilityIcon fontSize="small" />}
+              {showPassword ? (
+                <VisibilityOffIcon fontSize="small" />
+              ) : (
+                <VisibilityIcon fontSize="small" />
+              )}
             </button>
           </div>
         </div>
         <div className="my-1 text-center">
           <button
             type="submit"
-            className="bg-warning font-bold text-lg hover:bg-yellow-400 w-full px-4 py-2.5 rounded"
+            className="bg-[#5700a3] font-bold text-lg w-full px-4 py-2.5 rounded"
             disabled={loading}
           >
             {loading ? "Processing" : success ? "Redirecting.." : "Login"}
@@ -236,7 +246,7 @@ export default function LoginPage({ globalSettings }) {
         <div className="my-1 text-center">
           <button
             type="button"
-            className="bg-warning font-bold text-lg hover:bg-yellow-400 w-full px-4 py-2.5 rounded"
+            className="bg-[#ffff54] font-bold text-lg text-black hover:bg-[#5700a3] w-full px-4 py-2.5 rounded"
             disabled={loading}
             onClick={handleDemoLogin}
           >

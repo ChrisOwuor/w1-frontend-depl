@@ -233,81 +233,83 @@ export default function FooterKhiladi ({ globalSettings }) {
     ];
 
     return (
-        <div className="relative grid grid-cols-12 items-center py-[20px] ">
-            <div className="col-span-12 flex  justify-center">
-                <p className="text-[#3a3a3a] font-[700] text-[14px] text-center uppercase ">
-                    Payment Methods
-                </p>
-            </div>
-            <div className="img-cont col-span-12 flex flex-row justify-center mt-[5px] text-[14px]">
-                {imageArray.map((image, index) => {
-                    return (
-                        <Image
-                            key={index}
-                            src={image.src}
-                            alt={image.name}
-                            width={50}
-                            height={50}
-                            className="m-[15px] lg:h-[3vw] w-[24vw] h-[7vw] sm:h-[3vw] p-0 lg:w-[auto] sm:w-[auto] align-middle"
-                        />
-                    );
-                })}
-            </div>
-            <div className="img-cont col-span-12 flex flex-row justify-center h-[3vw] mt-2">
-                {socialLinks.map((link) => (
-                    <Link
-                        key={link.id}
-                        href={link.href}
-                        target="_blank"
-                        className="text-center"
-                    >
-                        <Image
-                            src={link.src}
-                            alt={link.name}
-                            width={40}
-                            height={40}
-                            className="px-[1vw] w-auto lg:h-[3vw] sm:h-[3vw] h-[22px] mx-[1px] "
-                        />
-                    </Link>
-                ))}
-            </div>
-
-         
-                <div className="menu-page mt-[30px] mb-[8px] text-[#444444] text-[14px] items-center flex-wrap col-span-12 flex flex-row justify-center  ">
-                    {linkArray.map((link, index) => (
-                        <Link key={index} href={link.href} routerlink={link.routerlink} className="text-black text-center pt-2.5 text-xs mr-1.5 font-medium leading-normal capitalize no-underline">
-                            {link.name} {index < linkArray.length - 1 && '|'}
-                        </Link>
-                    ))}
-            </div>
-            <div className="img-cont col-span-12 flex flex-row justify-center items-center mt-4 py-[5px] px-[12px] bg-[#f5f5f5]">
-                <div className="logo rounded mr-[16px] flex justify-start items-start" style={{
-                    backgroundColor:
-                        (globalSettings && globalSettings.topBarBgColor) || "#002C5C",
-                }} >
-                    <div className="min-w-[75px] ">
-                        {globalSettings && globalSettings.businessLogo && (
-                            <img
-                                src={
-                                    globalSettings?.businessLogo &&
-                                    `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
-                                }
-                                alt=""
-                                className="h-auto lg:h-[3vw] sm:h-[3vw] w-full object-cover"
-                            />
-                        )}
-                    </div>
-                    
-                </div>
-                <div className="text text-[#b6baab] font-inherit text-xs font-medium leading-[14px]">
-                    <div className="py-2 text-black font-light leading-normal capitalize"
-                    >
-                        This website is operated by Never Ending Gaming N.V.duly incorporated under the laws of CURACAO, company registration number 154043, whose address is at Abraham de Veerstraat 9, Curacao,
-                    </div>
-                </div>
-            </div>
-
-            
+      <div className="relative grid grid-cols-12 items-center py-[20px] ">
+        <div className="col-span-12 flex  justify-center">
+          <p className="text-[#3a3a3a] font-[700] text-[14px] text-center uppercase ">
+            Payment Methods
+          </p>
         </div>
+        <div className="img-cont col-span-12 flex flex-row justify-center mt-[5px] text-[14px]">
+          {imageArray.map((image, index) => {
+            return (
+              <Image
+                key={index}
+                src={image.src}
+                alt={image.name}
+                width={50}
+                height={50}
+                className="m-[15px] lg:h-[3vw] w-[24vw] h-[7vw] sm:h-[3vw] p-0 lg:w-[auto] sm:w-[auto] align-middle"
+              />
+            );
+          })}
+        </div>
+        <div className="img-cont col-span-12 flex flex-row justify-center h-[3vw] mt-2">
+          {socialLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              target="_blank"
+              className="text-center"
+            >
+              <Image
+                src={link.src}
+                alt={link.name}
+                width={40}
+                height={40}
+                className="px-[1vw] w-auto lg:h-[3vw] sm:h-[3vw] h-[22px] mx-[1px] "
+              />
+            </Link>
+          ))}
+        </div>
+
+        <div className="menu-page mt-[30px] mb-[8px] text-[#444444] text-[14px] items-center flex-wrap col-span-12 flex flex-row justify-center  ">
+          {linkArray.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              routerlink={link.routerlink}
+              className="text-black text-center pt-2.5 text-xs mr-1.5 font-medium leading-normal capitalize no-underline"
+            >
+              {link.name} {index < linkArray.length - 1 && "|"}
+            </Link>
+          ))}
+        </div>
+        <div className="img-cont col-span-12 flex flex-row justify-center items-center mt-4 py-[5px] px-[12px] bg-[#f5f5f5]">
+          <div
+            className="logo rounded mr-[16px] flex justify-start items-start"
+            style={{
+              backgroundColor:
+                (globalSettings && globalSettings.topBarBgColor) || "#002C5C",
+            }}
+          >
+            <div className="min-w-[75px] ">
+              <img
+                // onClick={() => window.location.reload()}
+                src={`/lognobg.png`}
+                alt=""
+                className=" h-full w-full object-cover  "
+              />
+            </div>
+          </div>
+          <div className="text text-[#b6baab] font-inherit text-xs font-medium leading-[14px]">
+            <div className="py-2 text-black font-light leading-normal capitalize">
+              This website is operated by Never Ending Gaming N.V.duly
+              incorporated under the laws of CURACAO, company registration
+              number 154043, whose address is at Abraham de Veerstraat 9,
+              Curacao,
+            </div>
+          </div>
+        </div>
+      </div>
     );
 }

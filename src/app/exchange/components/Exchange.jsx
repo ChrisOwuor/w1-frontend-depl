@@ -322,12 +322,14 @@ const Exchange = () => {
                               );
                             case "khasino":
                               return <CasinoWindow />;
+                            case "login":
+                              return <LoginPage/>;
                             case "rules":
                               return <RulesKheladi />;
                             case "faqs":
                               return <FaqsKheladi />;
                             case "promotions":
-                              return <PomotionsKheladi/>;
+                              return <PomotionsKheladi />;
                             case "our_sponsorship":
                               return <OurSponsorshipKheladi />;
                             case "supplycasino":
@@ -372,8 +374,6 @@ const Exchange = () => {
                               return <ProfileKheladi />;
                             case "bet_history":
                               return <ExBetslip />;
-                              
-
 
                             case "in-play":
                               // return <InPlay />;

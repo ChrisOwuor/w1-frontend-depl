@@ -168,48 +168,56 @@ export default function MobileBottom ({ toggleSideBar, globalSettings }) {
     >
       <div className="w-full flex justify-start items-center">
         <div
-
-          className={` ${loggedIN ? "h-12" : "h-14"} cursor-pointer w-auto h-12 flex items-center justify-start gap-0`}
+          className={` ${
+            loggedIN ? "h-12" : "h-14"
+          } cursor-pointer aspect-video w-4/5 flex items-center justify-start gap-0 `}
         >
-          <MenuIcon fontSize={`${loggedIN ? "large" : "large"}`} onClick={() => { setNewMobileNavOpen (!newMobileNavOpen) }} />
+          <MenuIcon
+            fontSize={`${loggedIN ? "large" : "large"}`}
+            onClick={() => {
+              setNewMobileNavOpen(!newMobileNavOpen);
+            }}
+          />
 
-          {globalSettings && globalSettings.businessLogo && (
+          <div className=" ">
             <img
               // onClick={() => window.location.reload()}
-              src={
-                globalSettings?.businessLogo &&
-                `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
-              }
+              src={`/lognobg.png`}
               alt=""
-              className="h-full w-full object-cover"
+              className=" h-full w-full object-cover  "
             />
-          )}
+          </div>
         </div>
       </div>
       <div className="flex gap-1 items-center justify-end w-full">
         {!loggedIN ? (
-          <div className="flex items-center justify-end gap-x-4 px-1 rounded font-bold py-1 cursor-pointer">
+          <div className="flex items-center justify-end cursor-pointer">
             <div
-              onClick={() => {
-                setCurrentCenter("userconsent");
-                setOpenLogin(true);
-              }}
-              className={`bg-warning flex items-center justify-center gap-1  rounded py-2 px-3 hover:text-gray-200 cursor-pointer`}
+              className="login mr-[0.5rem] cursor-pointer"
+              onClick={() => setCurrentCenter("login")}
             >
-              <p className="font-bold text-black  text-md">Login</p>
-              <VpnKeyIcon fontSize="small" className="text-black" />
+              <p className="bg-[#ffff54] rounded-[4px] text-black text-[12px] uppercase p-[8px]  font-[700] border border-black">
+                Login
+              </p>
+            </div>
+            <div className="signup cursor-pointer">
+              <p className=" text-[#fff] rounded-[4px] text-[12px] uppercase p-[8px] font-[700] border border-white">
+                SignUp
+              </p>
             </div>
           </div>
         ) : (
           <div
-            className={`inline-flex items-center  px-1 rounded font-bold py-2 cursor-pointer text-white  text-[0.8rem]`}
+            className={`flex items-center  px-1 rounded font-bold py-2 cursor-pointer text-white  text-[0.8rem]`}
             onClick={() =>
               isScreenSmall === "false" && setToggle((prev) => !prev)
             }
           >
-            <div className="flex flex-col ">
-                <div className="flex items-center gap-x-2  ">
-                  <p className="text-[11px] font-[900] text-[#feff00] uppercase">Balance :</p>
+            <div className="flex flex-col flex-nowrap w-[max-content] ">
+              <div className="flex items-center gap-x-2  ">
+                <p className="text-[11px] font-[900] text-[#feff00] uppercase">
+                  Balance :
+                </p>
                 {userData != {} && userData.availableBalance ? (
                   <p className="white">
                     {parseInt(userData.availableBalance).toFixed(2)}
@@ -218,8 +226,10 @@ export default function MobileBottom ({ toggleSideBar, globalSettings }) {
                   <p className="white">0</p>
                 )}
               </div>
-              <div className="flex items-center gap-x-2  ">
-                  <p className="text-[11px] font-[900] text-[#feff00] uppercase">Exposure :</p>
+              <div className="flex items-center gap-x-2 ">
+                <p className="text-[11px] font-[900] text-[#feff00] uppercase">
+                  Exposure :
+                </p>
 
                 {userData != {} && userData.exposure ? (
                   <p className="text-white">
@@ -227,16 +237,15 @@ export default function MobileBottom ({ toggleSideBar, globalSettings }) {
                   </p>
                 ) : (
                   <p className="text-white">
-                    (<span className="text-white">0</span>)
+                    (<span className="text-white ">0</span>)
                   </p>
                 )}
               </div>
             </div>
-             
-                <div className="text-[#feff00] rounded-[2px] text-[600] uppercase px-[5px] py-[2px] ml-[10px] text-[11px] border-[#feff00] border-[1px]">
-                  Demo123
-                </div>
-           
+
+            <div className="text-[#feff00] rounded-[2px] text-[600] uppercase px-[5px] py-[2px] ml-[10px] text-[11px] border-[#feff00] border-[1px]">
+              Demo123
+            </div>
           </div>
         )}
       </div>

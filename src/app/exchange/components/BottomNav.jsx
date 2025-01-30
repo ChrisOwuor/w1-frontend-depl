@@ -287,20 +287,13 @@ export default function Bottom({ toggleSideBar, globalSettings }) {
       >
         <div
           onClick={() => window.location.replace("/")}
-          className="cursor-pointer w-auto h-10 sm:h-16 flex items-center justify-center sm:-ml-4"
+          className="cursor-pointer w-auto h-10 sm:h-14 flex items-center justify-center sm:-ml-4"
         >
-          {globalSettings && globalSettings.businessLogo && (
-            <>
-              <img
-                src={
-                  globalSettings?.businessLogo &&
-                  `${process.env.NEXT_PUBLIC_UPLINE_BACKEND}api/${globalSettings.businessLogo}`
-                }
-                alt=""
-                className="h-full w-full object-cover"
-              />
-            </>
-          )}
+          <img
+            src={`/lognobg.png`}
+            alt=""
+            className=" h-full w-full object-cover  "
+          />
         </div>
 
         <div className="flex gap-1 items-center justify-end min-w-[15vw]">

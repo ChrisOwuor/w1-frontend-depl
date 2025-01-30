@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from "src/app/context/AuthContext";
 import jwt_decode from "jwt-decode";
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
+import { NAVContext } from "@/app/context/NavContext";
 
 
 export default function LoginPageTopBar({ }) {
@@ -12,6 +13,12 @@ export default function LoginPageTopBar({ }) {
   const [loading, setLoading] = useState(false);
   const { setOpenRegister, setOpenLogin } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+    const {
+      currentCenter,
+      setCurrentCenter,
+      setNewMobileNavOpen,
+      newMobileNavOpen,
+    } = useContext(NAVContext);
 
   const [formValues, setFormValues] = useState({
     username: "",
@@ -102,9 +109,23 @@ export default function LoginPageTopBar({ }) {
   }, [errorM]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center">
+      <div className="login mr-[0.5rem] cursor-pointer" onClick={() => setCurrentCenter("login")}>
+        <p
+          className="bg-[#ffff54] rounded-[4px] text-black text-[18px] uppercase py-1 px-[37px] font-[700] border border-black"
+        >
+          Login
+        </p>
+      </div>
+      <div className="signup cursor-pointer">
+        <p
+          className=" text-[#fff] rounded-[4px] text-[18px] uppercase py-1 px-[37px] font-[700] border border-white"
+        >
+          SignUp
+        </p>
+      </div>
 
-      <form className="col-span-1 w-full rounded-lg shadow-lg flex items-center gap-x-4" onSubmit={handleLogin}>
+      {/* <form className="col-span-1 w-full rounded-lg shadow-lg flex items-center gap-x-4" onSubmit={handleLogin}>
         {errorM && (
           <div>
             <p className="text-red-700 font-bold">{errorM}</p>
@@ -136,7 +157,7 @@ export default function LoginPageTopBar({ }) {
               onChange={handleChange}
               required
             />
-            {/* <button
+            <button
               type="button"
               className="absolute right-0 top-0 bottom-0 text-black text-sm font-bold border-l-2 border-gray/[0.5] px-2"
               onClick={() => setShowPassword((prev) => !prev)}
@@ -147,7 +168,7 @@ export default function LoginPageTopBar({ }) {
                   :
                   <VisibilityIcon fontSize="small" className="" />
               }
-            </button> */}
+            </button>
           </div>
         </div>
         <div className=" text-center">
@@ -161,7 +182,7 @@ export default function LoginPageTopBar({ }) {
           </button>
         </div>
 
-      </form>
+      </form> */}
     </div>
   );
 }

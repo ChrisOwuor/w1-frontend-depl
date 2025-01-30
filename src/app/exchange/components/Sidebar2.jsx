@@ -11,6 +11,7 @@ import { NAVContext } from "@/app/context/NavContext";
 import { AuthContext } from "@/app/context/AuthContext";
 import { Button, Modal } from "@mantine/core";
 import { isAuthenticated } from "@/app/components/funcStore/authenticate";
+import axios from "axios";
 
 const Sidebar2 = ({ setSelectedLink, activeLink }) => {
   const [currentPage, setCurrentPage] = useState("");
@@ -74,7 +75,6 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
   }, [openLogin]);
 
   const handleLogout = async () => {
-    console.log("loggin out");
     setDisable(true);
 
     try {
@@ -493,28 +493,7 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
         </svg>
       ),
     },
-    {
-      name: "Log Out",
-      case: "sign_out",
-      svg: (
-        <svg
-          _ngcontent-iug-c58=""
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 16 15"
-          fill="none"
-          class="ng-tns-c53-1"
-        >
-          <path
-            _ngcontent-iug-c58=""
-            d="M4.52941 3.75L4.52941 6L10.7059 6L10.7059 9L4.52941 9L4.52941 11.25L0.117648 7.5L4.52941 3.75ZM6.29412 15C5.82609 15 5.37723 14.842 5.04628 14.5607C4.71534 14.2794 4.52941 13.8978 4.52941 13.5L4.52941 12L6.29412 12L6.29412 13.5L14.2353 13.5L14.2353 1.5L6.29412 1.5L6.29412 3L4.52941 3L4.52941 1.5C4.52941 1.10217 4.71534 0.720644 5.04628 0.43934C5.37723 0.158034 5.82609 -8.89432e-07 6.29412 -8.48515e-07L14.2353 -1.54275e-07C14.7033 -1.13359e-07 15.1522 0.158035 15.4831 0.439341C15.8141 0.720645 16 1.10218 16 1.5L16 13.5C16 13.8978 15.8141 14.2794 15.4831 14.5607C15.1522 14.842 14.7033 15 14.2353 15L6.29412 15Z"
-            fill="#4F0A9B"
-            class="ng-tns-c53-1"
-          ></path>
-        </svg>
-      ),
-    },
+    
   ];
   const { setCurrentCompetition, setCurCompObj } =
     useContext(CompetitionContext);
@@ -584,7 +563,22 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
       } text-black font-semibold bg-white sidebar-nav p-0 m-0 `}
     >
       {menuItems.map((item, index) => (
-        <li key={index} className="nav-item m-0 p-0">
+        <li
+          key={index}
+          className={` ${
+            [
+              "profile",
+              "ac_statements",
+              "p&l",
+              "unsettled_bets",
+              "bet_history",
+              "account",
+              "sign_out",
+            ].includes(item.case) &&
+            !loggedIN &&
+            "hidden"
+          } m-0 p-0`}
+        >
           <p
             onClick={() => {
               setActive("");
@@ -615,17 +609,31 @@ const Sidebar2 = ({ setSelectedLink, activeLink }) => {
           </p>
         </li>
       ))}
-      {/* <li>
-        <p className="px-4 py-3">
-          <Button
-            disabled={disable}
-            onClick={handleLogout}
-            className="inline-block rounded-md border-none bg-gray-700  px-3 py-1 hover:bg-orange-500/[0.2] text-gray-200 text-sm"
-          >
-            Logout
-          </Button>
-        </p>
-      </li> */}
+      {loggedIN && (
+        <li className="p-0 m-0" onClick={() => handleLogout()}>
+          <p className=" nav-item flex items-center text-[12px] text-[#3a3a3a] font-[600] text-gray-700 transition-all duration-300 px-[15px] py-[11px] uppercase border-b  border-gray  cursor-pointer">
+            <a className=" nav-link ">
+              <svg
+                _ngcontent-iug-c58=""
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 16 15"
+                fill="none"
+                class="ng-tns-c53-1"
+              >
+                <path
+                  _ngcontent-iug-c58=""
+                  d="M4.52941 3.75L4.52941 6L10.7059 6L10.7059 9L4.52941 9L4.52941 11.25L0.117648 7.5L4.52941 3.75ZM6.29412 15C5.82609 15 5.37723 14.842 5.04628 14.5607C4.71534 14.2794 4.52941 13.8978 4.52941 13.5L4.52941 12L6.29412 12L6.29412 13.5L14.2353 13.5L14.2353 1.5L6.29412 1.5L6.29412 3L4.52941 3L4.52941 1.5C4.52941 1.10217 4.71534 0.720644 5.04628 0.43934C5.37723 0.158034 5.82609 -8.89432e-07 6.29412 -8.48515e-07L14.2353 -1.54275e-07C14.7033 -1.13359e-07 15.1522 0.158035 15.4831 0.439341C15.8141 0.720645 16 1.10218 16 1.5L16 13.5C16 13.8978 15.8141 14.2794 15.4831 14.5607C15.1522 14.842 14.7033 15 14.2353 15L6.29412 15Z"
+                  fill="#4F0A9B"
+                  class="ng-tns-c53-1"
+                ></path>
+              </svg>
+            </a>
+            Log out
+          </p>
+        </li>
+      )}
     </ul>
   );
 };
